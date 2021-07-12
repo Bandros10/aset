@@ -31,4 +31,10 @@ Route::post('/users/permission', 'UserController@addPermission')->name('users.ad
 Route::get('/users/role-permission', 'UserController@rolePermission')->name('users.roles_permission');
 Route::put('/users/permission/{role}', 'UserController@setRolePermission')->name('users.setRolePermission');
 
+/**
+ * Pengadaan
+ */
+Route::get('pengadaan/index','PengadaanController@index')->name('pengadaan.index');
+Route::post('pengadaan/store','PengadaanController@store')->name('pengadaan.store');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

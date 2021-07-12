@@ -14,7 +14,7 @@
                 <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{auth()->user()->name}}</a>
+                <a href="#" class="d-block">Hi {{auth()->user()->name}} {{auth()->user()->roles->first()->name}}</a>
             </div>
         </div>
 
@@ -23,6 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
+                @role('admin')
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
                         <i class="fas fa-users-cog"></i>
@@ -52,7 +53,39 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                @endrole
+                @role('IT')
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-users-cog"></i>
+                        <p>
+                            MANAJEMEN IT
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('pengadaan.index')}}" class="nav-link">
+                                <i class="fas fa-paste"></i>
+                                <p>Pengadaan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user-plus"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user-secret"></i>
+                                <p>Role Permission</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endrole
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -644,7 +677,7 @@
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Informational</p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
