@@ -29,20 +29,19 @@ class UserController extends Controller
             'name' => 'required|string|max:100',
             'jenis_kelamin' => 'required|string',
             'jabatan' => 'required|string',
-            'devisi' => 'required|string',
-            'alamat' => 'require|string',
+            'divisi' => 'required|string',
+            'alamat' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'role' => 'required|string|exists:roles,name'
         ]);
 
         $user = User::firstOrCreate([
-            'email' => $request->email
-        ], [
             'name' => $request->name,
+            'email' => $request->email,
             'jenis_kelamin' => $request->jenis_kelamin,
             'jabatan' => $request->jabatan,
-            'devisi' => $request->devisi,
+            'divisi' => $request->divisi,
             'alamat' => $request->alamat,
             'password' => bcrypt($request->password),
         ]);
@@ -63,6 +62,10 @@ class UserController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|exists:users,email',
             'password' => 'nullable|min:6',
+            'jenis_kelamin' => 'required|string',
+            'jabatan' => 'required|string',
+            'divisi' => 'required|string',
+            'alamat' => 'required|string',
         ]);
         $user = User::findOrFail($id);
         $password = !empty($request->password) ? bcrypt($request->password):$user->password;
@@ -71,7 +74,7 @@ class UserController extends Controller
             'password' => $password,
             'jenis_kelamin' => $request->jenis_kelamin,
             'jabatan' => $request->jabatan,
-            'devisi' => $request->devisi,
+            'divisi' => $request->divisi,
             'alamat' => $request->alamat,
         ]);
         return redirect(route('users.index'))->with(['success' => 'User: <strong>' . $user->name . '</strong> Diperbaharui']);

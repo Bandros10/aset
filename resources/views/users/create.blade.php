@@ -52,6 +52,32 @@
                                 <p class="text-danger">{{ $errors->first('email') }}</p>
                             </div>
                             <div class="form-group">
+                                <label for="">jenis Kelamin</label>
+                                <select name="jenis_kelamin" class="form-control {{ $errors->has('jenis_kelamin') ? 'is-invalid':'' }}" required>
+                                    <option disabled selected>- pilih jenis kelamin -</option>
+                                    <option value="laki-laki">Laki-laki</option>
+                                    <option value="perempuan">perempuan</option>
+                                </select>
+                                <p class="text-danger">{{ $errors->first('jenis_kelamin') }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jabatan</label>
+                                <input type="jabatan" name="jabatan"
+                                    class="form-control {{ $errors->has('jabatan') ? 'is-invalid':'' }}" required>
+                                <p class="text-danger">{{ $errors->first('jabatan') }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Divisi</label>
+                                <input type="divisi" name="divisi"
+                                    class="form-control {{ $errors->has('divisi') ? 'is-invalid':'' }}" required>
+                                <p class="text-danger">{{ $errors->first('divisi') }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Alamat</label>
+                                <textarea name="alamat" class="form-control {{ $errors->has('divisi') ? 'is-invalid':'' }}"></textarea>
+                                <p class="text-danger">{{ $errors->first('alamat') }}</p>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Password</label>
                                 <input type="password" name="password"
                                     class="form-control {{ $errors->has('password') ? 'is-invalid':'' }}" required>

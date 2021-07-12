@@ -54,6 +54,32 @@
                                 <p class="text-danger">{{ $errors->first('email') }}</p>
                             </div>
                             <div class="form-group">
+                                <label for="">jenis Kelamin</label>
+                                <select name="jenis_kelamin" class="form-control {{ $errors->has('jenis_kelamin') ? 'is-invalid':'' }}" required>
+                                    <option disabled selected>- pilih jenis kelamin -</option>
+                                    <option value="laki-laki" {{ $user->jenis_kelamin == "laki-laki" ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="perempuan" {{ $user->jenis_kelamin == "perempuan" ? 'selected' : '' }}>perempuan</option>
+                                </select>
+                                <p class="text-danger">{{ $errors->first('jenis_kelamin') }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jabatan</label>
+                                <input type="jabatan" name="jabatan"
+                                    class="form-control {{ $errors->has('jabatan') ? 'is-invalid':'' }}" value="{{$user->jabatan}}">
+                                <p class="text-danger">{{ $errors->first('jabatan') }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Divisi</label>
+                                <input type="divisi" name="divisi"
+                                    class="form-control {{ $errors->has('divisi') ? 'is-invalid':'' }}" value="{{$user->divisi}}">
+                                <p class="text-danger">{{ $errors->first('divisi') }}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Alamat</label>
+                                <textarea name="alamat" class="form-control {{ $errors->has('divisi') ? 'is-invalid':'' }}">{{$user->alamat}}</textarea>
+                                <p class="text-danger">{{ $errors->first('alamat') }}</p>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Password</label>
                                 <input type="password" name="password"
                                     class="form-control {{ $errors->has('password') ? 'is-invalid':'' }}">
