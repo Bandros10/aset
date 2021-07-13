@@ -1,55 +1,52 @@
 @extends('layouts.app')
 @section('title')
-    <title>Pengadaan</title>
+    <title>Data barang aset</title>
 @endsection
-
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengadaan</h1>
+                    <h1 class="m-0">Data Aset</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">pengadaan</li>
+                        <li class="breadcrumb-item active">Data aset</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
                     <x-card>
                         @slot('title')
-                        @role('IT')
-                            <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#pengadaanmodal">input Pengadaan</button>
-                        @endrole
-                        <h3>DATA KONFIRMASI PENGADAAN BARANG</h3>
+                            <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#pengadaanmodal">Tambah Data barang Aset</button>
                         @endslot
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <td>No</td>
-                                        <td>Nama Barang</td>
-                                        <td>Jenis Barang</td>
-                                        <td>Merek Barang</td>
-                                        <td>Model Barang</td>
-                                        <td>Harga Barang</td>
-                                        <td>Tanggal Pengadaan</td>
-                                        <td>Jumlah</td>
-                                        <td>keterangan</td>
-                                        <td>confirmed</td>
+                                        <td>Nama Perangkat</td>
+                                        <td>Kategori</td>
+                                        <td>Tipe Jenis</td>
+                                        <td>Kondisi</td>
+                                        <td>Harga</td>
+                                        <td>Tanggal Pembelian</td>
+                                        <td>Jumlah Saat Ini</td>
+                                        <td>Kelengkapan perangkat</td>
+                                        <td>Keterangan</td>
+                                        <td>Foto gamabar</td>
+                                        <td>Aksi</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
+                                    {{-- @php $no = 1; @endphp
                                     @foreach ($pengadaan_data as $pengadaan)
                                         <tr>
                                             <td>{{$no++}}</td>
@@ -72,7 +69,7 @@
                                                 @endif
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                         </div>

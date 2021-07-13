@@ -34,7 +34,17 @@ Route::put('/users/permission/{role}', 'UserController@setRolePermission')->name
 /**
  * Pengadaan
  */
-Route::get('pengadaan/index','PengadaanController@index')->name('pengadaan.index');
-Route::post('pengadaan/store','PengadaanController@store')->name('pengadaan.store');
+Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
+Route::post('/pengadaan/store','PengadaanController@store')->name('pengadaan.store');
+/**
+ * data aset
+ */
+Route::resource('/aset', 'AsetController');
+
+/**
+ * kepala sumber daya
+ */
+Route::get('/kepala_sumber_daya/konfirmasi/{id}','SumberdayaController@index')->name('kepala_sumber_daya.konfirmasi');
+Route::post('/kepala_sumber_daya/konfirmasi/barang/{id}','SumberdayaController@konfirmasi')->name('kepala_sumber_daya.konfirmasi.barang');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

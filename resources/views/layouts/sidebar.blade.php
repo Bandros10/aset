@@ -14,7 +14,7 @@
                 <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Hi {{auth()->user()->name}} {{auth()->user()->roles->first()->name}}</a>
+                <a href="#" class="d-block">Hi {{auth()->user()->name}} as {{auth()->user()->roles->first()->name}}</a>
             </div>
         </div>
 
@@ -71,15 +71,34 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('aset.index')}}" class="nav-link">
                                 <i class="fas fa-user-plus"></i>
-                                <p>Users</p>
+                                <p>Data Asset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-user-secret"></i>
                                 <p>Role Permission</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endrole
+                @role('kepala sumber daya')
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-users-cog"></i>
+                        <p>
+                            KEPALA SUMBER DAYA
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('pengadaan.index')}}" class="nav-link">
+                                <i class="fas fa-paste"></i>
+                                <p>Pengadaan</p>
                             </a>
                         </li>
                     </ul>
