@@ -27,7 +27,7 @@
                                     <input type="text" class="form-control" name="merk_barang" placeholder="Merek Barang Pengadaan" required>
                                 </div>
                                 <div class="col-3">
-                                    <label>Model Barang</label>
+                                    <label>Tipe Barang</label>
                                     <input type="text" class="form-control" name="model_barang" placeholder="Model Barang Pengadaan" required>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                             <input type="number" class="form-control" name="jumlah_pengadaan" placeholder="Jumlah Barang" required>
                                         </div>
                                         <div class="col-6">
-                                            <label>Harga barang</label>
+                                            <label>Harga Satuan</label>
                                             <input type="number" class="form-control" name="harga_barang" placeholder="Harga Barang" required>
                                         </div>
                                     </div>
