@@ -21,7 +21,7 @@ class AsetController extends Controller
 
     public function store(Request $request){
         $this->validate($request,[
-            'id_perangkat' => 'unique:asets,id_perangkat'
+            'photo' => 'mimes:png,jpg,'
         ]);
         $kode = ucwords(\substr($request->kategori,0,1));
         $date = Carbon::now()->format('my');
