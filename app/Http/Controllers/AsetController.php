@@ -25,7 +25,7 @@ class AsetController extends Controller
         ]);
         $kode = ucwords(\substr($request->kategori,0,1));
         $date = Carbon::now()->format('my');
-        $id = $kode.$date.'-'.subStr::upper($request->tipe);
+        $id = $kode.$date.'-'.$request->tipe;
         $photo = Image::make($request->photo)->fit(400)->encode('data-url');
         dd($id);
         try {
