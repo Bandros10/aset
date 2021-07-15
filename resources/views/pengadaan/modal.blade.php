@@ -49,7 +49,7 @@
                                     <input type="date" class="form-control" name="tanggal_pengadaan" placeholder="Harga Barang" required>
                                 </div>
                                 <div class="col-6">
-                                    <label>Harga barang</label>
+                                    <label>Keterangan</label>
                                     <textarea name="keterangan" class="form-control" rows="4" required></textarea>
                                 </div>
                             </div>

@@ -25,7 +25,7 @@
                 <div class="col">
                     <x-card>
                         @slot('title')
-                            <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#pengadaanmodal">Tambah Data barang Aset</button>
+                            <a href="{{route('aset.create')}}" class="btn btn-primary btn-sm">Tambah Data barang Aset</a>
                         @endslot
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">

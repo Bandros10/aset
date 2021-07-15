@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengadaan</h1>
+                    <h3>FORM PENGADAAN BARANG</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -30,13 +30,12 @@
                         @role('IT')
                             <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#pengadaanmodal">input Pengadaan</button>
                         @endrole
-                        <h3>DATA KONFIRMASI PENGADAAN BARANG</h3>
                         @endslot
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <td>No</td>
+                                        <td>Kode Perangkat</td>
                                         <td>Nama Barang</td>
                                         <td>Jenis Barang</td>
                                         <td>Merek Barang</td>
@@ -49,10 +48,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
                                     @foreach ($pengadaan_data as $pengadaan)
                                         <tr>
-                                            <td>{{$no++}}</td>
+                                            <td>{{$pengadaan->kode_perangkat}}</td>
                                             <td>{{$pengadaan->nama_barang}}</td>
                                             <td>{{$pengadaan->jenis_barang}}</td>
                                             <td>{{$pengadaan->merk_barang}}</td>

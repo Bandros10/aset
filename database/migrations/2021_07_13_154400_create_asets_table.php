@@ -14,8 +14,8 @@ class CreateAsetsTable extends Migration
     public function up()
     {
         Schema::create('asets', function (Blueprint $table) {
-            $table->increments('id_perangkat');
-            $table->string('nama_perangakat')->nullable();
+            $table->string('id_perangkat');
+            $table->string('nama_perangkat')->nullable();
             $table->string('kategori')->nullable();
             $table->string('tipe')->nullable();
             $table->string('merek')->nullable();
@@ -26,7 +26,7 @@ class CreateAsetsTable extends Migration
             $table->integer('jumlah')->nullable();
             $table->text('kelengkapan')->nullable();
             $table->text('keterangan')->nullable();
-            $table->string('photo')->nullable();
+            $table->binary('photo')->nullable();
             $table->string('qr_code')->nullable();
             $table->timestamps();
         });
