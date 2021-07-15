@@ -32,9 +32,12 @@
                                 <thead>
                                     <tr>
                                         <td>No</td>
+                                        <td>Kode Perangkat</td>
                                         <td>Nama Perangkat</td>
                                         <td>Kategori</td>
                                         <td>Tipe Jenis</td>
+                                        <td>Merek</td>
+                                        <td>Model</td>
                                         <td>Kondisi</td>
                                         <td>Harga</td>
                                         <td>Tanggal Pembelian</td>
@@ -46,30 +49,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php $no = 1; @endphp
-                                    @foreach ($pengadaan_data as $pengadaan)
+                                    @php $no = 1; @endphp
+                                    @foreach ($all_aset as $aset)
                                         <tr>
                                             <td>{{$no++}}</td>
-                                            <td>{{$pengadaan->nama_barang}}</td>
-                                            <td>{{$pengadaan->jenis_barang}}</td>
-                                            <td>{{$pengadaan->merk_barang}}</td>
-                                            <td>{{$pengadaan->model_barang}}</td>
-                                            <td>{{$pengadaan->harga_barang}}</td>
-                                            <td>{{$pengadaan->tanggal_pengadaan}}</td>
-                                            <td>{{$pengadaan->jumlah_pengadaan}}</td>
-                                            <td>{{$pengadaan->keterangan}}</td>
-                                            <td>
-                                                @if ($pengadaan->confirmed != true)
-                                                    <span class="badge bg-danger">Menunggu Konfirmasi kepala sumber daya</span>
-                                                    @role('kepala sumber daya')
-                                                    <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi</a>
-                                                    @endrole
-                                                @else
-                                                    <span class="badge bg-success">sudah di konfirmasi</span>
-                                                @endif
-                                            </td>
+                                            <td>{{$aset->id_perangkat}}</td>
+                                            <td>{{$aset->nama_perangkat}}</td>
+                                            <td>{{$aset->kategori}}</td>
+                                            <td>{{$aset->tipe}}</td>
+                                            <td>{{$aset->merek}}</td>
+                                            <td>{{$aset->model}}</td>
+                                            <td>{{$aset->kondisi}}</td>
+                                            <td>{{$aset->harga}}</td>
+                                            <td>{{$aset->tgl_pembelian}}</td>
+                                            <td>{{$aset->jumlah}}</td>
+                                            <td>{{$aset->kelengkapan}}</td>
+                                            <td>{{$aset->keterangan}}</td>
+                                            <td>photo</td>
+                                            <td></td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

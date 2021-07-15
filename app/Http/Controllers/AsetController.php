@@ -11,7 +11,8 @@ use Intervention\Image\Facades\Image;
 class AsetController extends Controller
 {
     public function index(){
-        return \view('aset.index');
+        $all_aset = aset::all();
+        return \view('aset.index', compact('all_aset'));
     }
 
     public function create(){
@@ -19,27 +20,33 @@ class AsetController extends Controller
     }
 
     public function store(Request $request){
+        $this->validate($request,[
+            'id_perangkat' => 'unique:asets,id_perangkat'
+        ]);
         $kode = ucwords(\substr($request->kategori,0,1));
         $date = Carbon::now()->format('my');
         $id = $kode.$date.Str::upper($request->tipe);
         $photo = Image::make($request->photo)->fit(400)->encode('data-url');
-        // dd($photo);
-        $aset = new aset;
-        $aset->id_perangkat = $id;
-        $aset->nama_perangkat = $request->nama_perangkat;
-        $aset->kategori = $request->kategori;
-        $aset->tipe = $request->tipe;
-        $aset->merek = $request->merek;
-        $aset->model = $request->model;
-        $aset->kondisi = $request->kondisi;
-        $aset->harga = $request->harga;
-        $aset->jumlah = $request->jumlah;
-        $aset->tgl_pembelian = $request->tgl_pembelian;
-        $aset->keterangan = $request->keterangan;
-        $aset->kelengkapan = $request->kelengkapan;
-        $aset->photo = $photo;
-        $aset->save();
-        return \view('aset.index');
-
+        // dd($request->all());
+        try {
+            aset::firstOrCreate(
+                ['id_perangkat' => $id,
+                'nama_perangkat' => $request->nama_perangkat,
+                'kategori' => $request->kategori,
+                'tipe' => $request->tipe,
+                'merek' => $request->merek,
+                'model' => $request->model,
+                'kondisi' => $request->kondisi,
+                'harga' => $request->harga,
+                'jumlah' => $request->jumlah,
+                'tgl_pembelian' => $request->tgl_pembelian,
+                'keterangan' => $request->keterangan,
+                'kelengkapan' => $request->kelengkapan,
+                'photo' => $photo]
+            );
+            return redirect('/aset')->with('sukses','data aset berhasil di tambahkan');
+        } catch (\Throwable $th) {
+            return redirect('/aset')->with('error','data aset sudah tersedia');
+        }
     }
 }

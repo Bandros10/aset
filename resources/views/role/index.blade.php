@@ -40,8 +40,12 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Role</label>
-                                <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }}"
-                                    id="name" required>
+                                <select type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }}" id="name" required>
+                                    <option disabled selected>- List Role -</option>
+                                    <option value="IT">IT</option>
+                                    <option value="kepala sumber daya">Kepala Sumber Daya</option>
+                                    <option value="keuangan">Keuangan</option>
+                                </select>
                             </div>
                             @slot('footer')
                             <div class="card-footer">
