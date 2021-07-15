@@ -25,9 +25,9 @@ class AsetController extends Controller
         ]);
         $kode = ucwords(\substr($request->kategori,0,1));
         $date = Carbon::now()->format('my');
-        $id = $kode.$date.Str::upper($request->tipe);
+        $id = $kode.$date.'-'.subStr::upper($request->tipe);
         $photo = Image::make($request->photo)->fit(400)->encode('data-url');
-        // dd($request->all());
+        dd($id);
         try {
             aset::firstOrCreate(
                 ['id_perangkat' => $id,
