@@ -61,12 +61,38 @@
                                             <td>{{$pengadaan->keterangan}}</td>
                                             <td>
                                                 @if ($pengadaan->confirmed != true)
-                                                    <span class="badge bg-danger">Menunggu Konfirmasi kepala sumber daya</span>
-                                                    @role('kepala sumber daya')
-                                                    <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi</a>
+                                                    @role('IT')
+                                                        @if ($pengadaan->confirmed_keuangan == true)
+                                                            <span class="badge bg-danger">Menunggu Konfirmasi kepala sumber daya</span>
+                                                            <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                        @endif
+                                                    @elserole('keuangan')
+                                                        @if (!empty($pengadaan->keterangan_keuangan))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
+                                                        @elseif (!empty($pengadaan->keterangan_sumber_daya == true))
+                                                            <span class="badge badge-danger">Pengadaan tidak di aprov kepala sumber</span>
+                                                        @elseif ($pengadaan->confirmed_keuangan == true)
+                                                            <span class="badge badge-success">Pengadaan di aprov oleh keuangan</span>
+                                                        @else
+                                                            <a href="{{route('keuangan.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
+                                                        @endif
+                                                    @elserole('kepala sumber daya')
+                                                        @if (!empty($pengadaan->keterangan_sumber_daya))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
+                                                        @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
+                                                            <span class="badge badge-success">Pengadaan di aprov oleh kepala sumber daya</span>
+                                                        @else
+                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
+                                                        @endif
                                                     @endrole
                                                 @else
-                                                    <span class="badge bg-success">sudah di konfirmasi</span>
+                                                    @role('IT')
+                                                        <span>sdasad</span>
+                                                    @elserole('keuangan')
+                                                        <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                    @elserole('kepala sumber daya')
+                                                        <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                    @endrole
                                                 @endif
                                             </td>
                                         </tr>

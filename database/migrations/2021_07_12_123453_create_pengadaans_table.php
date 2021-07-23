@@ -22,10 +22,13 @@ class CreatePengadaansTable extends Migration
             $table->string('model_barang');
             $table->integer('harga_barang');
             $table->date('tanggal_pengadaan');
-            // $table->integer('jumlah_sekarang')->default(0);
             $table->integer('jumlah_pengadaan');
             $table->text('keterangan');
-            $table->boolean('confirmed')->default(false);
+            $table->boolean('confirmed')->nullable()->default(false);
+            $table->boolean('confirmed_kepala_sumber_daya')->default(false);
+            $table->text('keterangan_sumber_daya')->nullable();
+            $table->boolean('confirmed_keuangan')->default(false);
+            $table->text('keterangan_keuangan')->nullable();
             $table->timestamps();
         });
     }

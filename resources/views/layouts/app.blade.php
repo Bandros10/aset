@@ -50,7 +50,10 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
+
+        <!-- modal -->
         @include('pengadaan.modal')
+        <!-- /modal -->
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -133,6 +136,10 @@
                 title: "{{Session::get('error')}}"
             })
         @endif
+
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
     </script>
     @stack('js')
 </body>

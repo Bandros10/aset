@@ -45,6 +45,14 @@ Route::resource('/aset', 'AsetController');
  * kepala sumber daya
  */
 Route::get('/kepala_sumber_daya/konfirmasi/{id}','SumberdayaController@index')->name('kepala_sumber_daya.konfirmasi');
+Route::post('/kepala_sumber_daya/tolak/{id}','SumberdayaController@tolak')->name('kepala_sumber_daya.tolak');
 Route::post('/kepala_sumber_daya/konfirmasi/barang/{id}','SumberdayaController@konfirmasi')->name('kepala_sumber_daya.konfirmasi.barang');
+
+/**
+ * keuangan
+ */
+Route::get('/keuangan/konfirmasi/{id}','KeuanganController@index')->name('keuangan.konfirmasi');
+Route::post('/keuangan/tolak/{id}','KeuanganController@tolak')->name('keuangan.tolak');
+Route::post('/keuangan/konfirmasi/barang/{id}','KeuanganController@konfirmasi')->name('keuangan.konfirmasi.barang');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -39,7 +39,14 @@
                                         </div>
                                         <div class="col-2">
                                             <label>Kategori</label>
-                                            <input type="text" name="kategori" class="form-control"  placeholder="masukan kategori perangkat">
+                                            <select class="form-control" name="kategori" required>
+                                                <option selected disabled>- Kategori Barang - </option>
+                                                <option value="laptop">Laptop</option>
+                                                <option value="PC">PC</option>
+                                                <option value="monitor">Monitor</option>
+                                                <option value="printer">printer</option>
+                                                <option value="scanner">Scanner</option>
+                                            </select>
                                         </div>
                                         <div class="col-3">
                                             <label>Tipe</label>

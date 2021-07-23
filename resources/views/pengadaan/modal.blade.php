@@ -20,7 +20,14 @@
                                 </div>
                                 <div class="col-3">
                                     <label>Jenis</label>
-                                    <input type="text" class="form-control" name="jenis_barang" placeholder="Jenis Barang Pengadaan" required>
+                                    <select class="form-control" name="jenis_barang" required>
+                                        <option selected disabled>- Jenis Barang - </option>
+                                        <option value="laptop">Laptop</option>
+                                        <option value="PC">PC</option>
+                                        <option value="monitor">Monitor</option>
+                                        <option value="printer">printer</option>
+                                        <option value="scanner">Scanner</option>
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <label>Merek</label>

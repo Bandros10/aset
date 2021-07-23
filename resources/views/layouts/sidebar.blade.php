@@ -104,6 +104,25 @@
                     </ul>
                 </li>
                 @endrole
+                @role('keuangan')
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-users-cog"></i>
+                        <p>
+                            KEUANGAN
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('pengadaan.index')}}" class="nav-link">
+                                <i class="fas fa-paste"></i>
+                                <p>Pengadaan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endrole
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>

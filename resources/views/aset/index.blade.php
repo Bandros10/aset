@@ -65,7 +65,14 @@
                                             <td>{{$aset->jumlah}}</td>
                                             <td>{{$aset->kelengkapan}}</td>
                                             <td>{{$aset->keterangan}}</td>
-                                            <td>photo</td>
+                                            <td>
+                                                @if (!empty($aset->photo))
+                                                    <img src="{{ asset('uploads/product/' . $aset->photo) }}"
+                                                        alt="{{ $aset->name }}" width="100px" height="100px">
+                                                @else
+                                                    <img src="http://via.placeholder.com/50x50" alt="{{ $aset->name }}">
+                                                @endif
+                                            </td>
                                             <td></td>
                                         </tr>
                                     @endforeach
