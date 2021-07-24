@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    <title>Data barang aset</title>
+<title>Data barang aset</title>
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -25,59 +25,43 @@
                 <div class="col">
                     <x-card>
                         @slot('title')
-                            <a href="{{route('aset.create')}}" class="btn btn-primary btn-sm">Tambah Data barang Aset</a>
+                        <a href="{{route('aset.create')}}" class="btn btn-primary btn-sm">Tambah Data barang Aset</a>
                         @endslot
-                        <div class="table-responsive">
-                            <table id="example2" class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <td>No</td>
-                                        <td>Kode Perangkat</td>
-                                        <td>Nama Perangkat</td>
-                                        <td>Kategori</td>
-                                        <td>Tipe Jenis</td>
-                                        <td>Merek</td>
-                                        <td>Model</td>
-                                        <td>Kondisi</td>
-                                        <td>Harga</td>
-                                        <td>Tanggal Pembelian</td>
-                                        <td>Jumlah Saat Ini</td>
-                                        <td>Kelengkapan perangkat</td>
-                                        <td>Keterangan</td>
-                                        <td>Foto gamabar</td>
-                                        <td>Aksi</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach ($all_aset as $aset)
-                                        <tr>
-                                            <td>{{$no++}}</td>
-                                            <td>{{$aset->id_perangkat}}</td>
-                                            <td>{{$aset->nama_perangkat}}</td>
-                                            <td>{{$aset->kategori}}</td>
-                                            <td>{{$aset->tipe}}</td>
-                                            <td>{{$aset->merek}}</td>
-                                            <td>{{$aset->model}}</td>
-                                            <td>{{$aset->kondisi}}</td>
-                                            <td>{{$aset->harga}}</td>
-                                            <td>{{$aset->tgl_pembelian}}</td>
-                                            <td>{{$aset->jumlah}}</td>
-                                            <td>{{$aset->kelengkapan}}</td>
-                                            <td>{{$aset->keterangan}}</td>
-                                            <td>
-                                                @if (!empty($aset->photo))
-                                                    <img src="{{ asset('uploads/product/' . $aset->photo) }}"
-                                                        alt="{{ $aset->name }}" width="100px" height="100px">
-                                                @else
-                                                    <img src="http://via.placeholder.com/50x50" alt="{{ $aset->name }}">
-                                                @endif
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="laptop-tab" data-toggle="tab" href="#laptop"
+                                    role="tab" aria-controls="laptop" aria-selected="true">Laptop</a>
+                                <a class="nav-item nav-link" id="pc-tab" data-toggle="tab" href="#pc" role="tab"
+                                    aria-controls="pc" aria-selected="true">PC</a>
+                                <a class="nav-item nav-link" id="monitor-tab" data-toggle="tab" href="#monitor"
+                                    role="tab" aria-controls="monitor" aria-selected="false">Monitor</a>
+                                <a class="nav-item nav-link" id="printer-tab" data-toggle="tab" href="#printer"
+                                    role="tab" aria-controls="printer" aria-selected="false">Printer</a>
+                                <a class="nav-item nav-link" id="scanner-tab" data-toggle="tab" href="#scanner"
+                                    role="tab" aria-controls="scanner" aria-selected="false">Scanner</a>
+                            </div>
+                        </nav>
+                        <br>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="laptop" role="tabpanel"
+                                aria-labelledby="laptop-tab">
+                                @include('aset.laptop_table')
+                            </div>
+                            <div class="tab-pane fade" id="pc" role="tabpanel" aria-labelledby="pc-tab">
+                                @include('aset.pc_table')
+                            </div>
+                            <div class="tab-pane fade" id="monitor" role="tabpanel"
+                                aria-labelledby="monitor-tab">
+                                @include('aset.monitor_table')
+                            </div>
+                            <div class="tab-pane fade" id="printer" role="tabpanel"
+                                aria-labelledby="printer-tab">
+                                @include('aset.printer_table')
+                            </div>
+                            <div class="tab-pane fade" id="scanner" role="tabpanel"
+                                aria-labelledby="scanner-tab">
+                                @include('aset.scanner_table')
+                            </div>
                         </div>
                         @slot('footer')
                         ​

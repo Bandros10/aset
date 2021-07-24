@@ -17,7 +17,7 @@ class PengadaanController extends Controller
     public function store(Request $request){
         $kode = ucwords(\substr($request->jenis_barang,0,1));
         $date = Carbon::now()->format('my');
-        $k_perangkat = $kode.$date.Str::upper($request->model_barang);
+        $k_perangkat = $kode.$date.'-'.Str::upper($request->model_barang);
         try {
             $pengadaan = new pengadaan;
             $pengadaan->kode_perangkat = $k_perangkat;

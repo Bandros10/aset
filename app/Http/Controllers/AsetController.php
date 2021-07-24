@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Carbon\Carbon;
 use App\Models\aset;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Response;
-use File;
 
 class AsetController extends Controller
 {
     public function index(){
-        $all_aset = aset::all();
-        return \view('aset.index', compact('all_aset'));
+        // $all_aset = aset::all();
+        $laptop = aset::where('kategori','=','laptop')->get();
+        $PC = aset::where('kategori','=','PC')->get();
+        $monitor = aset::where('kategori','=','monitor')->get();
+        $printer = aset::where('kategori','=','printer')->get();
+        $scanner = aset::where('kategori','=','scanner')->get();
+        return \view('aset.index', compact('PC','laptop','monitor','printer','scanner'));
     }
 
     public function create(){
@@ -45,7 +51,7 @@ class AsetController extends Controller
         ]);
         $kode = ucwords(\substr($request->kategori,0,1));
         $date = Carbon::now()->format('my');
-        $id = $kode.$date.'-'.$request->tipe;
+        $id = $kode.$date.'-'.Str::upper($request->tipe);
 
         $photo = null;
         //jika terdapat file (Foto / Gambar) yang dikirim
@@ -75,5 +81,12 @@ class AsetController extends Controller
         } catch (\Throwable $th) {
             return redirect('/aset')->with('error','data aset sudah tersedia');
         }
+    }
+
+    public function destroy(Request $req,$id)
+    {   $t = DB::table('asets')->where([
+                                        ['id_perangkat',$id],
+                                        ['tgl_pembelian',$req->tgl_pembelian]])->delete();
+        return redirect()->back()->with(['success' => 'Data: <strong>' . $id . '</strong> Dihapus']);
     }
 }
