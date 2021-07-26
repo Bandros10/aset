@@ -114,7 +114,7 @@
             timer: 3000
         });
         $(function(){
-            $('#example2').DataTable({
+            $('table').DataTable({
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,

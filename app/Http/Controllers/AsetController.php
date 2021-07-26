@@ -84,9 +84,54 @@ class AsetController extends Controller
     }
 
     public function destroy(Request $req,$id)
-    {   $t = DB::table('asets')->where([
-                                        ['id_perangkat',$id],
-                                        ['tgl_pembelian',$req->tgl_pembelian]])->delete();
-        return redirect()->back()->with(['success' => 'Data: <strong>' . $id . '</strong> Dihapus']);
+    {
+        $delete = DB::table('asets')->where('created_at', '=', $req->created_at);
+        // $delete = aset::where([['id_perangkat','=',$id],['tgl_pembelian','=',$req->tgl_pembelian],['created_at','=',$req->created_at]])->first();
+        // dd($delete);
+
+        if (!empty($delete->photo)) {
+            //file akan dihapus dari folder uploads/produk
+            File::delete(public_path('uploads/product/' . $delete->photo));
+        }
+        $delete->delete();
+        return redirect()->back()->with(['sukses' => 'Data Aset Dihapus']);
+    }
+
+    public function edit($id){
+        $asetedit = aset::findOrFail($id);
+        return view('aset.edit', compact('asetedit',));
+    }
+
+    public function update(Request $request,$id){
+        $this->validate($request,[
+            'photo' => 'mimes:png,jpg,'
+        ]);
+
+        $getaset = aset::findOrFail($id);
+        $photo = $getaset->photo;
+
+        if ($request->hasFile('photo')) {
+            //cek, jika photo tidak kosong maka file yang ada di folder uploads/product akan dihapus
+            !empty($photo) ? File::delete(public_path('uploads/product/' . $photo)):null;
+            //uploading file dengan menggunakan method saveFile() yg telah dibuat sebelumnya
+            $photo = $this->saveFile($request->nama_perangkat, $request->file('photo'));
+        }
+
+        $getaset->update([
+            'id_perangkat' => $id,
+            'nama_perangkat' => $request->nama_perangkat,
+            'kategori' => $request->kategori,
+            'tipe' => $request->tipe,
+            'merek' => $request->merek,
+            'model' => $request->model,
+            'kondisi' => $request->kondisi,
+            'harga' => $request->harga,
+            'jumlah' => $request->jumlah,
+            'tgl_pembelian' => $request->tgl_pembelian,
+            'keterangan' => $request->keterangan,
+            'kelengkapan' => $request->kelengkapan,
+            'photo' => $photo
+        ]);
+        return redirect(route('aset.index'))->with(['sukses' => $getaset->nama_perangkat .' Diperbaharui']);
     }
 }

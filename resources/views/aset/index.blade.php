@@ -43,22 +43,22 @@
                         </nav>
                         <br>
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="laptop" role="tabpanel"
+                            <div class="tab-pane active" id="laptop" role="tabpanel"
                                 aria-labelledby="laptop-tab">
                                 @include('aset.laptop_table')
                             </div>
-                            <div class="tab-pane fade" id="pc" role="tabpanel" aria-labelledby="pc-tab">
+                            <div class="tab-pane" id="pc" role="tabpanel" aria-labelledby="pc-tab">
                                 @include('aset.pc_table')
                             </div>
-                            <div class="tab-pane fade" id="monitor" role="tabpanel"
+                            <div class="tab-pane" id="monitor" role="tabpanel"
                                 aria-labelledby="monitor-tab">
                                 @include('aset.monitor_table')
                             </div>
-                            <div class="tab-pane fade" id="printer" role="tabpanel"
+                            <div class="tab-pane" id="printer" role="tabpanel"
                                 aria-labelledby="printer-tab">
                                 @include('aset.printer_table')
                             </div>
-                            <div class="tab-pane fade" id="scanner" role="tabpanel"
+                            <div class="tab-pane" id="scanner" role="tabpanel"
                                 aria-labelledby="scanner-tab">
                                 @include('aset.scanner_table')
                             </div>

@@ -46,8 +46,9 @@
                     <form action="{{ route('aset.destroy', $scanner->id_perangkat) }}" method="POST">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
-                        {{-- <a href="{{ route('users.edit', $row->id) }}" class="btn btn-warning btn-sm"><i
-                                class="fa fa-edit"></i></a> --}}
+                        <input type="hidden" name="created_at" value="{{$scanner->created_at}}">
+                        <a href="{{route('aset.edit',$laptop->id_perangkat)}}" class="btn btn-warning btn-sm"><i
+                            class="fa fa-edit"></i>Edit</a>
                         <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
                     </form>
                 </td>

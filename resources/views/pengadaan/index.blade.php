@@ -87,7 +87,7 @@
                                                     @endrole
                                                 @else
                                                     @role('IT')
-                                                        <span>sdasad</span>
+                                                        <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
                                                     @elserole('keuangan')
                                                         <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
                                                     @elserole('kepala sumber daya')

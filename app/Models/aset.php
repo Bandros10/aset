@@ -9,6 +9,7 @@ class aset extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $primarykey = 'id_perangkat';
+    protected $primaryKey = 'id_perangkat';
     public $incrementing = false;
+    protected $keyType = 'string';
 }
