@@ -121,7 +121,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-block">Tambah Data Aset</button>
+                                <button type="submit" class="btn btn-primary btn-block">Update Data Aset</button>
                             </div>
                         </form>
                     </div>
