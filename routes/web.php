@@ -31,6 +31,13 @@ Route::post('/users/permission', 'UserController@addPermission')->name('users.ad
 Route::get('/users/role-permission', 'UserController@rolePermission')->name('users.roles_permission');
 Route::put('/users/permission/{role}', 'UserController@setRolePermission')->name('users.setRolePermission');
 
+
+/**
+ * IT
+ */
+Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
+Route::get('IT/get_data_aset','ItController@search')->name('it.search');
+Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
 /**
  * Pengadaan
  */

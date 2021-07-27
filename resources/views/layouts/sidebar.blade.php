@@ -77,9 +77,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('it.peminjaman')}}" class="nav-link">
                                 <i class="fas fa-user-secret"></i>
-                                <p>Role Permission</p>
+                                <p>Peminjaman</p>
                             </a>
                         </li>
                     </ul>
