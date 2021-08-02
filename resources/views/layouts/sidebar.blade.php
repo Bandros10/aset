@@ -78,7 +78,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.peminjaman')}}" class="nav-link">
-                                <i class="fas fa-user-secret"></i>
+                                <i class="fas fa-file-upload"></i>
                                 <p>Peminjaman</p>
                             </a>
                         </li>

@@ -14,7 +14,8 @@
                 <td>Tanggal Pembelian</td>
                 <td>Kelengkapan perangkat</td>
                 <td>Keterangan</td>
-                <td>Foto gamabar</td>
+                <td>Foto gambar</td>
+                <td>qr Code</td>
                 <td>Aksi</td>
             </tr>
         </thead>
@@ -42,6 +43,7 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $laptop->nama_perangkat }}">
                     @endif
                 </td>
+                <td>{!! QrCode::size(100)->generate('KODE = '.$laptop->id_perangkat); !!}</td>
                 <td>
                     <form action="{{ route('aset.destroy', $laptop->id_perangkat) }}" method="POST">
                         @csrf
