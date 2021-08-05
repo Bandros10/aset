@@ -82,7 +82,7 @@
                                                         @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
                                                             <span class="badge badge-success">Pengadaan di aprov oleh kepala sumber daya</span>
                                                         @else
-                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
+                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
                                                         @endif
                                                     @endrole
                                                 @else
