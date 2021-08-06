@@ -28,9 +28,8 @@
                         <div class="card-header">
                           <h3 class="card-title">EDIT ASET</h3>
                         </div>
-                        <form action="{{route('aset.update',$asetedit->id_perangkat)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('aset.update',$asetedit->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="_method" value="PUT">
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="row">

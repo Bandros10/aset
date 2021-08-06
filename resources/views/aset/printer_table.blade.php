@@ -14,7 +14,8 @@
                 <td>Tanggal Pembelian</td>
                 <td>Kelengkapan perangkat</td>
                 <td>Keterangan</td>
-                <td>Foto gamabar</td>
+                <td>Foto gambar</td>
+                <td>qr Code</td>
                 <td>Aksi</td>
             </tr>
         </thead>
@@ -42,15 +43,10 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $printer->nama_perangkat }}">
                     @endif
                 </td>
+                <td>{!! QrCode::size(100)->generate('KODE = '.$printer->id_perangkat); !!}</td>
                 <td>
-                    <form action="{{ route('aset.destroy', $printer->id_perangkat) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="created_at" value="{{$printer->created_at}}">
-                        <a href="{{route('aset.edit',$laptop->id_perangkat)}}" class="btn btn-warning btn-sm"><i
-                            class="fa fa-edit"></i>Edit</a>
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
-                    </form>
+                    <a href="{{route('aset.edit',$printer->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="{{route('aset.destroy', $printer->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
                 </td>
             </tr>
             @endforeach

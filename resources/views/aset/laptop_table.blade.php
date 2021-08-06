@@ -45,14 +45,8 @@
                 </td>
                 <td>{!! QrCode::size(100)->generate('KODE = '.$laptop->id_perangkat); !!}</td>
                 <td>
-                    <form action="{{ route('aset.destroy', $laptop->id_perangkat) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="created_at" value="{{$laptop->created_at}}">
-                        <a href="{{route('aset.edit',$laptop->id_perangkat)}}" class="btn btn-warning btn-sm"><i
-                                class="fa fa-edit"></i>Edit</a>
-                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
-                    </form>
+                    <a href="{{route('aset.edit',$laptop->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="{{route('aset.destroy', $laptop->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
                 </td>
             </tr>
             @endforeach

@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class aset extends Model
+class pengembalian extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 }

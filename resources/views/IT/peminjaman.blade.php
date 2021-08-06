@@ -33,7 +33,9 @@
                             <div class="row">
                                 <div class="col-3">
                                     <label for="id_perangkat">ID Perangkat</label>
-                                    <select class="form-control search" name="id_perangkat"></select>
+                                    <select class="form-control search" name="id_perangkat">
+                                        <option></option>
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <label for="id_perangkat">Nama peminjam</label>
@@ -82,6 +84,7 @@
                                         <td>Jabatan Peminjam</td>
                                         <td>Devisi Peminjam</td>
                                         <td>Keperluan</td>
+                                        <td>Tanggal</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,6 +97,7 @@
                                         <td>{{$peminjaman->jabatan_peminjam}}</td>
                                         <td>{{$peminjaman->devisi_peminjam}}</td>
                                         <td>{{$peminjaman->keperluan}}</td>
+                                        <td>{{$peminjaman->created_at->format('d M Y')}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -113,6 +117,7 @@
     <script type="text/javascript">
          $(document).ready(function () {
             $('.search').select2({
+                placeholder: "- Kode Barang -",
                 ajax: {
                     url: '{{ route('it.search') }}',
                     dataType: 'json',

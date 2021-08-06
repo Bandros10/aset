@@ -51,7 +51,7 @@ class AsetController extends Controller
         ]);
         $kode = ucwords(\substr($request->kategori,0,1));
         $date = Carbon::now()->format('my');
-        $id = $kode.$date.'-'.Str::upper($request->tipe);
+        $id_p = $kode.$date.'-'.Str::upper($request->tipe);
 
         $photo = null;
         //jika terdapat file (Foto / Gambar) yang dikirim
@@ -63,7 +63,7 @@ class AsetController extends Controller
         // dd($id);
         try {
             aset::firstOrCreate(
-                ['id_perangkat' => $id,
+                ['id_perangkat' => $id_p,
                 'nama_perangkat' => $request->nama_perangkat,
                 'kategori' => $request->kategori,
                 'tipe' => $request->tipe,
@@ -83,9 +83,9 @@ class AsetController extends Controller
         }
     }
 
-    public function destroy(Request $req,$id)
+    public function destroy($id)
     {
-        $delete = DB::table('asets')->where('created_at', '=', $req->created_at);
+        $delete = DB::table('asets')->where('id', '=', $id);
         // $delete = aset::where([['id_perangkat','=',$id],['tgl_pembelian','=',$req->tgl_pembelian],['created_at','=',$req->created_at]])->first();
         // dd($delete);
 
@@ -110,6 +110,10 @@ class AsetController extends Controller
         $getaset = aset::findOrFail($id);
         $photo = $getaset->photo;
 
+        $kode = ucwords(\substr($request->kategori,0,1));
+        $date = Carbon::now()->format('my');
+        $id_p = $kode.$date.'-'.Str::upper($request->tipe);
+
         if ($request->hasFile('photo')) {
             //cek, jika photo tidak kosong maka file yang ada di folder uploads/product akan dihapus
             !empty($photo) ? File::delete(public_path('uploads/product/' . $photo)):null;
@@ -118,7 +122,7 @@ class AsetController extends Controller
         }
 
         $getaset->update([
-            'id_perangkat' => $id,
+            'id_perangkat' => $id_p,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,

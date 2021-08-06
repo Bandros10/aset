@@ -87,11 +87,11 @@
                                                     @endrole
                                                 @else
                                                     @role('IT')
-                                                        <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                        <span class="badge bg-success">Pengadaan telah aprov</span>
                                                     @elserole('keuangan')
-                                                        <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                        <span class="badge bg-success">Pengadaan telah aprov</span>
                                                     @elserole('kepala sumber daya')
-                                                        <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                        <span class="badge bg-success">Pengadaan telah aprov</span>
                                                     @endrole
                                                 @endif
                                             </td>

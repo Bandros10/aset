@@ -46,7 +46,13 @@ Route::post('/pengadaan/store','PengadaanController@store')->name('pengadaan.sto
 /**
  * data aset
  */
-Route::resource('/aset', 'AsetController');
+Route::get('/aset','AsetController@index')->name('aset.index');
+Route::get('/aset/tambah_barang','AsetController@create')->name('aset.create');
+Route::post('/aset/simpan_barang-aset','AsetController@store')->name('aset.store');
+Route::get('/aset/hapus/{id}','AsetController@destroy')->name('aset.destroy');
+Route::get('/aset/edit/{id}','AsetController@edit')->name('aset.edit');
+Route::post('/aset/update/{id}','AsetController@update')->name('aset.update');
+// Route::resource('/aset', 'AsetController');
 
 /**
  * kepala sumber daya

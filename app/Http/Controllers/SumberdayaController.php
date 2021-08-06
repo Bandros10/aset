@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\pengadaan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +17,12 @@ class SumberdayaController extends Controller
 
     public function konfirmasi(Request $request, $id){
         try {
+            DB::table('pengadaans')->where('id',$id)->update(['confirmed' => true]);
+
             $kode = ucwords(\substr($request->kategori,0,1));
             $date = Carbon::now()->format('my');
-            $id = $kode.$date.'-'.Str::upper($request->tipe);
-            DB::table('asets')->insert(['id_perangkat' => $id,
+            $id_perangkat = $kode.$date.'-'.Str::upper($request->tipe);
+            DB::table('asets')->insert(['id_perangkat' => $id_perangkat,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,
@@ -26,9 +30,7 @@ class SumberdayaController extends Controller
             'harga' => $request->harga,
             'tgl_pembelian' => $request->tgl_pembelian,
             'keterangan' => $request->keterangan]);
-            DB::table('pengadaans')->where('id',$id)->update(['confirmed' => true]);
-            // $pengadaan_delete = pengadaan::Find($id);
-            // $pengadaan_delete->delete();
+
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di aprov');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th);

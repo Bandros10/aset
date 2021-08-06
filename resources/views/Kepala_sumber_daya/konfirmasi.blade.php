@@ -28,6 +28,7 @@
                 </div>
                 <form action="{{route('kepala_sumber_daya.konfirmasi.barang',$konfirm->id)}}" method="POST">
                     @csrf
+                    <input type="hidden" name="created_at" value="{{$konfirm->created_at}}">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3">
@@ -41,7 +42,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">Jenis Barang</label>
-                                    <input type="text" name="ketegori" class="form-control form-control-border"
+                                    <input type="text" name="kategori" class="form-control form-control-border"
                                         value="{{$konfirm->jenis_barang}}" readonly>
                                 </div>
                             </div>
@@ -64,15 +65,17 @@
                             <div class="col-2">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">Tanggal Pengadaan Barang</label>
-                                    <input type="text" name="tgl_pembelian" class="form-control form-control-border"
-                                        value="{{$konfirm->tanggal_pengadaan}}" readonly>
+                                    <input type="hidden" name="tgl_pembelian" value="{{$konfirm->tanggal_pengadaan}}">
+                                    <input type="text" class="form-control form-control-border"
+                                        value="{{Carbon\Carbon::parse($konfirm->tanggal_pengadaan)->translatedFormat('d F Y')}}" readonly>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">Harga Barang</label>
-                                    <input type="text" name="harga" class="form-control form-control-border"
-                                        value="{{$konfirm->harga_barang,}}" readonly>
+                                    <input type="hidden" name="harga" value="{{$konfirm->harga_barang}}">
+                                    <input type="text" class="form-control form-control-border"
+                                        value="{{number_format($konfirm->harga_barang,0,",",".")}}" readonly>
                                 </div>
                             </div>
                             <div class="col-2">

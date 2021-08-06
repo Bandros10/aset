@@ -22,7 +22,7 @@ class ItController extends Controller
 
             return response()->json($id_perangkat);
         }
-        $id_perangkat= DB::table('asets')->select('id_perangkat','nama_perangkat')->get();
+        $id_perangkat= DB::table('asets')->where('status','=',false)->select('id_perangkat','nama_perangkat')->get();
 
         return response()->json($id_perangkat);
     }
