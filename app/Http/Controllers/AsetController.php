@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use File;
 use Carbon\Carbon;
 use App\Models\aset;
+use App\Helper\Helper;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Response;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class AsetController extends Controller
 {
@@ -49,9 +51,23 @@ class AsetController extends Controller
         $this->validate($request,[
             'photo' => 'mimes:png,jpg,'
         ]);
-        $kode = ucwords(\substr($request->kategori,0,1));
-        $date = Carbon::now()->format('my');
-        $id_p = $kode.$date.'-'.Str::upper($request->tipe);
+
+        if ($request->kategori == 'laptop') {
+            $nm = 'L-';
+        } elseif ($request->kategori == 'PC') {
+            $nm = 'P-';
+        } elseif ($request->kategori == 'monitor'){
+            $nm = 'M-';
+        } elseif ($request->kategori == 'printer'){
+            $nm = 'PR-';
+        } elseif ($request->kategori == 'scanner'){
+            $nm = 'SC-';
+        }
+
+        $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
+        // $kode = ucwords(\substr($request->kategori,0,1));
+        // $date = Carbon::now()->format('my');
+        // $id_p = $kode.$date.'-'.Str::upper($request->tipe);
 
         $photo = null;
         //jika terdapat file (Foto / Gambar) yang dikirim
@@ -63,7 +79,7 @@ class AsetController extends Controller
         // dd($id);
         try {
             aset::firstOrCreate(
-                ['id_perangkat' => $id_p,
+                ['id_perangkat' => $id,
                 'nama_perangkat' => $request->nama_perangkat,
                 'kategori' => $request->kategori,
                 'tipe' => $request->tipe,
@@ -110,9 +126,19 @@ class AsetController extends Controller
         $getaset = aset::findOrFail($id);
         $photo = $getaset->photo;
 
-        $kode = ucwords(\substr($request->kategori,0,1));
-        $date = Carbon::now()->format('my');
-        $id_p = $kode.$date.'-'.Str::upper($request->tipe);
+        // if ($request->kategori == 'laptop') {
+        //     $nm = 'L-';
+        // } elseif ($request->kategori == 'PC') {
+        //     $nm = 'P-';
+        // } elseif ($request->kategori == 'monitor'){
+        //     $nm = 'M-';
+        // } elseif ($request->kategori == 'printer'){
+        //     $nm = 'PR-';
+        // } elseif ($request->kategori == 'scanner'){
+        //     $nm = 'SC-';
+        // }
+
+        // $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
 
         if ($request->hasFile('photo')) {
             //cek, jika photo tidak kosong maka file yang ada di folder uploads/product akan dihapus
@@ -122,7 +148,7 @@ class AsetController extends Controller
         }
 
         $getaset->update([
-            'id_perangkat' => $id_p,
+            'id_perangkat' => $request->id_perangkat,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,

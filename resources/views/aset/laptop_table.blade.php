@@ -24,7 +24,11 @@
             @foreach ($laptop as $laptop)
             <tr>
                 <td>{{$no++}}</td>
-                <td>{{$laptop->id_perangkat}}</td>
+                @if ($laptop->status == true)
+                    <td>{{$laptop->id_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
+                @else
+                    <td>{{$laptop->id_perangkat}}</td>
+                @endif
                 <td>{{$laptop->nama_perangkat}}</td>
                 <td>{{$laptop->kategori}}</td>
                 <td>{{$laptop->tipe}}</td>
@@ -45,8 +49,12 @@
                 </td>
                 <td>{!! QrCode::size(100)->generate('KODE = '.$laptop->id_perangkat); !!}</td>
                 <td>
-                    <a href="{{route('aset.edit',$laptop->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="{{route('aset.destroy', $laptop->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                    @if ($laptop->status == true)
+                        <p style="color: red">barang sedang Di Pinjam</p>
+                    @else
+                        <a href="{{route('aset.edit',$laptop->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="{{route('aset.destroy', $laptop->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                    @endif
                 </td>
             </tr>
             @endforeach

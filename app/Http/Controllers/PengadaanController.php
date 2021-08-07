@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\pengadaan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class PengadaanController extends Controller
 {
@@ -15,12 +16,22 @@ class PengadaanController extends Controller
     }
 
     public function store(Request $request){
-        $kode = ucwords(\substr($request->jenis_barang,0,1));
-        $date = Carbon::now()->format('my');
-        $k_perangkat = $kode.$date.'-'.Str::upper($request->model_barang);
+        if ($request->jenis_barang == 'laptop') {
+            $nm = 'P.L-';
+        } elseif ($request->jenis_barang == 'PC') {
+            $nm = 'P.P-';
+        } elseif ($request->jenis_barang == 'monitor'){
+            $nm = 'P.M-';
+        } elseif ($request->jenis_barang == 'printer'){
+            $nm = 'P.PR-';
+        } elseif ($request->jenis_barang == 'scanner'){
+            $nm = 'P.SC-';
+        }
+
+        $id = IdGenerator::generate(['table' => 'pengadaans','field'=>'kode_perangkat', 'length' => 7, 'prefix' =>$nm]);
         try {
             $pengadaan = new pengadaan;
-            $pengadaan->kode_perangkat = $k_perangkat;
+            $pengadaan->kode_perangkat = $id;
             $pengadaan->nama_barang = $request->nama_barang;
             $pengadaan->jenis_barang = $request->jenis_barang;
             $pengadaan->merk_barang = $request->merk_barang;

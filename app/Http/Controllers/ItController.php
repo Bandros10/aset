@@ -29,6 +29,7 @@ class ItController extends Controller
 
     public function pengajuan(Request $request){
         peminjaman::create($request->all());
+        DB::table('asets')->where('id_perangkat',$request->id_perangkat)->update(['status' => true]);
         return redirect()->back()->with('sukses','pengajuan peminjama barang'.$request->id_perangkat.'berhasil');
     }
 

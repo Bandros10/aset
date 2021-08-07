@@ -30,6 +30,7 @@
                         </div>
                         <form action="{{route('aset.update',$asetedit->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="id_perangkat" value="{{$asetedit->id_perangkat}}">
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="row">

@@ -7,6 +7,7 @@ use App\Models\pengadaan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class SumberdayaController extends Controller
 {
@@ -16,13 +17,23 @@ class SumberdayaController extends Controller
     }
 
     public function konfirmasi(Request $request, $id){
-        try {
+        // try {
             DB::table('pengadaans')->where('id',$id)->update(['confirmed' => true]);
 
-            $kode = ucwords(\substr($request->kategori,0,1));
-            $date = Carbon::now()->format('my');
-            $id_perangkat = $kode.$date.'-'.Str::upper($request->tipe);
-            DB::table('asets')->insert(['id_perangkat' => $id_perangkat,
+            if ($request->kategori == 'laptop') {
+                $nm = 'L-';
+            } elseif ($request->kategori == 'PC') {
+                $nm = 'P-';
+            } elseif ($request->kategori == 'monitor'){
+                $nm = 'M-';
+            } elseif ($request->kategori == 'printer'){
+                $nm = 'PR-';
+            } elseif ($request->kategori == 'scanner'){
+                $nm = 'SC-';
+            }
+
+            $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
+            DB::table('asets')->insert(['id_perangkat' => $id,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,
@@ -31,10 +42,11 @@ class SumberdayaController extends Controller
             'tgl_pembelian' => $request->tgl_pembelian,
             'keterangan' => $request->keterangan]);
 
+
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di aprov');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error',$th);
-        }
+        // } catch (\Throwable $th) {
+        //     return redirect()->back()->with('error',$th);
+        // }
     }
 
     public function tolak(Request $req,$id){

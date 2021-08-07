@@ -28,7 +28,7 @@
                 </div>
                 <form action="{{route('kepala_sumber_daya.konfirmasi.barang',$konfirm->id)}}" method="POST">
                     @csrf
-                    <input type="hidden" name="created_at" value="{{$konfirm->created_at}}">
+                    <input type="hidden" name="kode_perangkat" value="{{$konfirm->kode_perangkat}}">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3">
