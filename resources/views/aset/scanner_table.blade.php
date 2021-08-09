@@ -24,7 +24,11 @@
             @foreach ($scanner as $scanner)
             <tr>
                 <td>{{$no++}}</td>
-                <td>{{$scanner->id_perangkat}}</td>
+                @if ($scanner->status == true)
+                    <td>{{$scanner->id_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
+                @else
+                    <td>{{$scanner->id_perangkat}}</td>
+                @endif
                 <td>{{$scanner->nama_perangkat}}</td>
                 <td>{{$scanner->kategori}}</td>
                 <td>{{$scanner->tipe}}</td>
@@ -43,10 +47,14 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $scanner->nama_perangkat }}">
                     @endif
                 </td>
-                <td>{!! QrCode::size(100)->generate('KODE = '.$scanner->id_perangkat); !!}</td>
+                <td>{!! QrCode::size(100)->generate($scanner->id_perangkat); !!}</td>
                 <td>
+                    @if ($scanner->status == true)
+                    <p style="color: red">barang sedang Di Pinjam</p>
+                @else
                     <a href="{{route('aset.edit',$scanner->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
                     <a href="{{route('aset.destroy', $scanner->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                @endif
                 </td>
             </tr>
             @endforeach

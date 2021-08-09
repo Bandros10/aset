@@ -47,7 +47,7 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $laptop->nama_perangkat }}">
                     @endif
                 </td>
-                <td>{!! QrCode::size(100)->generate('KODE = '.$laptop->id_perangkat); !!}</td>
+                <td>{!! QrCode::size(100)->generate($laptop->id_perangkat); !!}</td>
                 <td>
                     @if ($laptop->status == true)
                         <p style="color: red">barang sedang Di Pinjam</p>

@@ -37,7 +37,13 @@ Route::put('/users/permission/{role}', 'UserController@setRolePermission')->name
  */
 Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
 Route::get('IT/get_data_aset','ItController@search')->name('it.search');
+Route::get('IT/get_data_aset_perbaikan','ItController@search_perbaikan')->name('it.search_perbaikan');
 Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
+Route::post('IT/pengajuan/perbaikan','ItController@perbaikan_input')->name('it.input.perbaikan');
+Route::get('IT/pengembalian','ItController@pengembalian_index')->name('it.pengembalian');
+Route::post('IT/pengembalian/{id}/aset','ItController@pengembalian_aset')->name('it.pengembalian.aset');
+Route::get('IT/perbaiakan','ItController@perbaikan')->name('it.perbaikan');
+
 /**
  * Pengadaan
  */

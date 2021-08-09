@@ -82,6 +82,18 @@
                                 <p>Peminjaman</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('it.pengembalian')}}" class="nav-link">
+                                <i class="fas fa-file-upload"></i>
+                                <p>Pengembalian</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('it.perbaikan')}}" class="nav-link">
+                                <i class="fas fa-file-upload"></i>
+                                <p>Perbaikan</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @endrole

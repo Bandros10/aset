@@ -42,7 +42,7 @@
                                             <label>Kategori</label>
                                             <select class="form-control" name="kategori" required>
                                                 <option value="laptop" @if(old('kategori', $asetedit->kategori) === 'laptop') selected @endif>Laptop</option>
-                                                <option value="PC" @if(old('kategori', $asetedit->kategori) === 'pc') selected @endif>PC</option>
+                                                <option value="PC" @if(old('kategori', $asetedit->kategori) === 'PC') selected @endif>PC</option>
                                                 <option value="monitor" @if(old('kategori', $asetedit->kategori) === 'monitor') selected @endif>Monitor</option>
                                                 <option value="printer" @if(old('kategori', $asetedit->kategori) === 'printer') selected @endif>printer</option>
                                                 <option value="scanner" @if(old('kategori', $asetedit->kategori) === 'scanner') selected @endif>Scanner</option>

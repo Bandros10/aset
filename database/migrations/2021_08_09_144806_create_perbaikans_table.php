@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePengembaliansTable extends Migration
+class CreatePerbaikansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreatePengembaliansTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengembalians', function (Blueprint $table) {
+        Schema::create('perbaikans', function (Blueprint $table) {
             $table->id();
             $table->string('id_perangkat');
-            $table->string('nama_peminjam');
-            $table->string('jabatan_peminjam');
-            $table->string('devisi_peminjam');
-            $table->text('keperluan');
-            $table->text('kelengkapan');
+            $table->text('keterangan_perbaikan');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreatePengembaliansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengembalians');
+        Schema::dropIfExists('perbaikans');
     }
 }

@@ -64,7 +64,10 @@
                                                     @role('IT')
                                                         @if ($pengadaan->confirmed_keuangan == true)
                                                             <span class="badge bg-danger">Menunggu Konfirmasi kepala sumber daya</span>
-                                                            <span class="badge bg-success">Pengadaan telah aprov pengadaan</span>
+                                                        @elseif (!empty($pengadaan->keterangan_keuangan == true))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Pengadaan tidak di aprov keuangan</span>
+                                                        @else
+                                                            <span class="badge badge-info"> Menunggu Konfirmasi</span>
                                                         @endif
                                                     @elserole('keuangan')
                                                         @if (!empty($pengadaan->keterangan_keuangan))
@@ -81,6 +84,8 @@
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
                                                         @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
                                                             <span class="badge badge-success">Pengadaan di aprov oleh kepala sumber daya</span>
+                                                        @elseif (!empty($pengadaan->keterangan_keuangan))
+                                                        <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
                                                         @else
                                                             <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
                                                         @endif

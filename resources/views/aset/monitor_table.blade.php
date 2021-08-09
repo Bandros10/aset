@@ -24,7 +24,11 @@
             @foreach ($monitor as $monitor)
             <tr>
                 <td>{{$no++}}</td>
-                <td>{{$monitor->id_perangkat}}</td>
+                @if ($monitor->status == true)
+                    <td>{{$monitor->id_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
+                @else
+                    <td>{{$monitor->id_perangkat}}</td>
+                @endif
                 <td>{{$monitor->nama_perangkat}}</td>
                 <td>{{$monitor->kategori}}</td>
                 <td>{{$monitor->tipe}}</td>
@@ -43,10 +47,14 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $monitor->nama_perangkat }}">
                     @endif
                 </td>
-                <td>{!! QrCode::size(100)->generate('KODE = '.$monitor->id_perangkat); !!}</td>
+                <td>{!! QrCode::size(100)->generate($monitor->id_perangkat); !!}</td>
                 <td>
-                    <a href="{{route('aset.edit',$monitor->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="{{route('aset.destroy', $monitor->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                    @if ($monitor->status == true)
+                        <p style="color: red">barang sedang Di Pinjam</p>
+                    @else
+                        <a href="{{route('aset.edit',$monitor->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="{{route('aset.destroy', $monitor->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                    @endif
                 </td>
             </tr>
             @endforeach
