@@ -19,6 +19,27 @@ class KeuanganController extends Controller
             $c->update([
                 'confirmed_keuangan' => true,
             ]);
+            // if ($request->kategori == 'laptop') {
+            //     $nm = 'L-';
+            // } elseif ($request->kategori == 'PC') {
+            //     $nm = 'P-';
+            // } elseif ($request->kategori == 'monitor'){
+            //     $nm = 'M-';
+            // } elseif ($request->kategori == 'printer'){
+            //     $nm = 'PR-';
+            // } elseif ($request->kategori == 'scanner'){
+            //     $nm = 'SC-';
+            // }
+
+            // $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
+            // DB::table('asets')->insert(['id_perangkat' => $id,
+            // 'nama_perangkat' => $request->nama_perangkat,
+            // 'kategori' => $request->kategori,
+            // 'tipe' => $request->tipe,
+            // 'merek' => $request->merek,
+            // 'harga' => $request->harga,
+            // 'tgl_pembelian' => $request->tgl_pembelian,
+            // 'keterangan' => $request->keterangan]);
             // DB::table('pengadaans')->where('id',$id)->update(['confirmed_keuangan' => true]);
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di approv');
         } catch (\Throwable $th) {

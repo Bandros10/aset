@@ -62,30 +62,30 @@
                                             <td>
                                                 @if ($pengadaan->confirmed != true)
                                                     @role('IT')
-                                                        @if ($pengadaan->confirmed_keuangan == true)
-                                                            <span class="badge bg-danger">Menunggu Konfirmasi kepala sumber daya</span>
-                                                        @elseif (!empty($pengadaan->keterangan_keuangan == true))
-                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Pengadaan tidak di aprov keuangan</span>
+                                                        @if ($pengadaan->confirmed_keuangan == true && $pengadaan->confirmed_kepala_sumber_daya == true)
+                                                            <span class="badge bg-success">Pengadaan telah di konfimasi</span>
+                                                        @elseif (!empty($pengadaan->keterangan_keuangan) || !empty($pengadaan->keterangan_sumber_daya))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Pengadaan tidak di aprov</span>
                                                         @else
                                                             <span class="badge badge-info"> Menunggu Konfirmasi</span>
                                                         @endif
                                                     @elserole('kepala sumber daya')
-                                                        @if (!empty($pengadaan->keterangan_keuangan))
-                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak Keuangan</span>
-                                                        @elseif ($pengadaan->confirmed_keuangan == true)
-                                                            <span class="badge badge-success">Pengadaan di aprov oleh Keuangan</span>
-                                                        @elseif (!empty($pengadaan->keterangan_sumber_daya))
-                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak Sumber daya</span>
+                                                        @if (!empty($pengadaan->keterangan_sumber_daya))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak kepala sumber daya</span>
+                                                        @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
+                                                            <span class="badge badge-success">Pengadaan di aprov oleh Sumber daya</span>
+                                                        @elseif (!empty($pengadaan->keterangan_keuangan))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak keuangan</span>
                                                         @else
                                                             <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
                                                         @endif
                                                     @elserole('keuangan')
-                                                        @if (!empty($pengadaan->keterangan_sumber_daya))
-                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak sumber daya</span>
-                                                        @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
-                                                            <span class="badge badge-danger">Pengadaan tidak di aprov kepala sumber</span>
+                                                        @if (!empty($pengadaan->keterangan_keuangan))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak keuangan</span>
                                                         @elseif ($pengadaan->confirmed_keuangan == true)
-                                                            <span class="badge badge-success">Pengadaan di aprov oleh keuangan</span>
+                                                            <span class="badge badge-danger">Pengadaan di aprov keuangan</span>
+                                                        @elseif (!empty($pengadaan->keterangan_sumber_daya))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak sumber daya</span>
                                                         @else
                                                             <a href="{{route('keuangan.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
                                                         @endif
