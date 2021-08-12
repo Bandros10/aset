@@ -69,25 +69,25 @@
                                                         @else
                                                             <span class="badge badge-info"> Menunggu Konfirmasi</span>
                                                         @endif
-                                                    @elserole('keuangan')
+                                                    @elserole('kepala sumber daya')
                                                         @if (!empty($pengadaan->keterangan_keuangan))
-                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
-                                                        @elseif (!empty($pengadaan->keterangan_sumber_daya == true))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak Keuangan</span>
+                                                        @elseif ($pengadaan->confirmed_keuangan == true)
+                                                            <span class="badge badge-success">Pengadaan di aprov oleh Keuangan</span>
+                                                        @elseif (!empty($pengadaan->keterangan_sumber_daya))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak Sumber daya</span>
+                                                        @else
+                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
+                                                        @endif
+                                                    @elserole('keuangan')
+                                                        @if (!empty($pengadaan->keterangan_sumber_daya))
+                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak sumber daya</span>
+                                                        @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
                                                             <span class="badge badge-danger">Pengadaan tidak di aprov kepala sumber</span>
                                                         @elseif ($pengadaan->confirmed_keuangan == true)
                                                             <span class="badge badge-success">Pengadaan di aprov oleh keuangan</span>
                                                         @else
                                                             <a href="{{route('keuangan.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
-                                                        @endif
-                                                    @elserole('kepala sumber daya')
-                                                        @if (!empty($pengadaan->keterangan_sumber_daya))
-                                                            <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
-                                                        @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
-                                                            <span class="badge badge-success">Pengadaan di aprov oleh kepala sumber daya</span>
-                                                        @elseif (!empty($pengadaan->keterangan_keuangan))
-                                                        <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak</span>
-                                                        @else
-                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
                                                         @endif
                                                     @endrole
                                                 @else
