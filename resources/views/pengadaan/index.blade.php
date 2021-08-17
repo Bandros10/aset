@@ -83,11 +83,13 @@
                                                         @if (!empty($pengadaan->keterangan_keuangan))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak keuangan</span>
                                                         @elseif ($pengadaan->confirmed_keuangan == true)
-                                                            <span class="badge badge-danger">Pengadaan di aprov keuangan</span>
+                                                            <span class="badge badge-success">Pengadaan di aprov keuangan</span>
                                                         @elseif (!empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak sumber daya</span>
-                                                        @else
+                                                        @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
                                                             <a href="{{route('keuangan.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
+                                                        @else
+                                                        <span class="badge badge-danger">Menunggu Konfirmasi Kepala Sumber daya</span>
                                                         @endif
                                                     @endrole
                                                 @else

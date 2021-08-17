@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pengadaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class KeuanganController extends Controller
 {
@@ -13,34 +14,30 @@ class KeuanganController extends Controller
         return view('Keuangan.konfirmasi',compact('konfirm'));
     }
 
-    public function konfirmasi($id){
+    public function konfirmasi(Request $request, $id){
         try {
-            $c = pengadaan::findOrFail($id);
-            $c->update([
-                'confirmed_keuangan' => true,
-            ]);
-            // if ($request->kategori == 'laptop') {
-            //     $nm = 'L-';
-            // } elseif ($request->kategori == 'PC') {
-            //     $nm = 'P-';
-            // } elseif ($request->kategori == 'monitor'){
-            //     $nm = 'M-';
-            // } elseif ($request->kategori == 'printer'){
-            //     $nm = 'PR-';
-            // } elseif ($request->kategori == 'scanner'){
-            //     $nm = 'SC-';
-            // }
+            DB::table('pengadaans')->where('kode_perangkat',$id)->update(['confirmed_keuangan' => true]);
+            if ($request->kategori == 'laptop') {
+                $nm = 'L-';
+            } elseif ($request->kategori == 'PC') {
+                $nm = 'P-';
+            } elseif ($request->kategori == 'monitor'){
+                $nm = 'M-';
+            } elseif ($request->kategori == 'printer'){
+                $nm = 'PR-';
+            } elseif ($request->kategori == 'scanner'){
+                $nm = 'SC-';
+            }
 
-            // $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
-            // DB::table('asets')->insert(['id_perangkat' => $id,
-            // 'nama_perangkat' => $request->nama_perangkat,
-            // 'kategori' => $request->kategori,
-            // 'tipe' => $request->tipe,
-            // 'merek' => $request->merek,
-            // 'harga' => $request->harga,
-            // 'tgl_pembelian' => $request->tgl_pembelian,
-            // 'keterangan' => $request->keterangan]);
-            // DB::table('pengadaans')->where('id',$id)->update(['confirmed_keuangan' => true]);
+            $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
+            DB::table('asets')->insert(['id_perangkat' => $id,
+            'nama_perangkat' => $request->nama_perangkat,
+            'kategori' => $request->kategori,
+            'tipe' => $request->tipe,
+            'merek' => $request->merek,
+            'harga' => $request->harga,
+            'tgl_pembelian' => $request->tgl_pembelian,
+            'keterangan' => $request->keterangan]);
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di approv');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th);

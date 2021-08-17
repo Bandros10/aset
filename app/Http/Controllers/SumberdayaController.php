@@ -16,9 +16,9 @@ class SumberdayaController extends Controller
         return view('Kepala_sumber_daya.konfirmasi',compact('konfirm'));
     }
 
-    public function konfirmasi(Request $request, $id){
-        // try {
-            DB::table('pengadaans')->where('id',$id)->update(['confirmed_kepala_sumber_daya' => true]);
+    public function konfirmasi($id){
+        try {
+            DB::table('pengadaans')->where('kode_perangkat',$id)->update(['confirmed_kepala_sumber_daya' => true]);
 
             // if ($request->kategori == 'laptop') {
             //     $nm = 'L-';
@@ -44,9 +44,9 @@ class SumberdayaController extends Controller
 
 
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di aprov');
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with('error',$th);
-        // }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th);
+        }
     }
 
     public function tolak(Request $req,$id){
