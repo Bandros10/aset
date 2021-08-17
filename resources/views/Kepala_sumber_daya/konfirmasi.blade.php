@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col">
                                     <button type="submit" class="btn btn-sm btn-primary btn-block">KONFIRMASI</button>
-                                    <a href="#" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#tolaksd-{{$konfirm->id}}">TOLAK PENGADAAN</a>
+                                    <a href="#" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#tolaksd">TOLAK PENGADAAN</a>
                                 </div>
                             </div>
                         @else
@@ -111,7 +111,7 @@
     </section>
 </div>
 {{-- modal --}}
-<div class="modal fade" id="tolaksd-{{$konfirm->id}}">
+<div class="modal fade" id="tolaksd">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -120,7 +120,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('kepala_sumber_daya.tolak',$konfirm->id)}}" method="POST">
+            <form action="{{route('kepala_sumber_daya.tolak',$konfirm->kode_perangkat)}}" method="POST">
             <div class="modal-body">
                     @csrf
                     <textarea name="keterangan_sumber_daya" class="form-control" placeholder="keterangan tolak"></textarea>

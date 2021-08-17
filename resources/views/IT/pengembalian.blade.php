@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    <title>Pengembalian</title>
+<title>Pengembalian</title>
 @endsection
 
 @section('content')
@@ -48,14 +48,21 @@
                                     @foreach ($pengembalian as $pengembalian)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$pengembalian->id_perangkat}}</td>
+                                        <td>{{$pengembalian->kode_perangkat}}</td>
                                         <td>{{$pengembalian->nama_peminjam}}</td>
                                         <td>{{$pengembalian->jabatan_peminjam}}</td>
                                         <td>{{$pengembalian->devisi_peminjam}}</td>
                                         <td>{{$pengembalian->keperluan}}</td>
                                         <td>{{$pengembalian->kelengkapan}}</td>
                                         <td>{{$pengembalian->created_at->format('d M Y')}}</td>
-                                        <td><a href="#"  data-toggle="modal" data-target="#kelengkapan-{{$pengembalian->id_perangkat}}" class="btn btn-sm btn-warning"> Pengembalian</a></td>
+                                        <td>
+                                            @if (!empty($pengembalian->kelengkapan))
+                                            <a href="{{route('it.pengembalian.delete',$pengembalian->id)}}"
+                                                class="btn btn-sm btn-danger">Hapus</a>
+                                            @else
+                                            <a href="{{route('it.pengembalian_aset',$pengembalian->id)}}" class="btn btn-sm btn-primary">Pengembalian Barang</a>
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -69,30 +76,5 @@
             </div>
         </div>
     </section>
-</div>
-<div class="modal fade" id="kelengkapan-{{$pengembalian->id_perangkat}}">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Pengambalian Barang</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{route('it.pengembalian.aset',$pengembalian->id_perangkat)}}" method="POST">
-            <div class="modal-body">
-                    {{ csrf_field() }}
-                    <textarea name="Kelengkapan" class="form-control" placeholder="kelengkapan perangkat"></textarea>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">pengembalian</button>
-                </div>
-            </form>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
 </div>
 @endsection

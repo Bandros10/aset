@@ -15,8 +15,9 @@ class KeuanganController extends Controller
     }
 
     public function konfirmasi(Request $request, $id){
+        // dd($request->all());
         try {
-            DB::table('pengadaans')->where('kode_perangkat',$id)->update(['confirmed_keuangan' => true]);
+            DB::table('pengadaans')->where('kode_perangkat',$id)->update(['confirmed_keuangan' => true,'confirmed' => true]);
             if ($request->kategori == 'laptop') {
                 $nm = 'L-';
             } elseif ($request->kategori == 'PC') {
@@ -29,13 +30,14 @@ class KeuanganController extends Controller
                 $nm = 'SC-';
             }
 
-            $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
-            DB::table('asets')->insert(['id_perangkat' => $id,
+            $id = IdGenerator::generate(['table' => 'asets','field'=>'kode_perangkat', 'length' => 7, 'prefix' =>$nm]);
+            DB::table('asets')->insert(['kode_perangkat' => $id,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,
             'merek' => $request->merek,
             'harga' => $request->harga,
+            'jumlah' => $request->jumlah_pengadaan,
             'tgl_pembelian' => $request->tgl_pembelian,
             'keterangan' => $request->keterangan]);
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di approv');

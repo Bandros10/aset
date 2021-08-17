@@ -48,7 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pengadaan_data as $pengadaan)
+                                    @foreach ($data_pengadaan as $pengadaan)
                                         <tr>
                                             <td>{{$pengadaan->kode_perangkat}}</td>
                                             <td>{{$pengadaan->nama_barang}}</td>
@@ -77,7 +77,7 @@
                                                         @elseif (!empty($pengadaan->keterangan_keuangan))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan barang telah di tolak keuangan</span>
                                                         @else
-                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
+                                                            <a href="{{route('kepala_sumber_daya.konfirmasi',$pengadaan->kode_perangkat)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi kepala sumber daya</a>
                                                         @endif
                                                     @elserole('keuangan')
                                                         @if (!empty($pengadaan->keterangan_keuangan))
@@ -87,7 +87,7 @@
                                                         @elseif (!empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan barang telah di tolak sumber daya</span>
                                                         @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
-                                                            <a href="{{route('keuangan.konfirmasi',$pengadaan->id)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
+                                                            <a href="{{route('keuangan.konfirmasi',$pengadaan->kode_perangkat)}}" class="btn btn-info btn-sm"><i class="fas fa-check-circle"></i> Konfirmasi keuangan</a>
                                                         @else
                                                         <span class="badge badge-danger">Menunggu Konfirmasi Kepala Sumber daya</span>
                                                         @endif

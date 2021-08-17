@@ -24,6 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
+                    @role('IT')
                     <x-card>
                         @slot('title')
                         <h3>Form Peminjaman Aset</h3>
@@ -32,21 +33,21 @@
                             @csrf
                             <div class="row">
                                 <div class="col-3">
-                                    <label for="id_perangkat">ID Perangkat</label>
-                                    <select class="form-control search" name="id_perangkat">
+                                    <label>Kode Perangkat</label>
+                                    <select class="form-control search" name="kode_perangkat">
                                         <option></option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <label for="id_perangkat">Nama peminjam</label>
+                                    <label>Nama peminjam</label>
                                     <input class="form-control" name="nama_peminjam" placeholder="- input nama peminjam -">
                                 </div>
                                 <div class="col-3">
-                                    <label for="id_perangkat">Jabatan peminjam</label>
+                                    <label>Jabatan peminjam</label>
                                     <input class="form-control" name="jabatan_peminjam" placeholder="- input jabatan peminjam -">
                                 </div>
                                 <div class="col-3">
-                                    <label for="id_perangkat">Devisi peminjam</label>
+                                    <label>Devisi peminjam</label>
                                     <select name="devisi_peminjam" class="form-control">
                                         <option selected disabled>- pilih Devisi -</option>
                                         <option value="marketing">marketing</option>
@@ -70,6 +71,7 @@
                         ​
                         @endslot
                     </x-card>
+                    @endrole
                     <x-card>
                         @slot('title')
                         <h3>List Peminjam</h3>
@@ -79,12 +81,17 @@
                                 <thead>
                                     <tr>
                                         <td>No</td>
-                                        <td>Id Perangkat</td>
+                                        <td>Kode Perangkat</td>
                                         <td>Nama Peminjam</td>
                                         <td>Jabatan Peminjam</td>
                                         <td>Devisi Peminjam</td>
                                         <td>Keperluan</td>
                                         <td>Tanggal</td>
+                                        @role('kepala sumber daya')
+                                        <td>Aksi</td>
+                                        @elserole('IT')
+                                        <td>Aksi</td>
+                                        @endrole
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,12 +99,27 @@
                                     @foreach ($peminjam as $peminjaman)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$peminjaman->id_perangkat}}</td>
+                                        <td>{{$peminjaman->kode_perangkat}}@if ($peminjaman->status != true)
+                                            <sup class="badge bg-danger">Menunggu konfirmasi</sup>
+                                        @else
+                                            <sup class="badge bg-success">telah di Konfirmasi</sup>
+                                        @endif</td>
                                         <td>{{$peminjaman->nama_peminjam}}</td>
                                         <td>{{$peminjaman->jabatan_peminjam}}</td>
                                         <td>{{$peminjaman->devisi_peminjam}}</td>
                                         <td>{{$peminjaman->keperluan}}</td>
                                         <td>{{$peminjaman->created_at->format('d M Y')}}</td>
+                                        @role('kepala sumber daya')
+                                        @if ($peminjaman->status != true)
+                                            <td><a href="{{route('kepala_sumber_daya.konfirmasi_peminjaman',$peminjaman->id)}}" class="btn btn-sm btn-success"> Konfirmasi</a></td>
+                                        @else
+                                            <td><button class="btn btn-sm btn-primary" disabled> Peminjaman sudah di konfirmasi</button></td>
+                                        @endif
+                                        @elserole('IT')
+                                        @if ($peminjaman->status != false)
+                                            <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Delete</a></td>
+                                        @endif
+                                        @endrole
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -126,8 +148,8 @@
                         return {
                             results: $.map(data, function (aset) {
                                 return {
-                                    id: aset.id_perangkat,
-                                    text: aset.id_perangkat + ' - ' + aset
+                                    id: aset.kode_perangkat,
+                                    text: aset.kode_perangkat + ' - ' + aset
                                         .nama_perangkat
                                 }
                             })

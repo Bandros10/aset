@@ -25,9 +25,9 @@
             <tr>
                 <td>{{$no++}}</td>
                 @if ($printer->status == true)
-                    <td>{{$printer->id_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
+                    <td>{{$printer->kode_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
                 @else
-                    <td>{{$printer->id_perangkat}}</td>
+                    <td>{{$printer->kode_perangkat}}</td>
                 @endif
                 <td>{{$printer->nama_perangkat}}</td>
                 <td>{{$printer->kategori}}</td>
@@ -47,13 +47,13 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $printer->nama_perangkat }}">
                     @endif
                 </td>
-                <td>{!! QrCode::size(100)->generate($printer->id_perangkat); !!}</td>
+                <td>{!! QrCode::size(100)->generate($printer->kode_perangkat); !!}</td>
                 <td>
                     @if ($printer->status == true)
                     <p style="color: red">barang sedang Di Pinjam</p>
                 @else
-                    <a href="{{route('aset.edit',$printer->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="{{route('aset.destroy', $printer->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                    <a href="{{route('aset.edit',$printer->kode_perangkat)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="{{route('aset.destroy', $printer->kode_perangkat)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
                 @endif
                 </td>
             </tr>

@@ -11,8 +11,8 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 class PengadaanController extends Controller
 {
     public function index(){
-        $pengadaan_data = pengadaan::all();
-        return view('pengadaan.index',compact('pengadaan_data'));
+        $data_pengadaan = pengadaan::all();
+        return view('pengadaan.index',compact('data_pengadaan'));
     }
 
     public function store(Request $request){

@@ -66,7 +66,8 @@
                                     <label for="exampleInputBorder">Tanggal Pengadaan Barang</label>
                                     <input type="hidden" name="tgl_pembelian" value="{{$konfirm->tanggal_pengadaan}}">
                                     <input type="text" class="form-control form-control-border"
-                                        value="{{Carbon\Carbon::parse($konfirm->tanggal_pengadaan)->translatedFormat('d F Y')}}" readonly>
+                                        value="{{Carbon\Carbon::parse($konfirm->tanggal_pengadaan)->translatedFormat('d F Y')}}"
+                                        readonly>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -80,7 +81,7 @@
                             <div class="col-2">
                                 <div class="form-group">
                                     <label for="exampleInputBorder">Jumlah Barang</label>
-                                    <input type="text" class="form-control form-control-border"
+                                    <input type="text" name="jumlah_pengadaan" class="form-control form-control-border"
                                         value="{{$konfirm->jumlah_pengadaan}}" readonly>
                                 </div>
                             </div>
@@ -93,18 +94,20 @@
                             </div>
                         </div>
                         @if ($konfirm->confirmed_keuangan != true)
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-sm btn-primary btn-block">KONFIRMASI</button>
-                                    <a href="#" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#tolaksd-{{$konfirm->id}}">TOLAK PENGADAAN</a>
-                                </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-sm btn-primary btn-block">KONFIRMASI</button>
+                                <a href="#" class="btn btn-danger btn-sm btn-block" data-toggle="modal"
+                                    data-target="#tolaksd">TOLAK PENGADAAN</a>
                             </div>
+                        </div>
                         @else
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-sm btn-success btn-block" disabled>SUDAH DI KONFIRMASI</button>
-                                </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-sm btn-success btn-block" disabled>SUDAH DI
+                                    KONFIRMASI</button>
                             </div>
+                        </div>
                         @endif
                     </div>
                 </form>
@@ -113,7 +116,7 @@
     </section>
 </div>
 {{-- modal --}}
-<div class="modal fade" id="tolaksd-{{$konfirm->id}}">
+<div class="modal fade" id="tolaksd">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -122,9 +125,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('keuangan.tolak',$konfirm->id)}}" method="POST">
-            <div class="modal-body">
-                    @csrf
+            <form action="{{route('keuangan.tolak',$konfirm->kode_perangkat)}}" method="POST">
+                @csrf
+                <div class="modal-body">
                     <textarea name="keterangan_keuangan" class="form-control" placeholder="keterangan tolak"></textarea>
                 </div>
                 <div class="modal-footer justify-content-between">

@@ -25,9 +25,9 @@
             <tr>
                 <td>{{$no++}}</td>
                 @if ($pc->status == true)
-                    <td>{{$pc->id_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
+                    <td>{{$pc->kode_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
                 @else
-                    <td>{{$pc->id_perangkat}}</td>
+                    <td>{{$pc->kode_perangkat}}</td>
                 @endif
                 <td>{{$pc->nama_perangkat}}</td>
                 <td>{{$pc->kategori}}</td>
@@ -47,13 +47,13 @@
                     <img src="http://via.placeholder.com/50x50" alt="{{ $pc->nama_perangkat }}">
                     @endif
                 </td>
-                <td>{!! QrCode::size(100)->generate($pc->id_perangkat); !!}</td>
+                <td>{!! QrCode::size(100)->generate($pc->kode_perangkat); !!}</td>
                 <td>
                     @if ($pc->status == true)
                     <p style="color: red">barang sedang Di Pinjam</p>
                 @else
-                    <a href="{{route('aset.edit',$pc->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="{{route('aset.destroy', $pc->id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
+                    <a href="{{route('aset.edit',$pc->kode_perangkat)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="{{route('aset.destroy', $pc->kode_perangkat)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>
                 @endif
                 </td>
             </tr>

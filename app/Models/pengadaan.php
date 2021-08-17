@@ -9,4 +9,7 @@ class pengadaan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'kode_perangkat';
+    protected $keyType = 'string';
+
 }

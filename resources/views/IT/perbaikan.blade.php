@@ -32,8 +32,8 @@
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-3">
-                                    <label for="id_perangkat">ID Perangkat</label>
-                                    <select class="form-control search" name="id_perangkat">
+                                    <label for="kode_perangkat">ID Perangkat</label>
+                                    <select class="form-control search" name="kode_perangkat">
                                         <option></option>
                                     </select>
                                 </div>
@@ -64,9 +64,10 @@
                                 <thead>
                                     <tr>
                                         <td>No</td>
-                                        <td>Id Perangkat</td>
+                                        <td>Kode Perangkat</td>
                                         <td>Tanggal</td>
                                         <td>Kterangan</td>
+                                        <td>Aksi</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,9 +75,15 @@
                                     @foreach ($perbaikan as $perbaikan)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$perbaikan->id_perangkat}}</td>
+                                        <td>{{$perbaikan->kode_perangkat}}</td>
                                         <td>{{$perbaikan->created_at->format('d M Y')}}</td>
                                         <td>{{$perbaikan->keterangan_perbaikan}}</td>
+                                        <td>
+                                            @if ($perbaikan->status != true)
+                                                <a href="{{route('it.perbaikan_konfirmasi',$perbaikan->kode_perangkat)}}" class="btn btn-sm btn-primary"> Konfirmasi</a></td>
+                                            @else
+                                                <a href="{{route('it.perbaikan_delete',$perbaikan->id)}}" class="btn btn-sm btn-danger"> Hapus</a></td>
+                                            @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -105,8 +112,8 @@
                         return {
                             results: $.map(data, function (aset) {
                                 return {
-                                    id: aset.id_perangkat,
-                                    text: aset.id_perangkat + ' - ' + aset
+                                    id: aset.kode_perangkat,
+                                    text: aset.kode_perangkat + ' - ' + aset
                                         .nama_perangkat
                                 }
                             })

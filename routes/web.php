@@ -39,10 +39,16 @@ Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
 Route::get('IT/get_data_aset','ItController@search')->name('it.search');
 Route::get('IT/get_data_aset_perbaikan','ItController@search_perbaikan')->name('it.search_perbaikan');
 Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
+Route::get('IT/peminjaman/delete/{id}','ItController@peminjaman_delete')->name('it.peminjaman_delete');
 Route::post('IT/pengajuan/perbaikan','ItController@perbaikan_input')->name('it.input.perbaikan');
 Route::get('IT/pengembalian','ItController@pengembalian_index')->name('it.pengembalian');
-Route::post('IT/pengembalian/{id}/aset','ItController@pengembalian_aset')->name('it.pengembalian.aset');
+Route::get('IT/pengembalian/aset/{id}','ItController@pengembalian_aset')->name('it.pengembalian_aset');
+Route::post('IT/pengembalian/aset/submit/{id}','ItController@pengembalian_submit')->name('it.pengembalian_submit');
+Route::get('IT/pengembalian/{id}/hapus','ItController@pengembalian_delete')->name('it.pengembalian.delete');
 Route::get('IT/perbaiakan','ItController@perbaikan')->name('it.perbaikan');
+Route::get('IT/perbaiakan/konfirmasi/{id}','ItController@perbaikan_konfirmasi')->name('it.perbaikan_konfirmasi');
+Route::get('IT/perbaiakan/delete/{id}','ItController@perbaikan_delete')->name('it.perbaikan_delete');
+Route::get('IT/monitoring','ItController@monitoring')->name('it.monitoring');
 
 /**
  * Pengadaan
@@ -64,6 +70,7 @@ Route::post('/aset/update/{id}','AsetController@update')->name('aset.update');
  * kepala sumber daya
  */
 Route::get('/kepala_sumber_daya/konfirmasi/{id}','SumberdayaController@index')->name('kepala_sumber_daya.konfirmasi');
+Route::get('/kepala_sumber_daya/konfirmasi_peminjaman/{id}','SumberdayaController@konfirmasi_peminjaman')->name('kepala_sumber_daya.konfirmasi_peminjaman');
 Route::post('/kepala_sumber_daya/tolak/{id}','SumberdayaController@tolak')->name('kepala_sumber_daya.tolak');
 Route::post('/kepala_sumber_daya/konfirmasi/barang/{id}','SumberdayaController@konfirmasi')->name('kepala_sumber_daya.konfirmasi.barang');
 

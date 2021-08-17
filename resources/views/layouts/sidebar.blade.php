@@ -72,26 +72,32 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('aset.index')}}" class="nav-link">
-                                <i class="fas fa-user-plus"></i>
+                                <i class="fas fa-boxes"></i>
                                 <p>Data Asset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.peminjaman')}}" class="nav-link">
-                                <i class="fas fa-file-upload"></i>
+                                <i class="fas fa-arrow-circle-up"></i>
                                 <p>Peminjaman</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.pengembalian')}}" class="nav-link">
-                                <i class="fas fa-file-upload"></i>
+                                <i class="fas fa-arrow-circle-down"></i>
                                 <p>Pengembalian</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.perbaikan')}}" class="nav-link">
-                                <i class="fas fa-file-upload"></i>
+                                <i class="fas fa-tools"></i>
                                 <p>Perbaikan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('it.monitoring')}}" class="nav-link">
+                                <i class="fas fa-chart-pie"></i>
+                                <p>Monitoring</p>
                             </a>
                         </li>
                     </ul>
@@ -111,6 +117,14 @@
                             <a href="{{route('pengadaan.index')}}" class="nav-link">
                                 <i class="fas fa-paste"></i>
                                 <p>Pengadaan</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('it.peminjaman')}}" class="nav-link">
+                                <i class="fas fa-arrow-circle-up"></i>
+                                <p>Pengajuan Peminjaman</p>
                             </a>
                         </li>
                     </ul>

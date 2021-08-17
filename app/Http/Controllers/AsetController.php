@@ -64,7 +64,7 @@ class AsetController extends Controller
             $nm = 'SC-';
         }
 
-        $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
+        $id = IdGenerator::generate(['table' => 'asets','field'=>'kode_perangkat', 'length' => 7, 'prefix' =>$nm]);
         // $kode = ucwords(\substr($request->kategori,0,1));
         // $date = Carbon::now()->format('my');
         // $id_p = $kode.$date.'-'.Str::upper($request->tipe);
@@ -79,7 +79,7 @@ class AsetController extends Controller
         // dd($id);
         try {
             aset::firstOrCreate(
-                ['id_perangkat' => $id,
+                ['kode_perangkat' => $id,
                 'nama_perangkat' => $request->nama_perangkat,
                 'kategori' => $request->kategori,
                 'tipe' => $request->tipe,
@@ -101,7 +101,7 @@ class AsetController extends Controller
 
     public function destroy($id)
     {
-        $delete = DB::table('asets')->where('id', '=', $id);
+        $delete = DB::table('asets')->where('kode_perangkat', '=', $id);
         // $delete = aset::where([['id_perangkat','=',$id],['tgl_pembelian','=',$req->tgl_pembelian],['created_at','=',$req->created_at]])->first();
         // dd($delete);
 
@@ -126,20 +126,6 @@ class AsetController extends Controller
         $getaset = aset::findOrFail($id);
         $photo = $getaset->photo;
 
-        // if ($request->kategori == 'laptop') {
-        //     $nm = 'L-';
-        // } elseif ($request->kategori == 'PC') {
-        //     $nm = 'P-';
-        // } elseif ($request->kategori == 'monitor'){
-        //     $nm = 'M-';
-        // } elseif ($request->kategori == 'printer'){
-        //     $nm = 'PR-';
-        // } elseif ($request->kategori == 'scanner'){
-        //     $nm = 'SC-';
-        // }
-
-        // $id = IdGenerator::generate(['table' => 'asets','field'=>'id_perangkat', 'length' => 7, 'prefix' =>$nm]);
-
         if ($request->hasFile('photo')) {
             //cek, jika photo tidak kosong maka file yang ada di folder uploads/product akan dihapus
             !empty($photo) ? File::delete(public_path('uploads/product/' . $photo)):null;
@@ -148,7 +134,7 @@ class AsetController extends Controller
         }
 
         $getaset->update([
-            'id_perangkat' => $request->id_perangkat,
+            'kode_perangkat' => $request->kode_perangkat,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,

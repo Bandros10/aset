@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <x-card>
                         @slot('title')
-
+                            <h3>Tambah Data User</h3>
                         @endslot
 
                         @if (session('error'))
