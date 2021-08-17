@@ -106,7 +106,19 @@ class ItController extends Controller
     }
 
     public function monitoring(){
-        $data = aset::all();
-        return \view('IT.monitoring',compact('data'));
+        $data_laptop = aset::where('kategori','=','laptop')->get()->count();
+        $data_pc = aset::where('kategori','=','PC')->get()->count();
+        $data_monitor = aset::where('kategori','=','monitor')->get()->count();
+        $data_printer = aset::where('kategori','=','printer')->get()->count();
+        $data_scanner = aset::where('kategori','=','scanner')->get()->count();
+        $data_peminjaman = peminjaman::all()->count();
+        $raw_peminjaman = peminjaman::where('status','=',false)->count();
+        $data_pengembalian = pengembalian::all()->count();
+        $raw_perbaikan = perbaikan::where('status','=',false)->count();
+        $data_perbaikan = perbaikan::all()->count();
+
+        // $peminjaman = DB::table('peminjamen')->join('pengembalians','peminjamen.id','=','pengembalians.id')->select('peminjamen.*','pengembalians.*')->get();
+        // dd($data_laptop);
+        return \view('IT.monitoring',compact('data_laptop','data_pc','data_monitor','data_printer','data_scanner','data_peminjaman','data_pengembalian','data_perbaikan','raw_peminjaman','raw_perbaikan'));
     }
 }

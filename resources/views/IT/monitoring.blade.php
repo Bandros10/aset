@@ -29,10 +29,10 @@
                         <h3>Monitoring</h3>
                         @endslot
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-4">
                                 <div class="card card-danger">
                                     <div class="card-header">
-                                        <h3 class="card-title">Donut Chart</h3>
+                                        <h3 class="card-title">Monitoring Seluruh Barang</h3>
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -50,6 +50,13 @@
                                     <!-- /.card-body -->
                                 </div>
                             </div>
+                            <div class="col-8">
+                                <div class="panel">
+                                    <div id="keluar_masuk">
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         @slot('footer')
 
@@ -63,36 +70,83 @@
 @endsection
 @push('js')
 <script>
-//-------------
-    //- DONUT CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-    var donutData        = {
-      labels: [
-          @foreach ($data as $d )
-                '{{$d->kategori}}',
-          @endforeach
-      ],
-      datasets: [
-        {
-          data: [@foreach ($data as $p)
-              {{$p->jumlah}},
-          @endforeach],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+    $(function(){
+        //-------------
+        //- DONUT CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+        var donutData        = {
+          labels: [
+              'laptop',
+              'PC',
+              'Monitor',
+              'Printer',
+              'Scanner',
+          ],
+          datasets: [
+            {
+              data: [{{$data_laptop}},{{$data_pc}},{{$data_monitor}},{{$data_printer}},{{$data_scanner}}],
+              backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+            }
+          ]
         }
-      ]
-    }
-    var donutOptions     = {
-      maintainAspectRatio : false,
-      responsive : true,
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    new Chart(donutChartCanvas, {
-      type: 'doughnut',
-      data: donutData,
-      options: donutOptions
+        var donutOptions     = {
+          maintainAspectRatio : false,
+          responsive : true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(donutChartCanvas, {
+          type: 'doughnut',
+          data: donutData,
+          options: donutOptions
+        })
+
+        Highcharts.chart('keluar_masuk', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Data Statistic barang pinjam, pengembalian dan perbaikan'
+            },
+            xAxis: {
+                categories: [
+                    'Peminjaman',
+                    'Pengembalian',
+                    'Perbaikan'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'data Statistic'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} barang</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Data real',
+                data: [{!! json_encode($data_peminjaman)!!},{!! json_encode($data_pengembalian)!!},{!! json_encode($data_perbaikan)!!}]
+            }, {
+                name: 'Data Raw',
+                data: [{!! json_encode($raw_peminjaman)!!},"",{!! json_encode($raw_perbaikan)!!}]
+
+            },]
+        });
     })
 </script>
 @endpush
