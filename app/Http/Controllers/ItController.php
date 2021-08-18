@@ -106,6 +106,30 @@ class ItController extends Controller
     }
 
     public function monitoring(){
+        $data_aset_tahun_laptop = aset::select(\DB::raw("COUNT(*) as count,kategori"),DB::raw("year(tgl_pembelian) as year"),)
+                    ->where('kategori','=','laptop')
+                    ->groupBy(\DB::raw("year(tgl_pembelian)"))
+                    ->pluck('count');
+        // dd($data_aset_tahun_laptop);
+
+        $data_aset_tahun_PC = aset::select(\DB::raw("COUNT(*) as count,kategori"),DB::raw("year(tgl_pembelian) as year"),)
+                    ->where('kategori','=','PC')
+                    ->groupBy(\DB::raw("year(tgl_pembelian)"))
+                    ->pluck('count');
+        $data_aset_tahun_monitor = aset::select(\DB::raw("COUNT(*) as count,kategori"),DB::raw("year(tgl_pembelian) as year"),)
+                    ->where('kategori','=','monitor')
+                    ->groupBy(\DB::raw("year(tgl_pembelian)"))
+                    ->pluck('count');
+        $data_aset_tahun_printer = aset::select(\DB::raw("COUNT(*) as count,kategori"),DB::raw("year(tgl_pembelian) as year"),)
+                    ->where('kategori','=','printer')
+                    ->groupBy(\DB::raw("year(tgl_pembelian)"))
+                    ->pluck('count');
+        $data_aset_tahun_scanner = aset::select(\DB::raw("COUNT(*) as count,kategori"),DB::raw("year(tgl_pembelian) as year"),)
+                    ->where('kategori','=','laptscannerop')
+                    ->groupBy(\DB::raw("year(tgl_pembelian)"))
+                    ->pluck('count');
+
+
         $data_laptop = aset::where('kategori','=','laptop')->get()->count();
         $data_pc = aset::where('kategori','=','PC')->get()->count();
         $data_monitor = aset::where('kategori','=','monitor')->get()->count();
@@ -117,8 +141,6 @@ class ItController extends Controller
         $raw_perbaikan = perbaikan::where('status','=',false)->count();
         $data_perbaikan = perbaikan::all()->count();
 
-        // $peminjaman = DB::table('peminjamen')->join('pengembalians','peminjamen.id','=','pengembalians.id')->select('peminjamen.*','pengembalians.*')->get();
-        // dd($data_laptop);
-        return \view('IT.monitoring',compact('data_laptop','data_pc','data_monitor','data_printer','data_scanner','data_peminjaman','data_pengembalian','data_perbaikan','raw_peminjaman','raw_perbaikan'));
+        return \view('IT.monitoring',compact('data_laptop','data_aset_tahun_scanner','data_aset_tahun_printer','data_aset_tahun_monitor','data_aset_tahun_laptop','data_aset_tahun_PC','data_pc','data_monitor','data_printer','data_scanner','data_peminjaman','data_pengembalian','data_perbaikan','raw_peminjaman','raw_perbaikan'));
     }
 }

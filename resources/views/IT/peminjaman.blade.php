@@ -118,6 +118,8 @@
                                         @elserole('IT')
                                         @if ($peminjaman->status != false)
                                             <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Delete</a></td>
+                                        @else
+                                            <td><p class="badge bg-danger">belum di aprov</p></td>
                                         @endif
                                         @endrole
                                     </tr>

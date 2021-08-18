@@ -58,6 +58,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="panel">
+                                    <div id="pertahun">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @slot('footer')
 
                         @endslot
@@ -146,6 +155,78 @@
                 data: [{!! json_encode($raw_peminjaman)!!},"",{!! json_encode($raw_perbaikan)!!}]
 
             },]
+        });
+        var dl = {!!json_encode($data_aset_tahun_laptop)!!}
+        var dpc = {!!json_encode($data_aset_tahun_PC)!!}
+        var dm = {!!json_encode($data_aset_tahun_monitor)!!}
+        var dp = {!!json_encode($data_aset_tahun_printer)!!}
+        var dsc = {!!json_encode($data_aset_tahun_scanner)!!}
+        console.log(dl);
+        Highcharts.chart('pertahun', {
+
+            title: {
+                text: 'data statistic aset data'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Jumlah aset'
+                }
+            },
+
+            xAxis: {
+                accessibility: {
+                    rangeDescription: 'tahun'
+                }
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: 2021
+                }
+            },
+
+            series: [{
+                name: 'Laptop',
+                data: dl
+            }, {
+                name: 'PC',
+                data: dpc
+            }, {
+                name: 'Monitor',
+                data: dm
+            }, {
+                name: 'Printer',
+                data: dp
+            }, {
+                name: 'Scanner',
+                data: dsc
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 100
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
         });
     })
 </script>

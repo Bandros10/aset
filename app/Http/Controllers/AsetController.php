@@ -65,6 +65,7 @@ class AsetController extends Controller
         }
 
         $id = IdGenerator::generate(['table' => 'asets','field'=>'kode_perangkat', 'length' => 7, 'prefix' =>$nm]);
+        // dd($id);
         // $kode = ucwords(\substr($request->kategori,0,1));
         // $date = Carbon::now()->format('my');
         // $id_p = $kode.$date.'-'.Str::upper($request->tipe);
