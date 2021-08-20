@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
+Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:admin']], function () {
         /**
@@ -41,7 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
         /**
          * IT
          */
-        Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
         Route::get('IT/get_data_aset','ItController@search')->name('it.search');
         Route::get('IT/get_data_aset_perbaikan','ItController@search_perbaikan')->name('it.search_perbaikan');
         Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
@@ -59,7 +60,6 @@ Route::group(['middleware' => 'auth'], function () {
         /**
          * Pengadaan
          */
-        Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
         Route::post('/pengadaan/store','PengadaanController@store')->name('pengadaan.store');
         /**
          * data aset
