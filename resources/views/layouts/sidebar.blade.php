@@ -14,7 +14,7 @@
                 <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Hi {{auth()->user()->name}} as {{auth()->user()->roles->first()->name}}</a>
+                <a href="#" class="d-block">Hello, {{auth()->user()->name}} sebagai {{auth()->user()->roles->first()->name}}</a>
             </div>
         </div>
 
@@ -67,37 +67,37 @@
                         <li class="nav-item">
                             <a href="{{route('pengadaan.index')}}" class="nav-link">
                                 <i class="fas fa-paste"></i>
-                                <p>Pengadaan</p>
+                                <p>Pengadaan Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('aset.index')}}" class="nav-link">
                                 <i class="fas fa-boxes"></i>
-                                <p>Data Asset</p>
+                                <p>Data Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.peminjaman')}}" class="nav-link">
                                 <i class="fas fa-arrow-circle-up"></i>
-                                <p>Peminjaman</p>
+                                <p>Peminjaman Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.pengembalian')}}" class="nav-link">
                                 <i class="fas fa-arrow-circle-down"></i>
-                                <p>Pengembalian</p>
+                                <p>Pengembalian Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.perbaikan')}}" class="nav-link">
                                 <i class="fas fa-tools"></i>
-                                <p>Perbaikan</p>
+                                <p>Perbaikan Aset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('it.monitoring')}}" class="nav-link">
                                 <i class="fas fa-chart-pie"></i>
-                                <p>Monitoring</p>
+                                <p>Monitoring Aset</p>
                             </a>
                         </li>
                     </ul>
@@ -116,7 +116,7 @@
                         <li class="nav-item">
                             <a href="{{route('pengadaan.index')}}" class="nav-link">
                                 <i class="fas fa-paste"></i>
-                                <p>Pengadaan</p>
+                                <p>Pengadaan Aset</p>
                             </a>
                         </li>
                     </ul>
@@ -124,7 +124,7 @@
                         <li class="nav-item">
                             <a href="{{route('it.peminjaman')}}" class="nav-link">
                                 <i class="fas fa-arrow-circle-up"></i>
-                                <p>Pengajuan Peminjaman</p>
+                                <p>Pengajuan Peminjaman Aset</p>
                             </a>
                         </li>
                     </ul>
@@ -143,7 +143,7 @@
                         <li class="nav-item">
                             <a href="{{route('pengadaan.index')}}" class="nav-link">
                                 <i class="fas fa-paste"></i>
-                                <p>Pengadaan</p>
+                                <p>Pengadaan Aset</p>
                             </a>
                         </li>
                     </ul>

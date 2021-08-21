@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<title>Data barang aset</title>
+<title>Data Aset</title>
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Data aset</li>
+                        <li class="breadcrumb-item active">Data Aset</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="col">
                     <x-card>
                         @slot('title')
-                        <a href="{{route('aset.create')}}" class="btn btn-primary btn-sm">Tambah Data barang Aset</a>
+                        <a href="{{route('aset.create')}}" class="btn btn-primary btn-sm">Tambah Data Aset</a>
                         @endslot
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">

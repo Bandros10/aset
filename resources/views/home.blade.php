@@ -26,7 +26,7 @@
                         <div class="inner">
                             <h3>{{$barang_pengadaan}}<sup style="font-size: 20px; color: white"> ({{$notif_pengadaan}} waiting aproval)</sup></h3>
 
-                            <p>Pengadaan barang</p>
+                            <p>Pengadaan Aset</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>

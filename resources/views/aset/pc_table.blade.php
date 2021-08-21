@@ -12,10 +12,10 @@
                 <td>Kondisi</td>
                 <td>Harga</td>
                 <td>Tanggal Pembelian</td>
-                <td>Kelengkapan perangkat</td>
+                <td>Kelengkapan Perangkat</td>
                 <td>Keterangan</td>
-                <td>Foto gambar</td>
-                <td>qr Code</td>
+                <td>Gambar Perangkat</td>
+                <td>QR Code</td>
                 <td>Aksi</td>
             </tr>
         </thead>
@@ -25,7 +25,7 @@
             <tr>
                 <td>{{$no++}}</td>
                 @if ($pc->status == true)
-                    <td>{{$pc->kode_perangkat}} <br> <sup  class="label bg-success">Di pinjam</sup></td>
+                    <td>{{$pc->kode_perangkat}} <br> <sup  class="label bg-success">Dipinjam</sup></td>
                 @else
                     <td>{{$pc->kode_perangkat}}</td>
                 @endif
@@ -50,7 +50,7 @@
                 <td>{!! QrCode::size(100)->generate($pc->kode_perangkat); !!}</td>
                 <td>
                     @if ($pc->status == true)
-                    <p style="color: red">barang sedang Di Pinjam</p>
+                    <p style="color: red">Barang Sedang Dipinjam</p>
                 @else
                     <a href="{{route('aset.edit',$pc->kode_perangkat)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
                     <a href="{{route('aset.destroy', $pc->kode_perangkat)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>

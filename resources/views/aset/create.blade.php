@@ -34,8 +34,8 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-3">
-                                            <label>Nama Perangkat</label>
-                                            <input type="text" name="nama_perangkat" class="form-control"  placeholder="masukan nama perangkat">
+                                            <label>Nama Barang</label>
+                                            <input type="text" name="nama_perangkat" class="form-control"  placeholder="Masukkan Nama Barang">
                                         </div>
                                         <div class="col-2">
                                             <label>Kategori</label>
@@ -44,21 +44,21 @@
                                                 <option value="laptop">Laptop</option>
                                                 <option value="PC">PC</option>
                                                 <option value="monitor">Monitor</option>
-                                                <option value="printer">printer</option>
+                                                <option value="printer">Printer</option>
                                                 <option value="scanner">Scanner</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
                                             <label>Tipe</label>
-                                            <input type="text" name="tipe" class="form-control"  placeholder="masukan tipe perangkat">
+                                            <input type="text" name="tipe" class="form-control"  placeholder="Masukkan Tipe Barang">
                                         </div>
                                         <div class="col-2">
                                             <label>Merek</label>
-                                            <input type="text" name="merek" class="form-control"  placeholder="masukan merek perangkat">
+                                            <input type="text" name="merek" class="form-control"  placeholder="Masukkan Merek Barang">
                                         </div>
                                         <div class="col-2">
-                                            <label>model</label>
-                                            <input type="text" name="model" class="form-control"  placeholder="masukan model perangkat">
+                                            <label>Model</label>
+                                            <input type="text" name="model" class="form-control"  placeholder="Masukkan Model Barang">
                                         </div>
                                     </div>
                                 </div>
@@ -87,12 +87,12 @@
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                            <label>Harga barang</label>
-                                            <input type="text" name="harga" class="form-control"  placeholder="masukan harga perangkat">
+                                            <label>Harga Barang</label>
+                                            <input type="text" name="harga" class="form-control"  placeholder="Masukkan Harga Barang">
                                         </div>
                                         <div class="col-3">
                                             <label>Jumlah</label>
-                                            <input type="text" name="jumlah" class="form-control"  placeholder="masukan Jumlah perangkat saat ini">
+                                            <input type="text" name="jumlah" class="form-control"  placeholder="Masukkan Jumlah Barang Saat Ini">
                                         </div>
                                         <div class="col-3">
                                             <label>Tanggal Pembelian</label>
@@ -104,19 +104,19 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <label>Keterangan</label>
-                                            <textarea name="keterangan" class="form-control" placeholder="masukan keterangan perangkat"></textarea>
+                                            <textarea name="keterangan" class="form-control" placeholder="Masukkan Keterangan Barang"></textarea>
                                         </div>
                                         <div class="col-6">
                                             <label>Kelengkapan</label>
-                                            <textarea name="kelengkapan" class="form-control" placeholder="masukan kelengkapan perangkat"></textarea>
+                                            <textarea name="kelengkapan" class="form-control" placeholder="Masukkan Kelengkapan Barang"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">File Input</label>
                                     <div class="input-group">
                                       <div class="custom-file">
-                                          <label class="custom-file-label" for="exampleInputFile">pilih Foto</label>
+                                          <label class="custom-file-label" for="exampleInputFile">Pilih Foto</label>
                                           <input type="file" name="photo" class="custom-file-input" id="exampleInputFile">
                                       </div>
                                     </div>

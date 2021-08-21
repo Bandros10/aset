@@ -41,9 +41,9 @@ class PengadaanController extends Controller
             $pengadaan->jumlah_pengadaan = $request->jumlah_pengadaan;
             $pengadaan->keterangan = $request->keterangan;
             $pengadaan->save();
-            return redirect()->back()->with('sukses','berhasil menambhakan pengadaan barang baru');
+            return redirect()->back()->with('Sukses','Berhasil menambahkan pengadaan aset baru');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error','ooppss..! terjadi kesalahan silahkan hubungi bagian IT');
+            return redirect()->back()->with('Error','Ooppss..! terjadi kesalahan silahkan hubungi bagian IT');
         }
 
     }
