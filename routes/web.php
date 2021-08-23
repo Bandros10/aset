@@ -19,8 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
+/**
+ * route universal
+ */
 Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
+Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:admin']], function () {
         /**
@@ -58,9 +62,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('IT/monitoring','ItController@monitoring')->name('it.monitoring');
 
         /**
-         * Pengadaan
+         * Pengadaan IT
          */
         Route::post('/pengadaan/store','PengadaanController@store')->name('pengadaan.store');
+        Route::get('/pengadaan/edit/{id}','PengadaanController@edit')->name('pengadaan.edit');
+        Route::post('/pengadaan/update/{id}','PengadaanController@update')->name('pengadaan.update');
         /**
          * data aset
          */

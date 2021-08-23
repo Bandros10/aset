@@ -40,9 +40,9 @@
                                         <td>Jenis Barang</td>
                                         <td>Merek Barang</td>
                                         <td>Model Barang</td>
+                                        <td>Nomer Seri Produk</td>
                                         <td>Harga Barang</td>
                                         <td>Tanggal Pengadaan</td>
-                                        <td>Jumlah</td>
                                         <td>keterangan</td>
                                         <td>Confirmed</td>
                                     </tr>
@@ -55,9 +55,9 @@
                                             <td>{{$pengadaan->jenis_barang}}</td>
                                             <td>{{$pengadaan->merk_barang}}</td>
                                             <td>{{$pengadaan->model_barang}}</td>
+                                            <td>{{$pengadaan->nomer_seri_produk}}</td>
                                             <td>{{$pengadaan->harga_barang}}</td>
                                             <td>{{$pengadaan->tanggal_pengadaan}}</td>
-                                            <td>{{$pengadaan->jumlah_pengadaan}}</td>
                                             <td>{{$pengadaan->keterangan}}</td>
                                             <td>
                                                 @if ($pengadaan->confirmed != true)
@@ -67,7 +67,7 @@
                                                         @elseif (!empty($pengadaan->keterangan_keuangan) || !empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Pengadaan tidak disetujui</span>
                                                         @else
-                                                            <span class="badge badge-info"> Menunggu Konfirmasi</span>
+                                                            <a href="{{route('pengadaan.edit',$pengadaan->kode_perangkat)}}" class="btn btn-sm btn-warning">Edit pengadaan</a>
                                                         @endif
                                                     @elserole('kepala sumber daya')
                                                         @if (!empty($pengadaan->keterangan_sumber_daya))

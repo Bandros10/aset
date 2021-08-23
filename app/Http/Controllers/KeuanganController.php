@@ -37,7 +37,7 @@ class KeuanganController extends Controller
             'tipe' => $request->tipe,
             'merek' => $request->merek,
             'harga' => $request->harga,
-            'jumlah' => $request->jumlah_pengadaan,
+            'nomer_seri_produk' => $request->nomer_seri_produk,
             'tgl_pembelian' => $request->tgl_pembelian,
             'keterangan' => $request->keterangan]);
             return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di approv');

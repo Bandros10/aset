@@ -43,17 +43,21 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="row">
-                                        <div class="col-6">
-                                            <label>Jumlah</label>
-                                            <input type="number" class="form-control" name="jumlah_pengadaan" placeholder="Jumlah Barang" required>
+                                        <div class="col-12">
+                                            <label>Nomer Seri Produk</label>
+                                            <input type="text" class="form-control" name="nomer_seri_produk" placeholder="Maukan Nomer Seri produk" required>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-6">
                                             <label>Harga Satuan</label>
                                             <input type="number" class="form-control" name="harga_barang" placeholder="Harga Barang" required>
                                         </div>
+                                        <div class="col-6">
+                                            <label>Tanggal Pengadaan</label>
+                                            <input type="date" class="form-control" name="tanggal_pengadaan" placeholder="Harga Barang" required>
+                                        </div>
                                     </div>
-                                    <label>Tanggal Pengadaan</label>
-                                    <input type="date" class="form-control" name="tanggal_pengadaan" placeholder="Harga Barang" required>
                                 </div>
                                 <div class="col-6">
                                     <label>Keterangan</label>
