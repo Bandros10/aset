@@ -34,13 +34,13 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-3">
-                                            <label>Nama Barang</label>
-                                            <input type="text" name="nama_perangkat" class="form-control"  placeholder="Masukkan Nama Barang">
+                                            <label>Nama Perangkat</label>
+                                            <input type="text" name="nama_perangkat" class="form-control"  placeholder="Masukkan Nama Perangkat">
                                         </div>
                                         <div class="col-2">
                                             <label>Kategori</label>
                                             <select class="form-control" name="kategori" required>
-                                                <option selected disabled>- Kategori Barang - </option>
+                                                <option selected disabled>- Kategori Perangkat - </option>
                                                 <option value="laptop">Laptop</option>
                                                 <option value="PC">PC</option>
                                                 <option value="monitor">Monitor</option>
@@ -50,15 +50,15 @@
                                         </div>
                                         <div class="col-3">
                                             <label>Tipe</label>
-                                            <input type="text" name="tipe" class="form-control"  placeholder="Masukkan Tipe Barang">
+                                            <input type="text" name="tipe" class="form-control"  placeholder="Masukkan Tipe Perangkat">
                                         </div>
                                         <div class="col-2">
                                             <label>Merek</label>
-                                            <input type="text" name="merek" class="form-control"  placeholder="Masukkan Merek Barang">
+                                            <input type="text" name="merek" class="form-control"  placeholder="Masukkan Merek Perangkat">
                                         </div>
                                         <div class="col-2">
                                             <label>Model</label>
-                                            <input type="text" name="model" class="form-control"  placeholder="Masukkan Model Barang">
+                                            <input type="text" name="model" class="form-control"  placeholder="Masukkan Model Perangkat">
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="kondisi" value="baik" id="flexRadioDefault1">
                                                         <label class="form-check-label" for="flexRadioDefault1">
-                                                            Keadaan Barang Baik
+                                                            Keadaan Perangkat Baik
                                                         </label>
                                                     </div>
                                                 </div>
@@ -87,12 +87,12 @@
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                            <label>Harga Barang</label>
-                                            <input type="text" name="harga" class="form-control"  placeholder="Masukkan Harga Barang">
+                                            <label>Harga Perangkat</label>
+                                            <input type="text" name="harga" class="form-control"  placeholder="Masukkan Harga Perangkat">
                                         </div>
                                         <div class="col-3">
                                             <label>Jumlah</label>
-                                            <input type="text" name="jumlah" class="form-control"  placeholder="Masukkan Jumlah Barang Saat Ini">
+                                            <input type="text" name="jumlah" class="form-control"  placeholder="Masukkan Jumlah Perangkat Saat Ini">
                                         </div>
                                         <div class="col-3">
                                             <label>Tanggal Pembelian</label>
@@ -104,11 +104,11 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <label>Keterangan</label>
-                                            <textarea name="keterangan" class="form-control" placeholder="Masukkan Keterangan Barang"></textarea>
+                                            <textarea name="keterangan" class="form-control" placeholder="Masukkan Keterangan Perangkat"></textarea>
                                         </div>
                                         <div class="col-6">
                                             <label>Kelengkapan</label>
-                                            <textarea name="kelengkapan" class="form-control" placeholder="Masukkan Kelengkapan Barang"></textarea>
+                                            <textarea name="kelengkapan" class="form-control" placeholder="Masukkan Kelengkapan Perangkat"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-block">Tambah Data Aset</button>
+                                <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                             </div>
                         </form>
                     </div>

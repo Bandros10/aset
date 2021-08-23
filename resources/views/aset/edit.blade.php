@@ -87,7 +87,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <label>Harga barang</label>
+                                            <label>Harga Perangkat</label>
                                             <input type="text" name="harga" class="form-control"  value="{{$asetedit->harga}}">
                                         </div>
                                         <div class="col-3">
@@ -112,7 +112,7 @@
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group">
                                       <div class="custom-file">
-                                          <label class="custom-file-label" for="exampleInputFile">pilih Foto</label>
+                                          <label class="custom-file-label" for="exampleInputFile">Pilih Foto</label>
                                           <input type="file" name="photo" class="custom-file-input" id="exampleInputFile">
                                       </div>
                                     </div>
