@@ -19,17 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-<<<<<<< Updated upstream
-Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
-Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
-=======
 /**
  * route universal
  */
 Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
 Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
 
->>>>>>> Stashed changes
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:admin']], function () {
         /**

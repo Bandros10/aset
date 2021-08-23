@@ -64,7 +64,7 @@ class AsetController extends Controller
             $nm = 'SC-';
         }
 
-        $id = IdGenerator::generate(['table' => 'asets','field'=>'kode_perangkat', 'length' => 7, 'prefix' =>$nm]);
+        $id = $nm.\substr($request->nomer_seri_produk,0,5);
         // dd($id);
         // $kode = ucwords(\substr($request->kategori,0,1));
         // $date = Carbon::now()->format('my');
@@ -88,7 +88,7 @@ class AsetController extends Controller
                 'model' => $request->model,
                 'kondisi' => $request->kondisi,
                 'harga' => $request->harga,
-                'jumlah' => $request->jumlah,
+                'nomer_seri_produk' => $request->nomer_seri_produk,
                 'tgl_pembelian' => $request->tgl_pembelian,
                 'keterangan' => $request->keterangan,
                 'kelengkapan' => $request->kelengkapan,

@@ -9,6 +9,7 @@
                 <td>Tipe Jenis</td>
                 <td>Merek</td>
                 <td>Model</td>
+                <td>Nomor Serial Produk</td>
                 <td>Kondisi</td>
                 <td>Harga</td>
                 <td>Tanggal Pembelian</td>
@@ -34,6 +35,7 @@
                 <td>{{$laptop->tipe}}</td>
                 <td>{{$laptop->merek}}</td>
                 <td>{{$laptop->model}}</td>
+                <td>{{$laptop->nomer_seri_produk}}</td>
                 <td>{{$laptop->kondisi}}</td>
                 <td>{{$laptop->harga}}</td>
                 <td>{{$laptop->tgl_pembelian}}</td>

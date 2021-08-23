@@ -80,9 +80,9 @@
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Jumlah Barang</label>
-                                    <input type="text" name="jumlah_pengadaan" class="form-control form-control-border"
-                                        value="{{$konfirm->jumlah_pengadaan}}" readonly>
+                                    <label for="exampleInputBorder">Nomor serial Produk</label>
+                                    <input type="text" name="nomer_seri_produk" class="form-control form-control-border"
+                                        value="{{$konfirm->nomer_seri_produk}}" readonly>
                                 </div>
                             </div>
                             <div class="col-6">

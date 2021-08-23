@@ -19,6 +19,7 @@ class CreatePengadaansTable extends Migration
             $table->string('jenis_barang');
             $table->string('merk_barang');
             $table->string('model_barang');
+            $table->string('nomer_seri_produk');
             $table->integer('harga_barang');
             $table->date('tanggal_pengadaan');
             $table->text('keterangan');

@@ -22,6 +22,7 @@ class CreateAsetsTable extends Migration
             $table->string('model')->nullable();
             $table->enum('kondisi', ['baik', 'buruk'])->nullable();
             $table->integer('harga')->nullable();
+            $table->string('nomer_seri_produk')->nullable();
             $table->date('tgl_pembelian')->nullable();
             $table->text('kelengkapan')->nullable();
             $table->text('keterangan')->nullable();
