@@ -21,7 +21,6 @@ class CreatePengadaansTable extends Migration
             $table->string('model_barang');
             $table->integer('harga_barang');
             $table->date('tanggal_pengadaan');
-            $table->integer('jumlah_pengadaan');
             $table->text('keterangan');
             $table->boolean('confirmed')->nullable()->default(false);
             $table->boolean('confirmed_kepala_sumber_daya')->default(false);

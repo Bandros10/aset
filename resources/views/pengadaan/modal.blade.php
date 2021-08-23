@@ -44,10 +44,6 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-6">
-                                            <label>Jumlah</label>
-                                            <input type="number" class="form-control" name="jumlah_pengadaan" placeholder="Jumlah Barang" required>
-                                        </div>
-                                        <div class="col-6">
                                             <label>Harga Satuan</label>
                                             <input type="number" class="form-control" name="harga_barang" placeholder="Harga Barang" required>
                                         </div>

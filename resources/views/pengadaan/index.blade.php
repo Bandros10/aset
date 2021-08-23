@@ -67,7 +67,7 @@
                                                         @elseif (!empty($pengadaan->keterangan_keuangan) || !empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Pengadaan tidak disetujui</span>
                                                         @else
-                                                            <span class="badge badge-info"> Menunggu Konfirmasi</span>
+                                                            <a href="{{route('pengadaan.edit',$pengadaan->kode_perangkat)}}" class="btn btn-sm btn-warning">Edit pengadaan</a>
                                                         @endif
                                                     @elserole('kepala sumber daya')
                                                         @if (!empty($pengadaan->keterangan_sumber_daya))

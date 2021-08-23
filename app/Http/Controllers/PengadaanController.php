@@ -45,6 +45,19 @@ class PengadaanController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('Error','Ooppss..! terjadi kesalahan silahkan hubungi bagian IT');
         }
+    }
 
+    public function edit($id){
+        $peng_edit = pengadaan::findOrFail($id);
+        return \view('pengadaan.edit',\compact('peng_edit'));
+    }
+
+    public function update(Request $request,$id){
+        $peng_update = pengadaan::findOrFail($id);
+        $peng_update->update(['nama_barang' => $request->nama_barang,'jenis_barang' => $request->jenis_barang,
+                                'merk_barang' => $request->merk_barang,'model_barang' => $request->model_barang,
+                                'harga_barang' => $request->harga_barang,'tanggal_pengadaan' => $request->tanggal_pengadaan,
+                                'jumlah_pengadaan' => $request->jumlah_pengadaan,'keterangan' => $request->keterangan]);
+        return redirect(\route('pengadaan.index'))->with('sukses','data pengadaan berhasil di rubah');
     }
 }
