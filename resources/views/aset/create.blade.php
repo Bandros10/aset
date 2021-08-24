@@ -91,8 +91,8 @@
                                             <input type="text" name="harga" class="form-control"  placeholder="Masukkan Harga Perangkat">
                                         </div>
                                         <div class="col-3">
-                                            <label>Jumlah</label>
-                                            <input type="text" name="jumlah" class="form-control"  placeholder="Masukkan Jumlah Perangkat Saat Ini">
+                                            <label>Nomor Seri Produk</label>
+                                            <input type="text" name="nomer_seri_produk" class="form-control"  placeholder="Masukkan nomer seri produk">
                                         </div>
                                         <div class="col-3">
                                             <label>Tanggal Pembelian</label>

@@ -9,6 +9,7 @@
                 <td>Tipe Jenis</td>
                 <td>Merek</td>
                 <td>Model</td>
+                <td>Serial Nomer Produk</td>
                 <td>Kondisi</td>
                 <td>Harga</td>
                 <td>Tanggal Pembelian</td>
@@ -34,6 +35,7 @@
                 <td>{{$scanner->tipe}}</td>
                 <td>{{$scanner->merek}}</td>
                 <td>{{$scanner->model}}</td>
+                <td>{{$scanner->nomer_seri_produk}}</td>
                 <td>{{$scanner->kondisi}}</td>
                 <td>{{$scanner->harga}}</td>
                 <td>{{$scanner->tgl_pembelian}}</td>

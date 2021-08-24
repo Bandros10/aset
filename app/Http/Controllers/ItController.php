@@ -29,7 +29,7 @@ class ItController extends Controller
     }
 
     public function pengembalian_submit(Request $request,$id){
-        pengembalian::find($id)->update(['kelengkapan'=>$request->kelengkapan]);
+        pengembalian::find($id)->update(['kelengkapan'=>$request->kelengkapan, 'tgl_pengembalian' => Carbon::now()->format('Y/m/d')]);
         aset::where('kode_perangkat','=',$request->kode_perangkat)->update(['kondisi' => 'buruk','status' => false]);
         // DB::table('asets')->where('kode_perangkat',$request->kode_perangkat)->update(['kondisi' => 'buruk','status' => false]);
         return redirect('IT/pengembalian')->with('sukses','barang telah di kembalikan');
@@ -72,7 +72,15 @@ class ItController extends Controller
     }
 
     public function pengajuan(Request $request){
-        peminjaman::create($request->all());
+        $peminjaman = new peminjaman;
+        $peminjaman->kode_perangkat = $request->kode_perangkat;
+        $peminjaman->nama_peminjam = $request->nama_peminjam;
+        $peminjaman->jabatan_peminjam = $request->jabatan_peminjam;
+        $peminjaman->devisi_peminjam = $request->devisi_peminjam;
+        $peminjaman->keperluan = $request->keperluan;
+        $peminjaman->tgl_peminjaman = Carbon::now()->format('Y/m/d');
+        $peminjaman->save();
+
         $pengembalian = new pengembalian;
         $pengembalian->kode_perangkat = $request->kode_perangkat;
         $pengembalian->nama_peminjam = $request->nama_peminjam;

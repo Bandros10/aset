@@ -34,36 +34,36 @@
                             <div class="row">
                                 <div class="col-3">
                                     <label>Kode Perangkat</label>
-                                    <select class="form-control search" name="kode_perangkat">
+                                    <select class="form-control search" name="kode_perangkat" required>
                                         <option></option>
                                     </select>
                                 </div>
                                 <div class="col-3">
                                     <label>Nama Peminjam</label>
-                                    <input class="form-control" name="nama_peminjam" placeholder="- Input Nama Peminjam -">
+                                    <input class="form-control" name="nama_peminjam" placeholder="- Input Nama Peminjam -" required>
                                 </div>
                                 <div class="col-3">
                                     <label>Jabatan Peminjam</label>
-                                    <input class="form-control" name="jabatan_peminjam" placeholder="- Input Jabatan Peminjam -">
+                                    <input class="form-control" name="jabatan_peminjam" placeholder="- Input Jabatan Peminjam -" required>
                                 </div>
                                 <div class="col-3">
                                     <label>Divisi Peminjam</label>
-                                    <select name="devisi_peminjam" class="form-control">
+                                    <select name="devisi_peminjam" class="form-control" required>
                                         <option selected disabled>- Pilih Divisi -</option>
-                                        <option value="marketing">Administrasi</option>
-                                        <option value="marketing">BOQ dan RAB</option>
-                                        <option value="marketing">Drafter</option>
-                                        <option value="marketing">Engineer</option>
-                                        <option value="marketing">Geodesi</option>
-                                        <option value="marketing">Mektan</option>
-                                        <option value="marketing">Umum</option>
+                                        <option value="Administrasi">Administrasi</option>
+                                        <option value="BOQ dan RAB">BOQ dan RAB</option>
+                                        <option value="Drafter">Drafter</option>
+                                        <option value="Engineer">Engineer</option>
+                                        <option value="Geodesi">Geodesi</option>
+                                        <option value="Mektan">Mektan</option>
+                                        <option value="Umum">Umum</option>
                                     </select>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col">
-                                    <textarea name="keperluan" class="form-control" placeholder="- Input Keperluan Peminjaman -"></textarea>
+                                    <textarea name="keperluan" class="form-control" placeholder="- Input Keperluan Peminjaman -" required></textarea>
                                 </div>
                             </div>
                             <br>
@@ -81,6 +81,27 @@
                     <x-card>
                         @slot('title')
                         <h3>List Peminjaman Aset</h3>
+                        @role('IT')
+                            <form action="{{route('laporan.peminjaman')}}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label>Date range:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="laporan_peminjam" class="form-control float-right"> <button type="submit" class="form-control btn btn-sm btn-info">Cetak laporan</button>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @endrole
                         @endslot
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">
@@ -114,7 +135,7 @@
                                         <td>{{$peminjaman->jabatan_peminjam}}</td>
                                         <td>{{$peminjaman->devisi_peminjam}}</td>
                                         <td>{{$peminjaman->keperluan}}</td>
-                                        <td>{{$peminjaman->created_at->format('d M Y')}}</td>
+                                        <td>{{Carbon\carbon::parse($peminjaman->tgl_peminjaman)->format('d M Y')}}</td>
                                         @role('kepala sumber daya')
                                         @if ($peminjaman->status != true)
                                             <td><a href="{{route('kepala_sumber_daya.konfirmasi_peminjaman',$peminjaman->id)}}" class="btn btn-sm btn-success"> Konfirmasi</a></td>
@@ -166,6 +187,7 @@
                     cache: true
                 }
             });
+            $('input[name="laporan_peminjam"]').daterangepicker();
          });
     </script>
 @endpush

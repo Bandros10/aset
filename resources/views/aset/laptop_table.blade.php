@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table id="example1" class="table table-bordered table-hover">
+    <table id="example2" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <td>No</td>
@@ -30,7 +30,9 @@
                 @else
                     <td>{{$laptop->kode_perangkat}}</td>
                 @endif
-                <td>{{$laptop->nama_perangkat}}</td>
+                <td>{{$laptop->nama_perangkat}}@if (empty($laptop->kondisi))
+                    <sup  class="label bg-danger">info barang belum lengkap</sup>
+                @endif</td>
                 <td>{{$laptop->kategori}}</td>
                 <td>{{$laptop->tipe}}</td>
                 <td>{{$laptop->merek}}</td>

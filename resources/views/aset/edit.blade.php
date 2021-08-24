@@ -86,13 +86,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-3">
                                             <label>Harga Perangkat</label>
                                             <input type="text" name="harga" class="form-control"  value="{{$asetedit->harga}}">
                                         </div>
                                         <div class="col-3">
+                                            <label>Nomer Serial Produk</label>
+                                            <input type="text" name="nomer_seri_produk" class="form-control"  value="{{$asetedit->nomer_seri_produk}}">
+                                        </div>
+                                        <div class="col-3">
                                             <label>Tanggal Pembelian</label>
-                                            <input type="date" name="tgl_pembelian" class="form-control" value="{{$asetedit->tgl_pembelian}}">
+                                            <input type="date" name="tgl_pembelian" value="{{$asetedit->tgl_pembelian}}" class="form-control">
                                         </div>
                                     </div>
                                 </div>

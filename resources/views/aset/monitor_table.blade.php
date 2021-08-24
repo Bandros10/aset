@@ -9,6 +9,7 @@
                 <td>Tipe Jenis</td>
                 <td>Merek</td>
                 <td>Model</td>
+                <td>Nomor Serial produk</td>
                 <td>Kondisi</td>
                 <td>Harga</td>
                 <td>Tanggal Pembelian</td>
@@ -34,6 +35,7 @@
                 <td>{{$monitor->tipe}}</td>
                 <td>{{$monitor->merek}}</td>
                 <td>{{$monitor->model}}</td>
+                <td>{{$monitor->nomer_seri_produk}}</td>
                 <td>{{$monitor->kondisi}}</td>
                 <td>{{$monitor->harga}}</td>
                 <td>{{$monitor->tgl_pembelian}}</td>

@@ -20,6 +20,7 @@ class CreatePeminjamenTable extends Migration
             $table->string('jabatan_peminjam');
             $table->string('devisi_peminjam');
             $table->text('keperluan');
+            $table->date('tgl_peminjaman')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

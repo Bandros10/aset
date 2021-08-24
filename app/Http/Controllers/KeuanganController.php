@@ -30,7 +30,7 @@ class KeuanganController extends Controller
                 $nm = 'SC-';
             }
 
-            $id = IdGenerator::generate(['table' => 'asets','field'=>'kode_perangkat', 'length' => 7, 'prefix' =>$nm]);
+            $id = $nm.\substr($request->nomer_seri_produk,0,5);
             DB::table('asets')->insert(['kode_perangkat' => $id,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,

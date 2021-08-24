@@ -134,8 +134,22 @@ class AsetController extends Controller
             $photo = $this->saveFile($request->nama_perangkat, $request->file('photo'));
         }
 
+        if ($request->kategori == 'laptop') {
+            $nm = 'L-';
+        } elseif ($request->kategori == 'PC') {
+            $nm = 'P-';
+        } elseif ($request->kategori == 'monitor'){
+            $nm = 'M-';
+        } elseif ($request->kategori == 'printer'){
+            $nm = 'PR-';
+        } elseif ($request->kategori == 'scanner'){
+            $nm = 'SC-';
+        }
+
+        $id = $nm.\substr($request->nomer_seri_produk,0,5);
+
         $getaset->update([
-            'kode_perangkat' => $request->kode_perangkat,
+            'kode_perangkat' => $id,
             'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,
@@ -143,7 +157,7 @@ class AsetController extends Controller
             'model' => $request->model,
             'kondisi' => $request->kondisi,
             'harga' => $request->harga,
-            'jumlah' => $request->jumlah,
+            'nomer_seri_produk' => $request->nomer_seri_produk,
             'tgl_pembelian' => $request->tgl_pembelian,
             'keterangan' => $request->keterangan,
             'kelengkapan' => $request->kelengkapan,

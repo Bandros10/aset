@@ -27,6 +27,27 @@
                     <x-card>
                         @slot('title')
                         <h3>List Pengembalian</h3>
+                        @role('IT')
+                            <form action="{{route('laporan.pengembalian')}}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label>Date range:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="laporan_pengembalian" class="form-control float-right"> <button type="submit" class="form-control btn btn-sm btn-info">Cetak laporan</button>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @endrole
                         @endslot
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-hover">
@@ -54,7 +75,7 @@
                                         <td>{{$pengembalian->devisi_peminjam}}</td>
                                         <td>{{$pengembalian->keperluan}}</td>
                                         <td>{{$pengembalian->kelengkapan}}</td>
-                                        <td>{{$pengembalian->created_at->format('d M Y')}}</td>
+                                        <td>{{$pengembalian->tgl_pengembalian}}</td>
                                         <td>
                                             @if (!empty($pengembalian->kelengkapan))
                                             <a href="{{route('it.pengembalian.delete',$pengembalian->id)}}"
@@ -78,3 +99,8 @@
     </section>
 </div>
 @endsection
+@push('js')
+    <script>
+         $('input[name="laporan_pengembalian"]').daterangepicker();
+    </script>
+@endpush

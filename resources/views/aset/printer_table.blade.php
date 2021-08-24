@@ -9,6 +9,7 @@
                 <td>Tipe Jenis</td>
                 <td>Merek</td>
                 <td>Model</td>
+                <td>Serial Nomer Produk</td>
                 <td>Kondisi</td>
                 <td>Harga</td>
                 <td>Tanggal Pembelian</td>
@@ -34,6 +35,7 @@
                 <td>{{$printer->tipe}}</td>
                 <td>{{$printer->merek}}</td>
                 <td>{{$printer->model}}</td>
+                <td>{{$printer->nomer_seri_produk}}</td>
                 <td>{{$printer->kondisi}}</td>
                 <td>{{$printer->harga}}</td>
                 <td>{{$printer->tgl_pembelian}}</td>

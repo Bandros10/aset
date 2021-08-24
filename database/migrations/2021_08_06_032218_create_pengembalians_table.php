@@ -21,6 +21,7 @@ class CreatePengembaliansTable extends Migration
             $table->string('devisi_peminjam');
             $table->text('keperluan');
             $table->text('kelengkapan');
+            $table->date('tgl_pengembalian')->nullable();
             $table->timestamps();
         });
     }

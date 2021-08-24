@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/pengadaan/store','PengadaanController@store')->name('pengadaan.store');
         Route::get('/pengadaan/edit/{id}','PengadaanController@edit')->name('pengadaan.edit');
         Route::post('/pengadaan/update/{id}','PengadaanController@update')->name('pengadaan.update');
+
         /**
          * data aset
          */
@@ -76,6 +77,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/aset/hapus/{id}','AsetController@destroy')->name('aset.destroy');
         Route::get('/aset/edit/{id}','AsetController@edit')->name('aset.edit');
         Route::post('/aset/update/{id}','AsetController@update')->name('aset.update');
+
+        
+        /**
+         * Laporan
+         */
+        Route::post('cetak/laporan/peminjaman','LaporanController@peminjaman')->name('laporan.peminjaman');
+        Route::post('cetak/laporan/pengembalian','LaporanController@pengembalian')->name('laporan.pengembalian');
+
     });
 
     Route::group(['middleware' => ['role:kepala sumber daya']], function () {
