@@ -9,6 +9,7 @@ use App\Models\peminjaman;
 use App\Models\pengembalian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class ItController extends Controller
 {
@@ -58,6 +59,12 @@ class ItController extends Controller
         return response()->json($kode_perangkat);
     }
 
+    public function autofill(Request $request){
+        $kode_perangkat = $_GET['kode_perangkat'];
+        $check = DB::table('asets')->where('kode_perangkat',$kode_perangkat)->select('asets.*')->first();
+        return response()->json($check);
+    }
+
     public function search_perbaikan(Request $request)
     {
         if ($request->has('q')) {
@@ -78,6 +85,7 @@ class ItController extends Controller
         $peminjaman->jabatan_peminjam = $request->jabatan_peminjam;
         $peminjaman->devisi_peminjam = $request->devisi_peminjam;
         $peminjaman->keperluan = $request->keperluan;
+        $peminjaman->kelengkapan = $request->kelengkapan;
         $peminjaman->tgl_peminjaman = Carbon::now()->format('Y/m/d');
         $peminjaman->save();
 
@@ -95,6 +103,32 @@ class ItController extends Controller
     public function peminjaman_delete($id){
         peminjaman::find($id)->delete();
         return redirect()->back()->with('sukses','data peminjaman telah di hapus');
+    }
+
+    public function peminjaman_cetak($id){
+        $cetak_pinjam = peminjaman::find($id);
+        $barang_pinjam = aset::where('kode_perangkat','=',$cetak_pinjam->kode_perangkat)->first();
+        $tanggal_sekarang = Carbon::now()->translatedFormat('d F Y');
+
+        $templateProcessor = new TemplateProcessor('template/cetak_pinjam.docx');
+        $templateProcessor->setValue('tanggal_sekarang', $tanggal_sekarang);
+        $templateProcessor->setValue('nama_pemberi', auth()->user()->name);
+        $templateProcessor->setValue('jabatan_pemberi', auth()->user()->jabatan);
+        $templateProcessor->setValue('divisi_pemberi', auth()->user()->divisi);
+        $templateProcessor->setValue('nama_peminjam', $cetak_pinjam->nama_peminjam);
+        $templateProcessor->setValue('jabatan_peminjam', $cetak_pinjam->jabatan_peminjam);
+        $templateProcessor->setValue('divisi_peminjam',  $cetak_pinjam->divisi_peminjam);
+        $templateProcessor->setValue('jenis',  $barang_pinjam->model);
+        $templateProcessor->setValue('merek',  $barang_pinjam->merek);
+        $templateProcessor->setValue('tipe',  $barang_pinjam->tipe);
+        $templateProcessor->setValue('nomer_seri_produk',  $barang_pinjam->nomer_seri_produk);
+        $templateProcessor->setValue('nama_perangkat',  $barang_pinjam->nama_perangkat);
+        $templateProcessor->setValue('kelengkapan',  $cetak_pinjam->kelengkapan);
+        $templateProcessor->setValue('keperluan',  $cetak_pinjam->keperluan);
+
+        $fileName = "peminjaman ".(strtoupper($barang_pinjam->nama_perangkat).".". $cetak_pinjam->nama_peminjam.".". $tanggal_sekarang);
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 
     public function perbaikan_input(Request $request){

@@ -48,9 +48,11 @@ Route::group(['middleware' => 'auth'], function () {
          * IT
          */
         Route::get('IT/get_data_aset','ItController@search')->name('it.search');
+        Route::get('IT/autofill','ItController@autofill')->name('it.autofill');
         Route::get('IT/get_data_aset_perbaikan','ItController@search_perbaikan')->name('it.search_perbaikan');
         Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
         Route::get('IT/peminjaman/delete/{id}','ItController@peminjaman_delete')->name('it.peminjaman_delete');
+        Route::get('IT/peminjaman/cetak/{id}','ItController@peminjaman_cetak')->name('it.peminjaman_cetak');
         Route::post('IT/pengajuan/perbaikan','ItController@perbaikan_input')->name('it.input.perbaikan');
         Route::get('IT/pengembalian','ItController@pengembalian_index')->name('it.pengembalian');
         Route::get('IT/pengembalian/aset/{id}','ItController@pengembalian_aset')->name('it.pengembalian_aset');
@@ -78,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/aset/edit/{id}','AsetController@edit')->name('aset.edit');
         Route::post('/aset/update/{id}','AsetController@update')->name('aset.update');
 
-        
+
         /**
          * Laporan
          */

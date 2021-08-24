@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="col-3">
                                     <label>Kode Perangkat</label>
-                                    <select class="form-control search" name="kode_perangkat" required>
+                                    <select class="form-control search" id="kode_perangkat" onchange="autofill()" name="kode_perangkat" required>
                                         <option></option>
                                     </select>
                                 </div>
@@ -62,7 +62,10 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-6">
+                                    <textarea name="kelengkapan" class="form-control" id="kelengkapan" placeholder="- Input kelengkapan barang -" required></textarea>
+                                </div>
+                                <div class="col-6">
                                     <textarea name="keperluan" class="form-control" placeholder="- Input Keperluan Peminjaman -" required></textarea>
                                 </div>
                             </div>
@@ -144,7 +147,7 @@
                                         @endif
                                         @elserole('IT')
                                         @if ($peminjaman->status != false)
-                                            <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Delete</a></td>
+                                            <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Delete</a> <a href="{{route('it.peminjaman_cetak',$peminjaman->id)}}" class="btn btn-sm btn-primary">Cetak Surat</a></td>
                                         @else
                                             <td><p class="badge bg-danger">Belum dikonfirmasi</p></td>
                                         @endif
@@ -189,5 +192,15 @@
             });
             $('input[name="laporan_peminjam"]').daterangepicker();
          });
+        function autofill(){
+            var kode_perangkat = $("#kode_perangkat").val();
+            $.ajax({
+                url : '{{route('it.autofill')}}',
+                data : 'kode_perangkat='+kode_perangkat,
+                success: function( data ) {
+                    $("#kelengkapan").val(data.kelengkapan)
+                }
+            });
+        }
     </script>
 @endpush
