@@ -65,7 +65,7 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <label>Nomer Seri Produk</label>
-                                            <input type="number" class="form-control" name="nomer_seri_produk"
+                                            <input type="text" class="form-control" name="nomer_seri_produk"
                                                 placeholder="Nomer Seri produk" value="{{$peng_edit->nomer_seri_produk}}" required>
                                         </div>
                                         <div class="col-6">
