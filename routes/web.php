@@ -24,6 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  */
 Route::get('/pengadaan/index','PengadaanController@index')->name('pengadaan.index');
 Route::get('IT/peminjaman','ItController@index')->name('it.peminjaman');
+Route::get('IT/monitoring','ItController@monitoring')->name('it.monitoring');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:admin']], function () {
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
         Route::get('IT/peminjaman/delete/{id}','ItController@peminjaman_delete')->name('it.peminjaman_delete');
         Route::get('IT/peminjaman/cetak/{id}','ItController@peminjaman_cetak')->name('it.peminjaman_cetak');
+        Route::get('IT/pengembalian/cetak/{id}','ItController@pengembalian_cetak')->name('it.pengembalian_cetak');
         Route::post('IT/pengajuan/perbaikan','ItController@perbaikan_input')->name('it.input.perbaikan');
         Route::get('IT/pengembalian','ItController@pengembalian_index')->name('it.pengembalian');
         Route::get('IT/pengembalian/aset/{id}','ItController@pengembalian_aset')->name('it.pengembalian_aset');
@@ -61,7 +63,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('IT/perbaiakan','ItController@perbaikan')->name('it.perbaikan');
         Route::get('IT/perbaiakan/konfirmasi/{id}','ItController@perbaikan_konfirmasi')->name('it.perbaikan_konfirmasi');
         Route::get('IT/perbaiakan/delete/{id}','ItController@perbaikan_delete')->name('it.perbaikan_delete');
-        Route::get('IT/monitoring','ItController@monitoring')->name('it.monitoring');
 
         /**
          * Pengadaan IT
@@ -86,6 +87,7 @@ Route::group(['middleware' => 'auth'], function () {
          */
         Route::post('cetak/laporan/peminjaman','LaporanController@peminjaman')->name('laporan.peminjaman');
         Route::post('cetak/laporan/pengembalian','LaporanController@pengembalian')->name('laporan.pengembalian');
+        Route::post('cetak/laporan/aset','LaporanController@aset')->name('laporan.aset');
 
     });
 

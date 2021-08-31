@@ -147,7 +147,8 @@
                                         @endif
                                         @elserole('IT')
                                         @if ($peminjaman->status != false)
-                                            <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Delete</a> <a href="{{route('it.peminjaman_cetak',$peminjaman->id)}}" class="btn btn-sm btn-primary">Cetak Surat</a></td>
+                                            <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Delete</a>
+                                                <a href="{{route('it.peminjaman_cetak',$peminjaman->id)}}" class="btn btn-sm btn-primary">Cetak Surat</a></td>
                                         @else
                                             <td><p class="badge bg-danger">Belum dikonfirmasi</p></td>
                                         @endif

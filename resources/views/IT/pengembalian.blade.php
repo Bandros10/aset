@@ -78,8 +78,8 @@
                                         <td>{{$pengembalian->tgl_pengembalian}}</td>
                                         <td>
                                             @if (!empty($pengembalian->kelengkapan))
-                                            <a href="{{route('it.pengembalian.delete',$pengembalian->id)}}"
-                                                class="btn btn-sm btn-danger">Hapus</a>
+                                            <a href="{{route('it.pengembalian.delete',$pengembalian->id)}}" class="btn btn-sm btn-danger">Hapus</a>
+                                            <a href="{{route('it.pengembalian_cetak',$pengembalian->id)}}" class="btn btn-sm btn-primary">cetak pengembalian</a>
                                             @else
                                             <a href="{{route('it.pengembalian_aset',$pengembalian->id)}}" class="btn btn-sm btn-primary">Pengembalian Perangkat</a>
                                             @endif

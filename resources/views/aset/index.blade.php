@@ -2,6 +2,9 @@
 @section('title')
 <title>Data Aset</title>
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/yearpicker.css')}}">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
@@ -26,6 +29,27 @@
                     <x-card>
                         @slot('title')
                         <a href="{{route('aset.create')}}" class="btn btn-primary btn-sm">Tambah Data Aset</a>
+                        @role('IT')
+                            <form action="{{route('laporan.aset')}}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>Date range:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="tahun_laporan_aset" class="yearpicker form-control" value="" /> <button type="submit" class="form-control btn btn-sm btn-info">Cetak laporan</button>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @endrole
                         @endslot
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -73,3 +97,15 @@
     </section>
 </div>
 @endsection
+@push('js')
+    <script src="{{asset('js/yearpicker.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $(".yearpicker").yearpicker({
+                year: 2021,
+                startYear: 2019,
+                endYear: 9999,
+            });
+        });
+    </script>
+@endpush
