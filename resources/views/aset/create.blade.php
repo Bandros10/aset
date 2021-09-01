@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Form Penambahan Aset</h1>
+                    <h1 class="m-0">FORM PENAMBAHAN ASET</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -49,7 +49,7 @@
                                             </select>
                                         </div>
                                         <div class="col-3">
-                                            <label>Tipe</label>
+                                            <label>Tipe Perangkat</label>
                                             <input type="text" name="tipe" class="form-control"  placeholder="Masukkan Tipe Perangkat">
                                         </div>
                                         <div class="col-2">

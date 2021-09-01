@@ -32,9 +32,9 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-3">
-                                    <label>Nama Barang</label>
+                                    <label>Nama Perangkat</label>
                                     <input type="text" class="form-control" name="nama_barang"
-                                        placeholder="Masukan Nama Barang" value="{{$peng_edit->nama_barang}}" required>
+                                        placeholder="Masukkan Nama Perangkat" value="{{$peng_edit->nama_barang}}" required>
                                 </div>
                                 <div class="col-3">
                                     <label>Jenis</label>
@@ -43,19 +43,19 @@
                                         <option value="laptop" {{$peng_edit->jenis_barang == "laptop" ? 'selected' : '' }}>Laptop</option>
                                         <option value="PC" {{$peng_edit->jenis_barang == "PC" ? 'selected' : '' }}>PC</option>
                                         <option value="monitor" {{$peng_edit->jenis_barang == "monitor" ? 'selected' : '' }}>Monitor</option>
-                                        <option value="printer" {{$peng_edit->jenis_barang == "printer" ? 'selected' : '' }}>printer</option>
+                                        <option value="printer" {{$peng_edit->jenis_barang == "printer" ? 'selected' : '' }}>Printer</option>
                                         <option value="scanner" {{$peng_edit->jenis_barang == "scanner" ? 'selected' : '' }}>Scanner</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
                                     <label>Merek</label>
                                     <input type="text" class="form-control" name="merk_barang"
-                                        placeholder="Merek Barang Pengadaan" value="{{$peng_edit->merk_barang}}" required>
+                                        placeholder="Merek Perangkat Pengadaan" value="{{$peng_edit->merk_barang}}" required>
                                 </div>
                                 <div class="col-3">
-                                    <label>Tipe Barang</label>
+                                    <label>Tipe Perangkat</label>
                                     <input type="text" class="form-control" name="model_barang"
-                                        placeholder="Model Barang Pengadaan" value="{{$peng_edit->model_barang}}" required>
+                                        placeholder="Model Perangkat Pengadaan" value="{{$peng_edit->model_barang}}" required>
                                 </div>
                             </div>
                         </div>
@@ -64,14 +64,14 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-6">
-                                            <label>Nomer Seri Produk</label>
+                                            <label>Nomor Seri Produk</label>
                                             <input type="text" class="form-control" name="nomer_seri_produk"
-                                                placeholder="Nomer Seri produk" value="{{$peng_edit->nomer_seri_produk}}" required>
+                                                placeholder="Nomor Seri produk" value="{{$peng_edit->nomer_seri_produk}}" required>
                                         </div>
                                         <div class="col-6">
-                                            <label>Harga Satuan</label>
+                                            <label>Harga Perangkat</label>
                                             <input type="number" class="form-control" name="harga_barang"
-                                                placeholder="Harga Barang" value="{{$peng_edit->harga_barang}}" required>
+                                                placeholder="Harga Perangkat" value="{{$peng_edit->harga_barang}}" required>
                                         </div>
                                     </div>
                                     <label>Tanggal Pengadaan</label>

@@ -11,7 +11,7 @@
                         <div class="inner">
                             <h3>{{$barang_aset}}</h3>
 
-                            <p>Aset Barang</p>
+                            <p>Aset</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -41,7 +41,7 @@
                         <div class="inner">
                             <h3>{{$barang_pinjam}}<sup style="font-size: 20px"> ({{$notif_pinjam}} waiting aproval)</sup></h3>
 
-                            <p>Barang Dipinjam</p>
+                            <p>Perangkat Dipinjam</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -56,7 +56,7 @@
                         <div class="inner">
                             <h3>{{$data_perbaikan}}</h3>
 
-                            <p>Barang harus diperbaiki</p>
+                            <p>Perangkat Diperbaiki</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>

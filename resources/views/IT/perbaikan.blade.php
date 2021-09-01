@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Perbaikan</h1>
+                    <h1 class="m-0">PERBAIKAN ASET</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -32,7 +32,7 @@
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-3">
-                                    <label for="kode_perangkat">ID Perangkat</label>
+                                    <label for="kode_perangkat">Kode Perangkat</label>
                                     <select class="form-control search" name="kode_perangkat">
                                         <option></option>
                                     </select>
@@ -41,7 +41,7 @@
                             <br>
                             <div class="row">
                                 <div class="col">
-                                    <textarea name="keterangan_perbaikan" class="form-control" placeholder="- input keterangan -"></textarea>
+                                    <textarea name="keterangan_perbaikan" class="form-control" placeholder="- Input Keterangan -"></textarea>
                                 </div>
                             </div>
                             <br>

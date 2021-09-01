@@ -33,12 +33,12 @@ class ItController extends Controller
         pengembalian::find($id)->update(['kelengkapan'=>$request->kelengkapan, 'tgl_pengembalian' => Carbon::now()->format('Y/m/d')]);
         aset::where('kode_perangkat','=',$request->kode_perangkat)->update(['kondisi' => 'buruk','status' => false]);
         // DB::table('asets')->where('kode_perangkat',$request->kode_perangkat)->update(['kondisi' => 'buruk','status' => false]);
-        return redirect('IT/pengembalian')->with('sukses','barang telah di kembalikan');
+        return redirect('IT/pengembalian')->with('Sukses','Perangkat telah dikembalikan');
     }
 
     public function pengembalian_delete($id){
         pengembalian::find($id)->delete();
-        return redirect()->back()->with('sukses','permintaan perbaikan berhasil di konfirmasi');
+        return redirect()->back()->with('Sukses','Permintaan perbaikan berhasil dikonfirmasi');
     }
 
     public function perbaikan(){
@@ -102,7 +102,7 @@ class ItController extends Controller
 
     public function peminjaman_delete($id){
         peminjaman::find($id)->delete();
-        return redirect()->back()->with('sukses','data peminjaman telah di hapus');
+        return redirect()->back()->with('Sukses','Data peminjaman telah dihapus');
     }
 
     public function peminjaman_cetak($id){
@@ -159,18 +159,18 @@ class ItController extends Controller
 
     public function perbaikan_input(Request $request){
         perbaikan::create($request->all());
-        return redirect()->back()->with('sukses','pengajuan erbaikan');
+        return redirect()->back()->with('Sukses','Pengajuan perbaikan');
     }
 
     public function perbaikan_konfirmasi($id){
         perbaikan::where('kode_perangkat',$id)->update(['status'=>true]);
         aset::where('kode_perangkat',$id)->update(['kondisi'=>'baik','status'=>false]);
-        return redirect()->back()->with('sukses','permintaan perbaikan berhasil di konfirmasi');
+        return redirect()->back()->with('Sukses','Permintaan perbaikan berhasil dikonfirmasi');
     }
 
     public function perbaikan_delete($id){
         perbaikan::find($id)->delete();
-        return redirect()->back()->with('sukses','data perbaikan berhasil di hapus');
+        return redirect()->back()->with('Sukses','Data perbaikan berhasil dihapus');
     }
 
     public function monitoring(){

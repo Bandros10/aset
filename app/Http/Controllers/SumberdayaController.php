@@ -20,7 +20,7 @@ class SumberdayaController extends Controller
     public function konfirmasi($id){
         try {
             DB::table('pengadaans')->where('kode_perangkat',$id)->update(['confirmed_kepala_sumber_daya' => true]);
-            return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di aprov');
+            return redirect(route('pengadaan.index'))->with('Sukses','Pengadaan perangkat telah diapprov');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th);
         }
@@ -28,7 +28,7 @@ class SumberdayaController extends Controller
 
     public function konfirmasi_peminjaman($id){
         peminjaman::where('id',$id)->update(['status' => true]);
-        return redirect()->back()->with('sukses','pengajuan peminjaman barang terah di konfirmasi');
+        return redirect()->back()->with('Sukses','Pengajuan peminjaman perangkat telah dikonfirmasi');
     }
 
     public function tolak(Request $req,$id){
@@ -36,6 +36,6 @@ class SumberdayaController extends Controller
         $tolak->update([
             'keterangan_sumber_daya' => $req->keterangan_sumber_daya,
         ]);
-        return redirect(route('pengadaan.index'))->with('error','pengadaan barang telah di tolak');
+        return redirect(route('pengadaan.index'))->with('Error','Pengadaan perangkat telah ditolak');
     }
 }
