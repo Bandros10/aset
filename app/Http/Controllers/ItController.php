@@ -131,6 +131,32 @@ class ItController extends Controller
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 
+    public function pengembalian_cetak($id){
+        $cetak_pengembalian = pengembalian::find($id);
+        $barang_kembali = aset::where('kode_perangkat','=',$cetak_pengembalian->kode_perangkat)->first();
+        $tanggal_sekarang = Carbon::now()->translatedFormat('d F Y');
+
+        $templateProcessor = new TemplateProcessor('template/cetak_kembali.docx');
+        $templateProcessor->setValue('tanggal_sekarang', $tanggal_sekarang);
+        $templateProcessor->setValue('nama_pemberi', auth()->user()->name);
+        $templateProcessor->setValue('jabatan_pemberi', auth()->user()->jabatan);
+        $templateProcessor->setValue('divisi_pemberi', auth()->user()->divisi);
+        $templateProcessor->setValue('nama_peminjam', $cetak_pengembalian->nama_peminjam);
+        $templateProcessor->setValue('jabatan_peminjam', $cetak_pengembalian->jabatan_peminjam);
+        $templateProcessor->setValue('divisi_peminjam',  $cetak_pengembalian->devisi_peminjam);
+        $templateProcessor->setValue('jenis',  $barang_kembali->model);
+        $templateProcessor->setValue('merek',  $barang_kembali->merek);
+        $templateProcessor->setValue('tipe',  $barang_kembali->tipe);
+        $templateProcessor->setValue('nomer_seri_produk',  $barang_kembali->nomer_seri_produk);
+        $templateProcessor->setValue('nama_perangkat',  $barang_kembali->nama_perangkat);
+        $templateProcessor->setValue('kelengkapan',  $cetak_pengembalian->kelengkapan);
+        $templateProcessor->setValue('keperluan',  $cetak_pengembalian->keperluan);
+
+        $fileName = "pengembalian ".(strtoupper($barang_kembali->nama_perangkat).".". $cetak_pengembalian->nama_peminjam.".". $tanggal_sekarang);
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
     public function perbaikan_input(Request $request){
         perbaikan::create($request->all());
         return redirect()->back()->with('Sukses','Pengajuan perbaikan');

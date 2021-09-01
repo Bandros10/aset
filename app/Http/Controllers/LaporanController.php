@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Exports\AsetExport;
 use App\Models\pengembalian;
 use Illuminate\Http\Request;
 use App\Exports\PeminjamanExport;
@@ -24,5 +25,10 @@ class LaporanController extends Controller
         $awal = Carbon::parse($p[0])->format('Y-m-d');
         $akhir = Carbon::parse($p[1])->format('Y-m-d');
         return Excel::download(new PengembalianExport($awal,$akhir), 'Laporan pengembalian '.$awal.' - '.$akhir.'.xlsx');
+    }
+
+    public function aset(Request $request){
+        $tahun = $request->tahun_laporan_aset;
+        return Excel::download(new AsetExport($tahun), 'Laporan aset '.$tahun.'.xlsx');
     }
 }

@@ -128,6 +128,12 @@
                             </a>
                         </li>
                     </ul>
+                    <li class="nav-item">
+                        <a href="{{route('it.monitoring')}}" class="nav-link">
+                            <i class="fas fa-chart-pie"></i>
+                            <p>Monitoring Aset</p>
+                        </a>
+                    </li>
                 </li>
                 @endrole
                 @role('keuangan')
