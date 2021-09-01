@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Exports\AsetExport;
 use App\Models\pengembalian;
 use Illuminate\Http\Request;
+use App\Exports\PengadaanExport;
 use App\Exports\PeminjamanExport;
 use Illuminate\Support\Facades\DB;
 use App\Exports\PengembalianExport;
@@ -30,5 +31,10 @@ class LaporanController extends Controller
     public function aset(Request $request){
         $tahun = $request->tahun_laporan_aset;
         return Excel::download(new AsetExport($tahun), 'Laporan aset '.$tahun.'.xlsx');
+    }
+
+    public function pengadaan(Request $request){
+        $tahun = $request->tahun_laporan_pengadaan;
+        return Excel::download(new PengadaanExport($tahun), 'Laporan pengadaan '.$tahun.'.xlsx');
     }
 }

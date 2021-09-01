@@ -2,6 +2,9 @@
 @section('title')
     <title>Pengadaan</title>
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/yearpicker.css')}}">
+@endsection
 
 @section('content')
 <div class="content-wrapper">
@@ -29,6 +32,25 @@
                         @slot('title')
                         @role('IT')
                             <button class="btn btn-primary btn-sm"data-toggle="modal" data-target="#pengadaanmodal">Input Pengadaan Aset</button>
+                            <form action="{{route('laporan.pengadaan')}}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>Laporan Per Tahun</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="tahun_laporan_pengadaan" class="yearpicker form-control" value="" /> <button type="submit" class="form-control btn btn-sm btn-info">Cetak laporan</button>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         @endrole
                         @endslot
                         <div class="table-responsive">
@@ -117,3 +139,16 @@
     </section>
 </div>
 @endsection
+@push('js')
+    <script src="{{asset('js/yearpicker.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $(".yearpicker").yearpicker({
+                year: 2021,
+                startYear: 2019,
+                endYear: 9999,
+            });
+        });
+    </script>
+@endpush
+

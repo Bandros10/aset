@@ -19,7 +19,7 @@ class AsetExport implements FromQuery, WithMapping, WithHeadings
     }
 
     public function query(){
-        $data_aset = aset::query()->whereYear('created_at', $this->year);
+        $data_aset = aset::query()->whereYear('tgl_pembelian', $this->year);
         // dd($data_aset);
         return $data_aset;
     }

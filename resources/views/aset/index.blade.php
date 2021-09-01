@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>Date range:</label>
+                                            <label>Laporan Per Tahun</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">

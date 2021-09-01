@@ -88,6 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('cetak/laporan/peminjaman','LaporanController@peminjaman')->name('laporan.peminjaman');
         Route::post('cetak/laporan/pengembalian','LaporanController@pengembalian')->name('laporan.pengembalian');
         Route::post('cetak/laporan/aset','LaporanController@aset')->name('laporan.aset');
+        Route::post('cetak/laporan/pengadaan','LaporanController@pengadaan')->name('laporan.pengadaan');
 
     });
 
