@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengembalian</h1>
+                    <h1 class="m-0">PENGEMBALIAN ASET</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -54,10 +54,10 @@
                                 <thead>
                                     <tr>
                                         <td>No</td>
-                                        <td>Id Perangkat</td>
+                                        <td>Kode Perangkat</td>
                                         <td>Nama Peminjam</td>
                                         <td>Jabatan Peminjam</td>
-                                        <td>Devisi Peminjam</td>
+                                        <td>Divisi Peminjam</td>
                                         <td>Keperluan</td>
                                         <td>Kelengkapan</td>
                                         <td>Tanggal</td>

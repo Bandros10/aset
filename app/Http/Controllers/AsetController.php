@@ -94,9 +94,9 @@ class AsetController extends Controller
                 'kelengkapan' => $request->kelengkapan,
                 'photo' => $photo]
             );
-            return redirect('/aset')->with('sukses','data aset berhasil di tambahkan');
+            return redirect('/aset')->with('Sukses','Data aset berhasil ditambahkan');
         } catch (\Throwable $th) {
-            return redirect('/aset')->with('error','data aset sudah tersedia');
+            return redirect('/aset')->with('Error','Data aset sudah tersedia');
         }
     }
 
@@ -111,7 +111,7 @@ class AsetController extends Controller
             File::delete(public_path('uploads/product/' . $delete->photo));
         }
         $delete->delete();
-        return redirect()->back()->with(['sukses' => 'Data Aset Dihapus']);
+        return redirect()->back()->with(['Sukses' => 'Data Aset Dihapus']);
     }
 
     public function edit($id){
@@ -163,6 +163,6 @@ class AsetController extends Controller
             'kelengkapan' => $request->kelengkapan,
             'photo' => $photo
         ]);
-        return redirect(route('aset.index'))->with(['sukses' => $getaset->nama_perangkat .' Diperbaharui']);
+        return redirect(route('aset.index'))->with(['Sukses' => $getaset->nama_perangkat .' Diperbaharui']);
     }
 }

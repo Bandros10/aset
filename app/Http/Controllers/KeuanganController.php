@@ -40,7 +40,7 @@ class KeuanganController extends Controller
             'nomer_seri_produk' => $request->nomer_seri_produk,
             'tgl_pembelian' => $request->tgl_pembelian,
             'keterangan' => $request->keterangan]);
-            return redirect(route('pengadaan.index'))->with('sukses','pengadaan barang telah di approv');
+            return redirect(route('pengadaan.index'))->with('Sukses','Pengadaan perangkat telah diapprov');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th);
         }
@@ -52,6 +52,6 @@ class KeuanganController extends Controller
         $tolak->update([
             'keterangan_keuangan' => $req->keterangan_keuangan,
         ]);
-        return redirect(route('pengadaan.index'))->with('error','pengadaan barang telah di tolak');
+        return redirect(route('pengadaan.index'))->with('Error','Pengadaan perangkat telah ditolak');
     }
 }

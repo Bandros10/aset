@@ -52,7 +52,7 @@
                 <td>{!! QrCode::size(100)->generate($printer->kode_perangkat); !!}</td>
                 <td>
                     @if ($printer->status == true)
-                    <p style="color: red">Barang Sedang Dipinjam</p>
+                    <p style="color: red">Perangkat Sedang Dipinjam</p>
                 @else
                     <a href="{{route('aset.edit',$printer->kode_perangkat)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
                     <a href="{{route('aset.destroy', $printer->kode_perangkat)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></i> Hapus</a>

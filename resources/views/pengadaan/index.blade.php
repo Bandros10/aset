@@ -36,14 +36,14 @@
                                 <thead>
                                     <tr>
                                         <td>Kode Perangkat</td>
-                                        <td>Nama Barang</td>
-                                        <td>Jenis Barang</td>
-                                        <td>Merek Barang</td>
-                                        <td>Model Barang</td>
-                                        <td>Nomer Seri Produk</td>
-                                        <td>Harga Barang</td>
+                                        <td>Nama Perangkat</td>
+                                        <td>Jenis Perangkat</td>
+                                        <td>Merek Perangkat</td>
+                                        <td>Model Perangkat</td>
+                                        <td>Nomor Seri Produk</td>
+                                        <td>Harga Perangkat</td>
                                         <td>Tanggal Pengadaan</td>
-                                        <td>keterangan</td>
+                                        <td>Keterangan</td>
                                         <td>Confirmed</td>
                                     </tr>
                                 </thead>
@@ -63,7 +63,7 @@
                                                 @if ($pengadaan->confirmed != true)
                                                     @role('IT')
                                                         @if ($pengadaan->confirmed_keuangan == true && $pengadaan->confirmed_kepala_sumber_daya == true)
-                                                            <span class="badge bg-success">Pengadaan telah di konfimasi</span>
+                                                            <span class="badge bg-success">Pengadaan Telah Dikonfimasi</span>
                                                         @elseif (!empty($pengadaan->keterangan_keuangan) || !empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Pengadaan tidak disetujui</span>
                                                         @else
@@ -73,7 +73,7 @@
                                                         @if (!empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan aset telah ditolak kepala sumber daya</span>
                                                         @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
-                                                            <span class="badge badge-success">Pengadaan disetujui oleh Sumber daya</span>
+                                                            <span class="badge badge-success">Pengadaan Disetujui oleh Kepala Sumber Daya</span>
                                                         @elseif (!empty($pengadaan->keterangan_keuangan))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan aset telah ditolak keuangan</span>
                                                         @else
@@ -83,7 +83,7 @@
                                                         @if (!empty($pengadaan->keterangan_keuangan))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_keuangan}}">Permintaan pengadaan aset telah ditolak keuangan</span>
                                                         @elseif ($pengadaan->confirmed_keuangan == true)
-                                                            <span class="badge badge-success">Pengadaan disetujui keuangan</span>
+                                                            <span class="badge badge-success">Pengadaan Disetujui Keuangan</span>
                                                         @elseif (!empty($pengadaan->keterangan_sumber_daya))
                                                             <span class="badge badge-danger" data-toggle="popover" title="Keterangan Tolak" data-content="{{$pengadaan->keterangan_sumber_daya}}">Permintaan pengadaan aset telah ditolak sumber daya</span>
                                                         @elseif ($pengadaan->confirmed_kepala_sumber_daya == true)
@@ -94,11 +94,11 @@
                                                     @endrole
                                                 @else
                                                     @role('IT')
-                                                        <span class="badge bg-success">Pengadaan telah disetujui</span>
+                                                        <span class="badge bg-success">Pengadaan Telah Disetujui</span>
                                                     @elserole('keuangan')
-                                                        <span class="badge bg-success">Pengadaan telah disetujui</span>
+                                                        <span class="badge bg-success">Pengadaan Telah Disetujui</span>
                                                     @elserole('kepala sumber daya')
-                                                        <span class="badge bg-success">Pengadaan telah disetujui</span>
+                                                        <span class="badge bg-success">Pengadaan Telah Disetujui</span>
                                                     @endrole
                                                 @endif
                                             </td>

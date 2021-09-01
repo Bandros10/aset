@@ -15,27 +15,27 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-3">
-                                    <label>Nama Barang</label>
-                                    <input type="text" class="form-control" name="nama_barang" placeholder="Masukan Nama Barang" required>
+                                    <label>Nama Perangkat</label>
+                                    <input type="text" class="form-control" name="nama_barang" placeholder="Masukkan Nama Perangkat" required>
                                 </div>
                                 <div class="col-3">
                                     <label>Jenis</label>
                                     <select class="form-control" name="jenis_barang" required>
-                                        <option selected disabled>- Jenis Barang - </option>
+                                        <option selected disabled>- Jenis Perangkat - </option>
                                         <option value="laptop">Laptop</option>
                                         <option value="PC">PC</option>
                                         <option value="monitor">Monitor</option>
-                                        <option value="printer">printer</option>
+                                        <option value="printer">Printer</option>
                                         <option value="scanner">Scanner</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
                                     <label>Merek</label>
-                                    <input type="text" class="form-control" name="merk_barang" placeholder="Merek Barang Pengadaan" required>
+                                    <input type="text" class="form-control" name="merk_barang" placeholder="Merek Perangkat Pengadaan" required>
                                 </div>
                                 <div class="col-3">
-                                    <label>Tipe Barang</label>
-                                    <input type="text" class="form-control" name="model_barang" placeholder="Model Barang Pengadaan" required>
+                                    <label>Tipe Perangkat</label>
+                                    <input type="text" class="form-control" name="model_barang" placeholder="Tipe Perangkat Pengadaan" required>
                                 </div>
                             </div>
                         </div>
@@ -44,18 +44,18 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label>Nomer Seri Produk</label>
-                                            <input type="text" class="form-control" name="nomer_seri_produk" placeholder="Maukan Nomer Seri produk" required>
+                                            <label>Nomor Seri Produk</label>
+                                            <input type="text" class="form-control" name="nomer_seri_produk" placeholder="Masukkan Nomor Seri Produk" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
-                                            <label>Harga Satuan</label>
-                                            <input type="number" class="form-control" name="harga_barang" placeholder="Harga Barang" required>
+                                            <label>Harga Perangkat</label>
+                                            <input type="number" class="form-control" name="harga_barang" placeholder="Harga Perangkat" required>
                                         </div>
                                         <div class="col-6">
                                             <label>Tanggal Pengadaan</label>
-                                            <input type="date" class="form-control" name="tanggal_pengadaan" placeholder="Harga Barang" required>
+                                            <input type="date" class="form-control" name="tanggal_pengadaan" placeholder="Tanggal" required>
                                         </div>
                                     </div>
                                 </div>

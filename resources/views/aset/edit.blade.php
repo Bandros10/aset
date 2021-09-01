@@ -44,7 +44,7 @@
                                                 <option value="laptop" @if(old('kategori', $asetedit->kategori) === 'laptop') selected @endif>Laptop</option>
                                                 <option value="PC" @if(old('kategori', $asetedit->kategori) === 'PC') selected @endif>PC</option>
                                                 <option value="monitor" @if(old('kategori', $asetedit->kategori) === 'monitor') selected @endif>Monitor</option>
-                                                <option value="printer" @if(old('kategori', $asetedit->kategori) === 'printer') selected @endif>printer</option>
+                                                <option value="printer" @if(old('kategori', $asetedit->kategori) === 'printer') selected @endif>Printer</option>
                                                 <option value="scanner" @if(old('kategori', $asetedit->kategori) === 'scanner') selected @endif>Scanner</option>
                                             </select>
                                         </div>
@@ -91,7 +91,7 @@
                                             <input type="text" name="harga" class="form-control"  value="{{$asetedit->harga}}">
                                         </div>
                                         <div class="col-3">
-                                            <label>Nomer Serial Produk</label>
+                                            <label>Nomor Serial Produk</label>
                                             <input type="text" name="nomer_seri_produk" class="form-control"  value="{{$asetedit->nomer_seri_produk}}">
                                         </div>
                                         <div class="col-3">

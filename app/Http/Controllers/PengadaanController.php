@@ -43,7 +43,7 @@ class PengadaanController extends Controller
             $pengadaan->save();
             return redirect()->back()->with('Sukses','Berhasil menambahkan pengadaan aset baru');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('Error','Ooppss..! terjadi kesalahan silahkan hubungi bagian IT');
+            return redirect()->back()->with('Error','Terjadi kesalahan');
         }
     }
 
@@ -70,6 +70,6 @@ class PengadaanController extends Controller
         $peng_update->update(['kode_perangkat' => $id,'nama_barang' => $request->nama_barang,'jenis_barang' => $request->jenis_barang,'keterangan' => $request->keterangan,
                                 'merk_barang' => $request->merk_barang,'model_barang' => $request->model_barang,'nomer_seri_produk' => $request->nomer_seri_produk,
                                 'harga_barang' => $request->harga_barang,'tanggal_pengadaan' => $request->tanggal_pengadaan]);
-        return redirect(\route('pengadaan.index'))->with('sukses','data pengadaan berhasil di rubah');
+        return redirect(\route('pengadaan.index'))->with('Sukses','Data pengadaan berhasil diubah');
     }
 }
