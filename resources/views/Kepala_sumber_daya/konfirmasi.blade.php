@@ -9,12 +9,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Konfirmasi pengadaan barang</h1>
+                    <h1 class="m-0">Konfirmasi Pengadaan Perangkat</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Konfirmasi pengadaan barang</li>
+                        <li class="breadcrumb-item active">Konfirmasi Pengadaan Perangkat</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Form data barang</h3>
+                    <h3 class="card-title">Form Data Perangkat</h3>
                 </div>
                 <form action="{{route('kepala_sumber_daya.konfirmasi.barang',$konfirm->kode_perangkat)}}" method="POST">
                     @csrf
@@ -33,28 +33,28 @@
                             <div class="col-3">
                                 <!-- /.card-header -->
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Nama Barang</label>
+                                    <label for="exampleInputBorder">Nama Perangkat</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{$konfirm->nama_barang}}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Jenis Barang</label>
+                                    <label for="exampleInputBorder">Jenis Perangkat</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{$konfirm->jenis_barang}}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Merek Barang</label>
+                                    <label for="exampleInputBorder">Merek Perangkat</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{$konfirm->merk_barang}}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Model Barang</label>
+                                    <label for="exampleInputBorder">Model Perangkat</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{$konfirm->model_barang}}" readonly>
                                 </div>
@@ -63,21 +63,21 @@
                         <div class="row">
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Tanggal Pengadaan Barang</label>
+                                    <label for="exampleInputBorder">Tanggal Pengadaan Perangkat</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{Carbon\Carbon::parse($konfirm->tanggal_pengadaan)->translatedFormat('d F Y')}}" readonly>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Harga Barang</label>
+                                    <label for="exampleInputBorder">Harga Perangkat</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{number_format($konfirm->harga_barang,0,",",".")}}" readonly>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputBorder">Nomer Serial Produk</label>
+                                    <label for="exampleInputBorder">Nomor Serial Produk</label>
                                     <input type="text" class="form-control form-control-border"
                                         value="{{$konfirm->nomer_seri_produk}}" readonly>
                                 </div>
@@ -115,7 +115,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Sumber daya tolak pengadaan barang</h4>
+                <h4 class="modal-title">Kepala Sumber Daya Menolak Pengadaan Perangkat</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -123,10 +123,10 @@
             <form action="{{route('kepala_sumber_daya.tolak',$konfirm->kode_perangkat)}}" method="POST">
             <div class="modal-body">
                     @csrf
-                    <textarea name="keterangan_sumber_daya" class="form-control" placeholder="keterangan tolak"></textarea>
+                    <textarea name="keterangan_sumber_daya" class="form-control" placeholder="Keterangan Penolakan"></textarea>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-danger">Tolak</button>
                 </div>
             </form>

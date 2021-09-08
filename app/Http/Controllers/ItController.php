@@ -117,7 +117,7 @@ class ItController extends Controller
         $templateProcessor->setValue('divisi_pemberi', auth()->user()->divisi);
         $templateProcessor->setValue('nama_peminjam', $cetak_pinjam->nama_peminjam);
         $templateProcessor->setValue('jabatan_peminjam', $cetak_pinjam->jabatan_peminjam);
-        $templateProcessor->setValue('divisi_peminjam',  $cetak_pinjam->divisi_peminjam);
+        $templateProcessor->setValue('divisi_peminjam',  $cetak_pinjam->devisi_peminjam);
         $templateProcessor->setValue('jenis',  $barang_pinjam->model);
         $templateProcessor->setValue('merek',  $barang_pinjam->merek);
         $templateProcessor->setValue('tipe',  $barang_pinjam->tipe);
@@ -126,7 +126,7 @@ class ItController extends Controller
         $templateProcessor->setValue('kelengkapan',  $cetak_pinjam->kelengkapan);
         $templateProcessor->setValue('keperluan',  $cetak_pinjam->keperluan);
 
-        $fileName = "peminjaman ".(strtoupper($barang_pinjam->nama_perangkat).".". $cetak_pinjam->nama_peminjam.".". $tanggal_sekarang);
+        $fileName = "PeminjamanAset ".(strtoupper($barang_pinjam->nama_perangkat)."_". $cetak_pinjam->nama_peminjam."_". $tanggal_sekarang);
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
