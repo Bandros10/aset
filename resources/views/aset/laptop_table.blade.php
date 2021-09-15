@@ -31,7 +31,7 @@
                     <td>{{$laptop->kode_perangkat}}</td>
                 @endif
                 <td>{{$laptop->nama_perangkat}}@if (empty($laptop->kondisi))
-                    <sup  class="label bg-danger">info barang belum lengkap</sup>
+                    <sup  class="label bg-danger">Info perangkat belum lengkap</sup>
                 @endif</td>
                 <td>{{$laptop->kategori}}</td>
                 <td>{{$laptop->tipe}}</td>

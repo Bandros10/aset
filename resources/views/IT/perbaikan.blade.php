@@ -103,7 +103,7 @@
     <script type="text/javascript">
          $(document).ready(function () {
             $('.search').select2({
-                placeholder: "- Kode Barang -",
+                placeholder: "- Kode Perangkat -",
                 ajax: {
                     url: '{{ route('it.search_perbaikan') }}',
                     dataType: 'json',

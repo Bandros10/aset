@@ -97,7 +97,7 @@ class ItController extends Controller
         $pengembalian->keperluan = $request->keperluan;
         $pengembalian->save();
         DB::table('asets')->where('kode_perangkat',$request->kode_perangkat)->update(['status' => true]);
-        return redirect()->back()->with('sukses','pengajuan peminjama barang'.$request->kode_perangkat.'berhasil');
+        return redirect()->back()->with('Sukses','Pengajuan peminjaman perangkat'.$request->kode_perangkat.'Berhasil');
     }
 
     public function peminjaman_delete($id){
@@ -126,7 +126,7 @@ class ItController extends Controller
         $templateProcessor->setValue('kelengkapan',  $cetak_pinjam->kelengkapan);
         $templateProcessor->setValue('keperluan',  $cetak_pinjam->keperluan);
 
-        $fileName = "PeminjamanAset ".(strtoupper($barang_pinjam->nama_perangkat)."_". $cetak_pinjam->nama_peminjam."_". $tanggal_sekarang);
+        $fileName = "Peminjaman ".(strtoupper($barang_pinjam->nama_perangkat)."_". $cetak_pinjam->nama_peminjam."_". $tanggal_sekarang);
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -152,7 +152,7 @@ class ItController extends Controller
         $templateProcessor->setValue('kelengkapan',  $cetak_pengembalian->kelengkapan);
         $templateProcessor->setValue('keperluan',  $cetak_pengembalian->keperluan);
 
-        $fileName = "pengembalian ".(strtoupper($barang_kembali->nama_perangkat).".". $cetak_pengembalian->nama_peminjam.".". $tanggal_sekarang);
+        $fileName = "Pengembalian ".(strtoupper($barang_kembali->nama_perangkat)."_". $cetak_pengembalian->nama_peminjam."_". $tanggal_sekarang);
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }

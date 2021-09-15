@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Monitoring</h1>
+                    <h1 class="m-0">MONITORING</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
                 <div class="col">
                     <x-card>
                         @slot('title')
-                        <h3>Monitoring</h3>
+                        <h3>Monitoring Aset</h3>
                         @endslot
                         <div class="row">
                             <div class="col-4">
@@ -130,7 +130,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'data Statistic'
+                    text: 'Data Statistik'
                 }
             },
             tooltip: {
@@ -165,7 +165,7 @@
         Highcharts.chart('pertahun', {
 
             title: {
-                text: 'data statistic aset data'
+                text: 'Data Statistik Aset'
             },
 
             yAxis: {
