@@ -39,31 +39,24 @@
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <label>Nama Peminjam</label>
-                                    <input class="form-control" name="nama_peminjam" placeholder="- Input Nama Peminjam -" required>
+                                    <label>NIK</label>
+                                    <select class="form-control nik" id="nik" name="nik"  onchange="autofillpegawai()" required>
+                                        <option></option>
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <label>Jabatan Peminjam</label>
-                                    <input class="form-control" name="jabatan_peminjam" placeholder="- Input Jabatan Peminjam -" required>
+                                    <input class="form-control" name="jabatan_peminjam" id="jabatan_peminjam" placeholder="- Input Jabatan Peminjam -" required readonly>
                                 </div>
                                 <div class="col-3">
                                     <label>Divisi Peminjam</label>
-                                    <select name="devisi_peminjam" class="form-control" required>
-                                        <option selected disabled>- Pilih Divisi -</option>
-                                        <option value="Administrasi">Administrasi</option>
-                                        <option value="BOQ dan RAB">BOQ dan RAB</option>
-                                        <option value="Drafter">Drafter</option>
-                                        <option value="Engineer">Engineer</option>
-                                        <option value="Geodesi">Geodesi</option>
-                                        <option value="Mektan">Mektan</option>
-                                        <option value="Umum">Umum</option>
-                                    </select>
+                                    <input class="form-control" name="devisi_peminjam" id="devisi_peminjam" placeholder="- Input devisi Peminjam -" required readonly>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-6">
-                                    <textarea name="kelengkapan" class="form-control" id="kelengkapan" placeholder="- Input Kelengkapan Perangkat -" required></textarea>
+                                    <textarea name="kelengkapan" class="form-control" id="kelengkapan" placeholder="- Input Kelengkapan Perangkat -" required readonly></textarea>
                                 </div>
                                 <div class="col-6">
                                     <textarea name="keperluan" class="form-control" placeholder="- Input Keperluan Peminjaman -" required></textarea>
@@ -141,15 +134,19 @@
                                         <td>{{Carbon\carbon::parse($peminjaman->tgl_peminjaman)->format('d M Y')}}</td>
                                         @role('kepala sumber daya')
                                         @if ($peminjaman->status != true)
-                                            <td><a href="{{route('kepala_sumber_daya.konfirmasi_peminjaman',$peminjaman->id)}}" class="btn btn-sm btn-success"> Konfirmasi</a></td>
+                                            <td><a href="{{route('kepala_sumber_daya.konfirmasi_peminjaman',$peminjaman->id)}}" class="btn btn-sm btn-success"> Konfirmasi peminjaman</a></td>
                                         @else
                                             <td><button class="btn btn-sm btn-primary" disabled> Peminjaman sudah dikonfirmasi</button></td>
                                         @endif
                                         @elserole('IT')
                                         @if ($peminjaman->status != false)
+<<<<<<< Updated upstream
                                             <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Hapus </a> 
                                                 <a href="{{route('it.peminjaman_cetak',$peminjaman->id)}}" class="btn btn-sm btn-primary">Cetak Surat</a></td>
                                             
+=======
+                                            <td><a href="{{route('it.peminjaman_delete',$peminjaman->id)}}" class="btn btn-sm btn-danger"> Hapus </a> <a href="{{route('it.peminjaman_cetak',$peminjaman->id)}}" class="btn btn-sm btn-primary">Cetak Surat</a></td>
+>>>>>>> Stashed changes
                                         @else
                                             <td><p class="badge bg-danger">Belum Dikonfirmasi</p></td>
                                         @endif
@@ -183,8 +180,8 @@
                             results: $.map(data, function (aset) {
                                 return {
                                     id: aset.kode_perangkat,
-                                    text: aset.kode_perangkat + ' - ' + aset
-                                        .nama_perangkat
+                                    text: aset.kode_perangkat + ' - ' + aset.merek + ' ' + aset
+                                        .tipe
                                 }
                             })
                         };
@@ -192,7 +189,29 @@
                     cache: true
                 }
             });
+
             $('input[name="laporan_peminjam"]').daterangepicker();
+
+            $('.nik').select2({
+                placeholder: "- pegawai -",
+                ajax: {
+                    url: '{{ route('it.data_pegawai') }}',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (pegawai) {
+                                return {
+                                    id: pegawai.nik,
+                                    text: pegawai.nik + ' - ' + pegawai.nama_depan + ' ' + pegawai
+                                        .nama_belakang
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
          });
         function autofill(){
             var kode_perangkat = $("#kode_perangkat").val();
@@ -201,6 +220,17 @@
                 data : 'kode_perangkat='+kode_perangkat,
                 success: function( data ) {
                     $("#kelengkapan").val(data.kelengkapan)
+                }
+            });
+        }
+        function autofillpegawai(){
+            var nik = $("#nik").val();
+            $.ajax({
+                url : '{{route('it.autofillpegawai')}}',
+                data : 'nik='+nik,
+                success: function( data ) {
+                    $("#jabatan_peminjam").val(data.jabatan)
+                    $("#devisi_peminjam").val(data.devisi)
                 }
             });
         }

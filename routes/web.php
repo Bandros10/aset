@@ -49,7 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
          * IT
          */
         Route::get('IT/get_data_aset','ItController@search')->name('it.search');
+        Route::get('IT/get_data_pegawai','ItController@data_pegawai')->name('it.data_pegawai');
         Route::get('IT/autofill','ItController@autofill')->name('it.autofill');
+        Route::get('IT/autofillpegawai','ItController@autofillpegawai')->name('it.autofillpegawai');
         Route::get('IT/get_data_aset_perbaikan','ItController@search_perbaikan')->name('it.search_perbaikan');
         Route::post('IT/pengajuan/peminjaman','ItController@pengajuan')->name('it.input.peminjaman');
         Route::get('IT/peminjaman/delete/{id}','ItController@peminjaman_delete')->name('it.peminjaman_delete');
@@ -98,6 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
          */
         Route::get('/kepala_sumber_daya/konfirmasi/{id}','SumberdayaController@index')->name('kepala_sumber_daya.konfirmasi');
         Route::get('/kepala_sumber_daya/konfirmasi_peminjaman/{id}','SumberdayaController@konfirmasi_peminjaman')->name('kepala_sumber_daya.konfirmasi_peminjaman');
+        Route::post('/kepala_sumber_daya/konfirmasi/peminjaman_barang/{id}','SumberdayaController@konfirmasi_barang')->name('kepala_sumber_daya.konfirmasi_peminjaman.barang');
         Route::post('/kepala_sumber_daya/tolak/{id}','SumberdayaController@tolak')->name('kepala_sumber_daya.tolak');
         Route::post('/kepala_sumber_daya/konfirmasi/barang/{id}','SumberdayaController@konfirmasi')->name('kepala_sumber_daya.konfirmasi.barang');
     });

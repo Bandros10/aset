@@ -32,11 +32,6 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-3">
-                                    <label>Nama Perangkat</label>
-                                    <input type="text" class="form-control" name="nama_barang"
-                                        placeholder="Masukkan Nama Perangkat" value="{{$peng_edit->nama_barang}}" required>
-                                </div>
-                                <div class="col-3">
                                     <label>Jenis</label>
                                     <select class="form-control" name="jenis_barang" required>
                                         <option disabled>- Jenis Barang - </option>
@@ -57,6 +52,11 @@
                                     <input type="text" class="form-control" name="model_barang"
                                         placeholder="Model Perangkat Pengadaan" value="{{$peng_edit->model_barang}}" required>
                                 </div>
+                                <div class="col-3">
+                                    <label>Nomor Seri Produk</label>
+                                    <input type="text" class="form-control" name="nomer_seri_produk"
+                                        placeholder="Nomor Seri produk" value="{{$peng_edit->nomer_seri_produk}}" required>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -64,19 +64,16 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-6">
-                                            <label>Nomor Seri Produk</label>
-                                            <input type="text" class="form-control" name="nomer_seri_produk"
-                                                placeholder="Nomor Seri produk" value="{{$peng_edit->nomer_seri_produk}}" required>
-                                        </div>
-                                        <div class="col-6">
                                             <label>Harga Perangkat</label>
                                             <input type="number" class="form-control" name="harga_barang"
                                                 placeholder="Harga Perangkat" value="{{$peng_edit->harga_barang}}" required>
                                         </div>
+                                        <div class="col-6">
+                                            <label>Tanggal Pengadaan</label>
+                                            <input type="date" class="form-control" name="tanggal_pengadaan"
+                                                placeholder="Harga Barang" value="{{$peng_edit->tanggal_pengadaan}}" required>
+                                        </div>
                                     </div>
-                                    <label>Tanggal Pengadaan</label>
-                                    <input type="date" class="form-control" name="tanggal_pengadaan"
-                                        placeholder="Harga Barang" value="{{$peng_edit->tanggal_pengadaan}}" required>
                                 </div>
                                 <div class="col-6">
                                     <label>Keterangan</label>

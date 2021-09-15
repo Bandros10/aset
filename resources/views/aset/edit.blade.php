@@ -36,7 +36,7 @@
                                     <div class="row">
                                         <div class="col-3">
                                             <label>Nama Perangkat</label>
-                                            <input type="text" name="nama_perangkat" class="form-control"  value="{{$asetedit->nama_perangkat}}">
+                                            <input type="text" name="nama_perangkat" class="form-control"  value="{{$asetedit->merek}} {{$asetedit->tipe}}" readonly>
                                         </div>
                                         <div class="col-2">
                                             <label>Kategori</label>

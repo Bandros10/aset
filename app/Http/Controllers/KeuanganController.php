@@ -32,7 +32,6 @@ class KeuanganController extends Controller
 
             $id = $nm.\substr($request->nomer_seri_produk,0,5);
             DB::table('asets')->insert(['kode_perangkat' => $id,
-            'nama_perangkat' => $request->nama_perangkat,
             'kategori' => $request->kategori,
             'tipe' => $request->tipe,
             'merek' => $request->merek,

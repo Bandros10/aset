@@ -28,14 +28,23 @@
                         @slot('title')
                         <h3>Form Perbaikan Aset</h3>
                         @endslot
-                        <form action="{{route('it.input.perbaikan')}}" method="POST">
+                        <form action="{{route('it.input.perbaikan')}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-6">
                                     <label for="kode_perangkat">Kode Perangkat</label>
                                     <select class="form-control search" name="kode_perangkat">
                                         <option></option>
                                     </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="exampleInputFile">File Input</label>
+                                    <div class="input-group">
+                                      <div class="custom-file">
+                                          <label class="custom-file-label" for="exampleInputFile">Pilih Foto</label>
+                                          <input type="file" name="photo" class="custom-file-input" id="exampleInputFile">
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <br>
@@ -67,6 +76,7 @@
                                         <td>Kode Perangkat</td>
                                         <td>Tanggal</td>
                                         <td>Kterangan</td>
+                                        <td>photo barang perbaikan</td>
                                         <td>Aksi</td>
                                     </tr>
                                 </thead>
@@ -78,6 +88,8 @@
                                         <td>{{$perbaikan->kode_perangkat}}</td>
                                         <td>{{$perbaikan->created_at->format('d M Y')}}</td>
                                         <td>{{$perbaikan->keterangan_perbaikan}}</td>
+                                        <td><img src="{{ asset('uploads/product/' . $perbaikan->photo) }}" alt="{{ $perbaikan->kode_perangkat }}"
+                                            width="100px" height="100px"></td>
                                         <td>
                                             @if ($perbaikan->status != true)
                                                 <a href="{{route('it.perbaikan_konfirmasi',$perbaikan->kode_perangkat)}}" class="btn btn-sm btn-primary"> Konfirmasi</a></td>
@@ -113,8 +125,8 @@
                             results: $.map(data, function (aset) {
                                 return {
                                     id: aset.kode_perangkat,
-                                    text: aset.kode_perangkat + ' - ' + aset
-                                        .nama_perangkat
+                                    text: aset.kode_perangkat + ' - ' + aset.merek + ' ' + aset
+                                        .tipe
                                 }
                             })
                         };

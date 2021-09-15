@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Carbon\Carbon;
 use App\Models\aset;
 use App\Models\perbaikan;
 use App\Models\peminjaman;
+use Illuminate\Support\Str;
 use App\Models\pengembalian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class ItController extends Controller
@@ -54,14 +57,27 @@ class ItController extends Controller
 
             return response()->json($kode_perangkat);
         }
-        $kode_perangkat= DB::table('asets')->where('status','=',false)->where([['kondisi','=',array('baik')]])->select('kode_perangkat','nama_perangkat')->get();
+        $kode_perangkat= DB::table('asets')->where('status','=',false)->where([['kondisi','=',array('baik')]])->select('kode_perangkat','tipe','merek')->get();
 
         return response()->json($kode_perangkat);
     }
 
+    public function data_pegawai(Request $request)
+    {
+        $data_pegawai = DB::connection('mysql2')->table('pegawais')->select('nik','nama_depan','nama_belakang')->get();
+        return response()->json($data_pegawai);
+    }
+
+
     public function autofill(Request $request){
         $kode_perangkat = $_GET['kode_perangkat'];
         $check = DB::table('asets')->where('kode_perangkat',$kode_perangkat)->select('asets.*')->first();
+        return response()->json($check);
+    }
+
+    public function autofillpegawai(Request $request){
+        $nik_pegawai = $_GET['nik'];
+        $check = DB::connection('mysql2')->table('pegawais')->where('nik',$nik_pegawai)->select('pegawais.*')->first();
         return response()->json($check);
     }
 
@@ -73,15 +89,17 @@ class ItController extends Controller
 
             return response()->json($kode_perangkat);
         }
-        $kode_perangkat= DB::table('asets')->where([['kondisi','=',array('buruk')]])->select('kode_perangkat','nama_perangkat')->get();
+        $kode_perangkat= DB::table('asets')->where([['kondisi','=',array('buruk')]])->select('kode_perangkat','tipe','merek')->get();
 
         return response()->json($kode_perangkat);
     }
 
     public function pengajuan(Request $request){
+        $get_nama= DB::connection('mysql2')->table('pegawais')->where('nik',$request->nik)->select('pegawais.*')->first();
+        $nama_pegawai = $get_nama->nama_depan.' '.$get_nama->nama_belakang;
         $peminjaman = new peminjaman;
         $peminjaman->kode_perangkat = $request->kode_perangkat;
-        $peminjaman->nama_peminjam = $request->nama_peminjam;
+        $peminjaman->nama_peminjam = $nama_pegawai;
         $peminjaman->jabatan_peminjam = $request->jabatan_peminjam;
         $peminjaman->devisi_peminjam = $request->devisi_peminjam;
         $peminjaman->keperluan = $request->keperluan;
@@ -91,7 +109,7 @@ class ItController extends Controller
 
         $pengembalian = new pengembalian;
         $pengembalian->kode_perangkat = $request->kode_perangkat;
-        $pengembalian->nama_peminjam = $request->nama_peminjam;
+        $pengembalian->nama_peminjam = $nama_pegawai;
         $pengembalian->jabatan_peminjam = $request->jabatan_peminjam;
         $pengembalian->devisi_peminjam = $request->devisi_peminjam;
         $pengembalian->keperluan = $request->keperluan;
@@ -122,7 +140,7 @@ class ItController extends Controller
         $templateProcessor->setValue('merek',  $barang_pinjam->merek);
         $templateProcessor->setValue('tipe',  $barang_pinjam->tipe);
         $templateProcessor->setValue('nomer_seri_produk',  $barang_pinjam->nomer_seri_produk);
-        $templateProcessor->setValue('nama_perangkat',  $barang_pinjam->nama_perangkat);
+        $templateProcessor->setValue('nama_perangkat',  $barang_pinjam->merek.' '.$barang_pinjam->tipe);
         $templateProcessor->setValue('kelengkapan',  $cetak_pinjam->kelengkapan);
         $templateProcessor->setValue('keperluan',  $cetak_pinjam->keperluan);
 
@@ -148,17 +166,48 @@ class ItController extends Controller
         $templateProcessor->setValue('merek',  $barang_kembali->merek);
         $templateProcessor->setValue('tipe',  $barang_kembali->tipe);
         $templateProcessor->setValue('nomer_seri_produk',  $barang_kembali->nomer_seri_produk);
-        $templateProcessor->setValue('nama_perangkat',  $barang_kembali->nama_perangkat);
+        $templateProcessor->setValue('nama_perangkat', $barang_kembali->merek.' '.$barang_kembali->tipe);
         $templateProcessor->setValue('kelengkapan',  $cetak_pengembalian->kelengkapan);
         $templateProcessor->setValue('keperluan',  $cetak_pengembalian->keperluan);
 
+<<<<<<< Updated upstream
         $fileName = "Pengembalian ".(strtoupper($barang_kembali->nama_perangkat)."_". $cetak_pengembalian->nama_peminjam."_". $tanggal_sekarang);
+=======
+        $fileName = "pengembalian ".(strtoupper($barang_kembali->merek.' '.$barang_kembali->tipe).".". $cetak_pengembalian->nama_peminjam.".". $tanggal_sekarang);
+>>>>>>> Stashed changes
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 
+    private function saveFile($name, $photo)
+    {
+        //set nama file adalah gabungan antara nama produk dan time(). Ekstensi gambar tetap dipertahankan
+        $images = Str::slug($name) . time() . '.' . $photo->getClientOriginalExtension();
+        //set path untuk menyimpan gambar
+        $path = public_path('uploads/product');
+
+        //cek jika uploads/product bukan direktori / folder
+        if (!File::isDirectory($path)) {
+            //maka folder tersebut dibuat
+            File::makeDirectory($path, 0777, true, true);
+        }
+        //simpan gambar yang diuplaod ke folrder uploads/produk
+        Image::make($photo)->save($path . '/' . $images);
+        //mengembalikan nama file yang ditampung divariable $images
+        return $images;
+    }
+
     public function perbaikan_input(Request $request){
-        perbaikan::create($request->all());
+        $photo = null;
+        //jika terdapat file (Foto / Gambar) yang dikirim
+        if ($request->hasFile('photo')) {
+            //maka menjalankan method saveFile()
+            $photo = $this->saveFile($request->kode_perangkat, $request->file('photo'));
+        }
+        perbaikan::firstOrCreate(
+                            ['kode_perangkat' => $request->kode_perangkat,
+                            'keterangan_perbaikan' => $request->keterangan_perbaikan,
+                            'photo' => $photo]);
         return redirect()->back()->with('Sukses','Pengajuan perbaikan');
     }
 

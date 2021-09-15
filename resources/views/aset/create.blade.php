@@ -34,10 +34,6 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-3">
-                                            <label>Nama Perangkat</label>
-                                            <input type="text" name="nama_perangkat" class="form-control"  placeholder="Masukkan Nama Perangkat">
-                                        </div>
-                                        <div class="col-2">
                                             <label>Kategori</label>
                                             <select class="form-control" name="kategori" required>
                                                 <option selected disabled>- Kategori Perangkat - </option>

@@ -15,10 +15,6 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-3">
-                                    <label>Nama Perangkat</label>
-                                    <input type="text" class="form-control" name="nama_barang" placeholder="Masukkan Nama Perangkat" required>
-                                </div>
-                                <div class="col-3">
                                     <label>Jenis</label>
                                     <select class="form-control" name="jenis_barang" required>
                                         <option selected disabled>- Jenis Perangkat - </option>
@@ -37,17 +33,15 @@
                                     <label>Tipe Perangkat</label>
                                     <input type="text" class="form-control" name="model_barang" placeholder="Tipe Perangkat Pengadaan" required>
                                 </div>
+                                <div class="col-3">
+                                    <label>Nomor Seri Produk</label>
+                                    <input type="text" class="form-control" name="nomer_seri_produk" placeholder="Masukkan Nomor Seri Produk" required>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <label>Nomor Seri Produk</label>
-                                            <input type="text" class="form-control" name="nomer_seri_produk" placeholder="Masukkan Nomor Seri Produk" required>
-                                        </div>
-                                    </div>
                                     <div class="row">
                                         <div class="col-6">
                                             <label>Harga Perangkat</label>

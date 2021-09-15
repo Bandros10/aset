@@ -15,7 +15,6 @@ class CreatePengadaansTable extends Migration
     {
         Schema::create('pengadaans', function (Blueprint $table) {
             $table->string('kode_perangkat');
-            $table->string('nama_barang');
             $table->string('jenis_barang');
             $table->string('merk_barang');
             $table->string('model_barang');

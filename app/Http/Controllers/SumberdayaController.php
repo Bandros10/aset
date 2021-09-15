@@ -27,8 +27,13 @@ class SumberdayaController extends Controller
     }
 
     public function konfirmasi_peminjaman($id){
+        $data_pinjam = peminjaman::where('id',$id)->first();
+        return view('IT.peminjaman_confirm',\compact('data_pinjam'));
+    }
+
+    public function konfirmasi_barang($id){
         peminjaman::where('id',$id)->update(['status' => true]);
-        return redirect()->back()->with('Sukses','Pengajuan peminjaman perangkat telah dikonfirmasi');
+        return redirect(route('it.peminjaman'))->with('Sukses','Pengajuan peminjaman perangkat telah dikonfirmasi');
     }
 
     public function tolak(Request $req,$id){

@@ -32,7 +32,6 @@ class PengadaanController extends Controller
         try {
             $pengadaan = new pengadaan;
             $pengadaan->kode_perangkat = $id;
-            $pengadaan->nama_barang = $request->nama_barang;
             $pengadaan->jenis_barang = $request->jenis_barang;
             $pengadaan->merk_barang = $request->merk_barang;
             $pengadaan->model_barang = $request->model_barang;
@@ -67,7 +66,7 @@ class PengadaanController extends Controller
         }
         $id = $nm.\substr($request->nomer_seri_produk,0,5);
 
-        $peng_update->update(['kode_perangkat' => $id,'nama_barang' => $request->nama_barang,'jenis_barang' => $request->jenis_barang,'keterangan' => $request->keterangan,
+        $peng_update->update(['kode_perangkat' => $id,'jenis_barang' => $request->jenis_barang,'keterangan' => $request->keterangan,
                                 'merk_barang' => $request->merk_barang,'model_barang' => $request->model_barang,'nomer_seri_produk' => $request->nomer_seri_produk,
                                 'harga_barang' => $request->harga_barang,'tanggal_pengadaan' => $request->tanggal_pengadaan]);
         return redirect(\route('pengadaan.index'))->with('Sukses','Data pengadaan berhasil diubah');

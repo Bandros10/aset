@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputBorder">Nama Perangkat</label>
                                     <input type="text" name="nama_perangkat" class="form-control form-control-border"
-                                        value="{{$konfirm->nama_barang}}" readonly>
+                                        value="{{$konfirm->merk_barang}} {{$konfirm->model_barang}}" readonly>
                                 </div>
                             </div>
                             <div class="col-3">

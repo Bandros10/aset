@@ -73,7 +73,7 @@
                                     @foreach ($data_pengadaan as $pengadaan)
                                         <tr>
                                             <td>{{$pengadaan->kode_perangkat}}</td>
-                                            <td>{{$pengadaan->nama_barang}}</td>
+                                            <td>{{$pengadaan->merk_barang}} {{$pengadaan->model_barang}}</td>
                                             <td>{{$pengadaan->jenis_barang}}</td>
                                             <td>{{$pengadaan->merk_barang}}</td>
                                             <td>{{$pengadaan->model_barang}}</td>

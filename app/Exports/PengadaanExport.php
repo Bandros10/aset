@@ -19,7 +19,11 @@ class PengadaanExport implements FromQuery, WithMapping, WithHeadings
     }
 
     public function query(){
+<<<<<<< Updated upstream
         $data_pengadaan = pengadaan::query()->whereYear('tanggal_pengadaan', $this->year)->where('confirmed', true);
+=======
+        $data_pengadaan = pengadaan::query()->whereYear('tanggal_pengadaan', $this->year)->where('confirmed',true);
+>>>>>>> Stashed changes
         // dd($data_pengadaan);
         return $data_pengadaan;
     }

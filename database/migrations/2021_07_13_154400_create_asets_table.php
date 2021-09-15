@@ -15,7 +15,6 @@ class CreateAsetsTable extends Migration
     {
         Schema::create('asets', function (Blueprint $table) {
             $table->string('kode_perangkat');
-            $table->string('nama_perangkat')->nullable();
             $table->string('kategori')->nullable();
             $table->string('tipe')->nullable();
             $table->string('merek')->nullable();
