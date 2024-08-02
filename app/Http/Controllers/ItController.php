@@ -170,11 +170,7 @@ class ItController extends Controller
         $templateProcessor->setValue('kelengkapan',  $cetak_pengembalian->kelengkapan);
         $templateProcessor->setValue('keperluan',  $cetak_pengembalian->keperluan);
 
-<<<<<<< Updated upstream
         $fileName = "Pengembalian ".(strtoupper($barang_kembali->nama_perangkat)."_". $cetak_pengembalian->nama_peminjam."_". $tanggal_sekarang);
-=======
-        $fileName = "pengembalian ".(strtoupper($barang_kembali->merek.' '.$barang_kembali->tipe).".". $cetak_pengembalian->nama_peminjam.".". $tanggal_sekarang);
->>>>>>> Stashed changes
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }

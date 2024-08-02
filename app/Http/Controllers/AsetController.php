@@ -81,7 +81,7 @@ class AsetController extends Controller
         try {
             aset::firstOrCreate(
                 ['kode_perangkat' => $id,
-                'nama_perangkat' => $request->nama_perangkat,
+                // 'nama_perangkat' => $request->nama_perangkat,
                 'kategori' => $request->kategori,
                 'tipe' => $request->tipe,
                 'merek' => $request->merek,

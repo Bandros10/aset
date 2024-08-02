@@ -30,13 +30,8 @@
                 @else
                     <td>{{$laptop->kode_perangkat}}</td>
                 @endif
-<<<<<<< Updated upstream
                 <td>{{$laptop->nama_perangkat}}@if (empty($laptop->kondisi))
                     <sup  class="label bg-danger">Info perangkat belum lengkap</sup>
-=======
-                <td>{{$laptop->merek}} {{$laptop->tipe}}@if (empty($laptop->kondisi))
-                    <sup  class="label bg-danger">info barang belum lengkap</sup>
->>>>>>> Stashed changes
                 @endif</td>
                 <td>{{$laptop->kategori}}</td>
                 <td>{{$laptop->tipe}}</td>
